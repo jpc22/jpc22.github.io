@@ -185,7 +185,7 @@ MonoBehaviour:
     type: 3}
   chairObj: {fileID: 5147648996903918771, guid: 6b80a6e279e3eb74a90af08d75a86303,
     type: 3}
-  bedObj: {fileID: 100008, guid: a11d318bf37c01d489a19dc2dc33ed7d, type: 3}
+  bedObj: {fileID: 8295755487483729696, guid: dfb02aca0c373864484e1e24add630ee, type: 3}
   chairCount: 4
 --- !u!4 &765890822
 Transform:
@@ -278,13 +278,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769995127}
-  m_LocalRotation: {x: 0.37434864, y: -0, z: -0, w: 0.92728806}
-  m_LocalPosition: {x: 4.38, y: 4.96, z: -0.73}
+  m_LocalRotation: {x: 0.41616565, y: -0, z: -0, w: 0.9092889}
+  m_LocalPosition: {x: 2.35, y: 4.956, z: -0.726}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 43.968002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 49.185, y: 0, z: 0}
 --- !u!114 &769995131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +367,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e2ff4118305d11c41bb216685380c6ab, type: 2}
+  - {fileID: 2100000, guid: 366679cf3713065428e131e78f9593ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -404,8 +404,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1247193782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 0, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 42326465}
   m_RootOrder: 0
