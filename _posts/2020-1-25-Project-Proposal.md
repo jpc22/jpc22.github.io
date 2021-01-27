@@ -4,8 +4,8 @@ excerpt_separator: "<!--more-->"
 categories:
   - Blog
 tags:
-  - proposal
-  - background
+  - Proposal
+  - Background
 ---
 Below, I have transcribed my proposal for approval from my instructor before working on this project.
 
