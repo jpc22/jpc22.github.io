@@ -71,6 +71,11 @@ footer:
       icon: "fab fa-fw fa-github"
       url: "https://github.com/jpc22/jpc22.github.io"
 
+comments:
+  provider: "disqus"
+  disqus:
+    shortname: "https://jpc22-github-io.disqus.com/admin/"
+
 defaults:
   # _posts
   - scope:
@@ -79,7 +84,8 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: false
+      read_time: true
+      show_date: true
       comments: true
       share: true
       related: false
