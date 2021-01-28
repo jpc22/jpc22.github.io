@@ -74,7 +74,7 @@ footer:
 comments:
   provider: "disqus"
   disqus:
-    shortname: "https://jpc22-github-io.disqus.com/admin/"
+    shortname: "jpc22-github-io.disqus.com/admin/"
 
 defaults:
   # _posts
