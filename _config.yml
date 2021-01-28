@@ -59,7 +59,7 @@ plugins:
 author:
   name   : "James Cunningham"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  bio    : "A computer science and engineering student at Universty of Alaska Anchorage"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
