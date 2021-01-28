@@ -8,7 +8,6 @@ public class FurnitureController : MonoBehaviour
     public GameObject chairObj;
     public GameObject bedObj;
     [Range(1,4)]public int chairCount;
-    // Start is called before the first frame update
     void Start()
     {
         SpawnObject(tableObj, 1);
@@ -17,16 +16,15 @@ public class FurnitureController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
-
+    
     Vector3 RandomVector()
     {
-        float posX = Random.Range(0f, 10f);
-        float posZ = Random.Range(0f, 10f);
+        float posX = Random.Range(-5f, 5f);
+        float posZ = Random.Range(-5f, 5f);
         return new Vector3(posX, 0, posZ);
     }
 

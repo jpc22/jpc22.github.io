@@ -6,7 +6,7 @@ categories:
 tags:
   - Weekly Update
   - Update
-  - Refixtured
+  - Refixture
   - GitHub
   - Website
 ---
@@ -23,4 +23,8 @@ The repository can currently be accessed in the sidebar, under my name, or at th
 Refixture is the tentative name for the project which means, according to Merriam-Webster, "to renew or replace the fixtures of (as a store, an office)".
 
 ## Unity
-I have been learning the ins and outs of Unity. I have downloaded a few freely available furniture assets, but right now I am using a few primitive GameObjects to develop the foundation. Right now, the objects are being randomly arranged around the floor. The next step is to test to see if the object was placed where another object exists with collision boxes then try another spot.
+I have been learning the ins and outs of Unity. I have downloaded a few freely available furniture assets to help develop the foundation. Right now, the objects are being randomly arranged around the floor. The next step is to test to see if the object was placed where another object exists with collision boxes then try another spot.
+
+![Colliders and Collisions](/assets/images/Unity/Unity_2021-01-28_13-41-54.png)
+
+I did some testing implementing a few furniture collision boundaries. In the image above you can see the green lines representing the collision and the red lines representing where the two chairs are overlapping on the right.
