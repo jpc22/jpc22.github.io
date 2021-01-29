@@ -49,6 +49,6 @@ The Unity game engine provides the ability to quickly prototype and deploy my pr
 -   Source control: Git
 -   Deployment: There will be a website hosted on GitHub Pages with the presentation materials, documentation, source code, and the program, which can run in the web browser window or be built for any device.
 
-##
+##  
 
 On approval, I will work on setting up the environment and the webpage where I'll place the project timeline and goals. My main goal is to gain experience in AI and graphics contexts which have become some of the most interesting fields to me. I also want to end up with a finished project which will help in seeking employment and means I will dedicate many hours a week to getting this done.
