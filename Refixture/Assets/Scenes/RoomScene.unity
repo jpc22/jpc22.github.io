@@ -191,6 +191,8 @@ MonoBehaviour:
     type: 3}
   bedObj: {fileID: 5217652519314247315, guid: 08b7fb62865e98a46978236a038bf107, type: 3}
   chairCount: 4
+  debugCollisions: 0
+  spawnRate: 1
 --- !u!4 &765890822
 Transform:
   m_ObjectHideFlags: 0
@@ -664,7 +666,7 @@ GameObject:
   - component: {fileID: 1138432230}
   m_Layer: 0
   m_Name: Foundation
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

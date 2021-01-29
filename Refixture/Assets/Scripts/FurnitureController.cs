@@ -8,19 +8,77 @@ public class FurnitureController : MonoBehaviour
     public GameObject chairObj;
     public GameObject bedObj;
     [Range(1,4)]public int chairCount;
+    public bool debugCollisions;
+    public Queue<GameObject> spawnQueue = new Queue<GameObject>();
+    public Queue<GameObject> moveQueue = new Queue<GameObject>();
+    public float spawnRate = 0f;
+    private IEnumerator spawnRoutine;
+    private IEnumerator moveRoutine;
     void Start()
     {
-        SpawnObject(tableObj, 1);
-        SpawnObject(chairObj, chairCount);
-        SpawnObject(bedObj, 1);
-        
+        spawnQueue.Enqueue(tableObj);
+        for(int i = 0; i < chairCount; i++)
+        {
+            spawnQueue.Enqueue(chairObj);
+        }
+        spawnQueue.Enqueue(bedObj);
+        spawnRoutine = SpawnRoutine(spawnRate);
+        StartCoroutine(spawnRoutine);
+        moveRoutine = MoveRoutine(spawnRate);
+        StartCoroutine(moveRoutine);
     }
 
     void Update()
     {
         
     }
-    
+
+    IEnumerator SpawnRoutine(float waitTime)
+    {
+        while (true)
+        {
+            if (spawnRate > 0)
+            {
+                yield return new WaitForSeconds(waitTime);
+            }
+            else
+            {
+                yield return null;
+            }
+            if (spawnQueue.Count > 0)
+            {
+                GameObject obj = spawnQueue.Dequeue();
+                SpawnObject(obj);
+            }
+            
+        }
+        
+    }
+
+    IEnumerator MoveRoutine(float waitTime)
+    {
+        while (true)
+        {
+            if (spawnRate > 0)
+            {
+                yield return new WaitForSeconds(waitTime);
+            }
+            else
+            {
+                yield return null;
+            }
+            if (moveQueue.Count > 0)
+            {
+                GameObject obj = moveQueue.Dequeue();
+                MoveObject(obj);
+                obj.GetComponent<FurnitureCollisionHandler>().settled = false;
+                obj.SetActive(true);
+            }
+
+        }
+
+    }
+
     Vector3 RandomVector()
     {
         float posX = Random.Range(-3.75f, 3.75f);
@@ -36,30 +94,17 @@ public class FurnitureController : MonoBehaviour
         return new Vector3(rotX, rotY, rotZ);
     }
 
-    void SpawnObject(GameObject obj, int objectCount)
+    public void SpawnObject(GameObject obj)
     {
-        for(int i = 0; i < objectCount; i++)
-        {
-            bool colliding = true;
-            int retry = 0;
-            while (colliding == true && retry < 100)
-            {
-                Vector3 xform = RandomVector();
-                Vector3 rotation = RandomRotation();
-                if (true || Physics.CheckBox(obj.transform.position, obj.GetComponent<Collider>().bounds.size / 2, obj.transform.rotation))
-                {
-                    GameObject newObj = Instantiate(obj, obj.transform.position, obj.transform.rotation) as GameObject;
-                    newObj.transform.Translate(xform);
-                    newObj.transform.Rotate(rotation);
-                    colliding = false;
-                }
-                else
-                {
-                    colliding = true;
-                    retry++;
-                }
-            }
-        }
-        
+        GameObject newObj = Instantiate(obj, obj.transform.position, obj.transform.rotation);
+        MoveObject(newObj);
+    }
+
+    public void MoveObject(GameObject obj)
+    {
+        Vector3 xform = RandomVector();
+        Vector3 rotation = RandomRotation();
+        obj.transform.position = xform;
+        obj.transform.Rotate(rotation);
     }
 }

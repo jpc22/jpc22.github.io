@@ -42,8 +42,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.448, y: 6.920194, z: 58.283142}
-  m_Center: {x: -30.57, y: -31.59, z: -0.1}
+  m_Size: {x: 8.448, y: 6.920194, z: 52.33851}
+  m_Center: {x: -30.570002, y: -31.59, z: -3.0723135}
 --- !u!1 &4288978617517820742
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,8 +86,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.448, y: 6.920194, z: 58.28314}
-  m_Center: {x: 30.570002, y: 31.7, z: -0.1}
+  m_Size: {x: 8.448, y: 6.920194, z: 52.33848}
+  m_Center: {x: 30.570002, y: 31.7, z: -3.0723183}
 --- !u!1 &4288978617931880134
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,8 +130,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.448, y: 6.920194, z: 58.283142}
-  m_Center: {x: 30.57, y: -31.7, z: -0.1}
+  m_Size: {x: 8.448, y: 6.920194, z: 52.586174}
+  m_Center: {x: 30.570002, y: -31.699997, z: -2.948477}
 --- !u!1 &4288978618098923121
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,8 +174,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.448, y: 6.920194, z: 58.283142}
-  m_Center: {x: -30.57, y: 31.6, z: -0.1}
+  m_Size: {x: 8.448, y: 6.920194, z: 52.586197}
+  m_Center: {x: -30.570002, y: 31.599998, z: -2.9484696}
 --- !u!64 &4288978618432965159
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9ea85a9556ae340942fa91dd2f5874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settled: 0
 --- !u!1001 &4288978618432965160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,7 +281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4df135dcff5ef7b488faeec987a0fe1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 4df135dcff5ef7b488faeec987a0fe1c, type: 3}
       propertyPath: m_LocalPosition.z

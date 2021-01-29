@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Table
   - Chair
+  - Ground
   layers:
   - Default
   - TransparentFX

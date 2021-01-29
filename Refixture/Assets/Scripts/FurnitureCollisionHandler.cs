@@ -6,11 +6,16 @@ public class FurnitureCollisionHandler : MonoBehaviour
 {
     private GameObject furnitureController;
     private FurnitureController controllerScript;
-    // Start is called before the first frame update
-    void Start()
+    public bool settled = false;
+    private void Awake()
     {
         furnitureController = GameObject.Find("FurnitureController");
         controllerScript = furnitureController.GetComponent<FurnitureController>();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -19,8 +24,28 @@ public class FurnitureCollisionHandler : MonoBehaviour
         
     }
 
+
+    void OnCollisionEnter(Collision collision)
+    {
+        
+    }
+
     void OnCollisionStay(Collision collisionInfo)
     {
+        if (controllerScript.debugCollisions == false && settled == false)
+        {
+            GameObject other = collisionInfo.gameObject;
+            FurnitureCollisionHandler otherHandler = GetComponent<FurnitureCollisionHandler>();
+
+            if (otherHandler != null && settled == false)
+            {
+                otherHandler.settled = true;
+            }
+            
+            controllerScript.moveQueue.Enqueue(this.gameObject);
+            this.gameObject.SetActive(false);
+
+        }
         // Debug-draw all contact points and normals
         foreach (ContactPoint contact in collisionInfo.contacts)
         {
