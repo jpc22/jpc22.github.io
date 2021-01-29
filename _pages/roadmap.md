@@ -42,6 +42,6 @@ The final phase implements additional functionality while testing and refining.
  - [ ] Automatic material/color selection
  - [ ] Suggested features
 
-##  
+### Timeline
 
 Each phase will ideally last 1 month, but I would consider the completion of each phase an individual success if significant roadblocks occur. Documentation and testing will be done during all phases.
