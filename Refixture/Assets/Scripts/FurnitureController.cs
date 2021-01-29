@@ -23,8 +23,8 @@ public class FurnitureController : MonoBehaviour
     
     Vector3 RandomVector()
     {
-        float posX = Random.Range(-5f, 5f);
-        float posZ = Random.Range(-5f, 5f);
+        float posX = Random.Range(-3.75f, 3.75f);
+        float posZ = Random.Range(-3.75f, 3.75f);
         return new Vector3(posX, 0, posZ);
     }
 
