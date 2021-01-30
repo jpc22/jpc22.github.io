@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class FurnitureController : MonoBehaviour
 {
-    public GameObject tableObj;
-    public GameObject chairObj;
-    public GameObject bedObj;
+    public List<GameObject> fixtures = new List<GameObject>();
     [Range(1,4)]public int chairCount;
     public bool debugCollisions;
     public Queue<GameObject> spawnQueue = new Queue<GameObject>();
@@ -16,16 +14,16 @@ public class FurnitureController : MonoBehaviour
     private IEnumerator moveRoutine;
     void Start()
     {
-        spawnQueue.Enqueue(tableObj);
+        spawnQueue.Enqueue(fixtures[0]);
         for(int i = 0; i < chairCount; i++)
         {
-            spawnQueue.Enqueue(chairObj);
+            spawnQueue.Enqueue(fixtures[1]);
         }
-        spawnQueue.Enqueue(bedObj);
-        spawnRoutine = SpawnRoutine(spawnRate);
-        StartCoroutine(spawnRoutine);
-        moveRoutine = MoveRoutine(spawnRate);
-        StartCoroutine(moveRoutine);
+        spawnQueue.Enqueue(fixtures[2]);
+        spawnQueue.Enqueue(fixtures[3]);
+        spawnQueue.Enqueue(fixtures[4]);
+        StartCoroutine(SpawnRoutine(spawnRate));
+        StartCoroutine(MoveRoutine(spawnRate));
     }
 
     void Update()

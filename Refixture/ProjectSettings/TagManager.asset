@@ -7,6 +7,7 @@ TagManager:
   - Table
   - Chair
   - Ground
+  - Sofa
   layers:
   - Default
   - TransparentFX
