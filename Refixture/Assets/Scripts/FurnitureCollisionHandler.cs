@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class FurnitureCollisionHandler : MonoBehaviour
 {
-    private GameObject furnitureController;
+    public GameObject furnitureController;
     private FurnitureController controllerScript;
     public bool settled = false;
+    private int timesMoved = 0;
+    private int movedMax = 150;
     private void Awake()
     {
-        furnitureController = GameObject.Find("FurnitureController");
-        controllerScript = furnitureController.GetComponent<FurnitureController>();
+        
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        controllerScript = furnitureController.GetComponent<FurnitureController>();
     }
 
     // Update is called once per frame
@@ -42,7 +43,15 @@ public class FurnitureCollisionHandler : MonoBehaviour
                 otherHandler.settled = true;
             }
             
-            controllerScript.moveQueue.Enqueue(this.gameObject);
+            if (timesMoved < movedMax)
+            {
+                controllerScript.moveQueue.Enqueue(this.gameObject);
+                timesMoved++;
+            }
+            else
+            {
+                Debug.Log("Furniture moved too many times");
+            }
             this.gameObject.SetActive(false);
 
         }

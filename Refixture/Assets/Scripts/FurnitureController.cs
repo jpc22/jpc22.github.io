@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class FurnitureController : MonoBehaviour
 {
-    public List<GameObject> fixtures = new List<GameObject>();
-    [Range(1,4)]public int chairCount;
-    public bool debugCollisions;
+    public List<GameObject> objectList = new List<GameObject>(); // list holds each furniture object assigned to the room
+    public bool debugCollisions; // if enabled, stops rearranging furniture that is colliding
     public Queue<GameObject> spawnQueue = new Queue<GameObject>();
     public Queue<GameObject> moveQueue = new Queue<GameObject>();
-    public float spawnRate = 0f;
-    private IEnumerator spawnRoutine;
-    private IEnumerator moveRoutine;
+    public float spawnRate = 0f; // delay between spawning and moving furniture, set 0 to delay 1 frame
+    public float xRange = 3.75f;
+    public float zRange = 3.75f;
     void Start()
     {
-        spawnQueue.Enqueue(fixtures[0]);
-        for(int i = 0; i < chairCount; i++)
-        {
-            spawnQueue.Enqueue(fixtures[1]);
-        }
-        spawnQueue.Enqueue(fixtures[2]);
-        spawnQueue.Enqueue(fixtures[3]);
-        spawnQueue.Enqueue(fixtures[4]);
         StartCoroutine(SpawnRoutine(spawnRate));
         StartCoroutine(MoveRoutine(spawnRate));
     }
@@ -68,7 +59,7 @@ public class FurnitureController : MonoBehaviour
             if (moveQueue.Count > 0)
             {
                 GameObject obj = moveQueue.Dequeue();
-                MoveObject(obj);
+                MoveObject(obj, RandomVector(), RandomRotation());
                 obj.GetComponent<FurnitureCollisionHandler>().settled = false;
                 obj.SetActive(true);
             }
@@ -79,8 +70,8 @@ public class FurnitureController : MonoBehaviour
 
     Vector3 RandomVector()
     {
-        float posX = Random.Range(-3.75f, 3.75f);
-        float posZ = Random.Range(-3.75f, 3.75f);
+        float posX = Random.Range(-xRange, xRange);
+        float posZ = Random.Range(-zRange, zRange);
         return new Vector3(posX, 0, posZ);
     }
 
@@ -94,15 +85,15 @@ public class FurnitureController : MonoBehaviour
 
     public void SpawnObject(GameObject obj)
     {
-        GameObject newObj = Instantiate(obj, obj.transform.position, obj.transform.rotation);
-        MoveObject(newObj);
+        GameObject newObj = Instantiate(obj, gameObject.transform, false);
+        newObj.GetComponent<FurnitureCollisionHandler>().furnitureController = gameObject;
+        objectList.Add(newObj);
+        MoveObject(newObj, RandomVector(), RandomRotation());
     }
 
-    public void MoveObject(GameObject obj)
+    public void MoveObject(GameObject obj, Vector3 newPos, Vector3 rotation)
     {
-        Vector3 xform = RandomVector();
-        Vector3 rotation = RandomRotation();
-        obj.transform.position = xform;
+        obj.transform.position = newPos + obj.transform.parent.position;
         obj.transform.Rotate(rotation);
     }
 }
