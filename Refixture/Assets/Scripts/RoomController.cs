@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//script attached to a room prefab
 public class RoomController : MonoBehaviour
 {
     public GameObject[] walls;
@@ -40,6 +41,5 @@ public class RoomController : MonoBehaviour
                 }
             }
         }
-        
     }
 }

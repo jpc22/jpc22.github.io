@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4662861073740624984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4662861073740624987}
+  - component: {fileID: 4662861073740624986}
+  m_Layer: 0
+  m_Name: Evolution
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4662861073740624987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662861073740624984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4662861073740624986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662861073740624984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f67e5c14725114bb254b42b099b0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomPrefab: {fileID: 1633587970725310017, guid: c879a556cec957e4db533797866af623,
+    type: 3}
+  boxPrefabs:
+  - {fileID: 7820531754126491933, guid: 7f0c9d58f1bf6354a8dd60a9aa757404, type: 3}
+  - {fileID: 6397881000490396490, guid: 7f48d2df8ce72d64c94f863cff7f4c24, type: 3}
+  - {fileID: 6546609840101927556, guid: a52bd30e70993ce47ac963749b29cfe7, type: 3}
+  - {fileID: 8856304928716344948, guid: 474ce459aa5afc0418b101527937926c, type: 3}
+  - {fileID: 7417122545474153116, guid: cc183771cfc4a614da7277ede362a157, type: 3}
+  - {fileID: 2159100505951730392, guid: 4c3d26061db3dff49be0a4f274b330f4, type: 3}
+  - {fileID: 8097563805921772584, guid: 63903b24305455f438bc60cc65e854a6, type: 3}
+  roomPopulation: []
+  furnPrefabs: []
+  populationList: []

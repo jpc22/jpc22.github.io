@@ -8,12 +8,13 @@ The roadmap for this project specifies three key phases with bullet points indic
 The goal of this phase is to develop a foundation for the project and identify and implement key functionality. This phase will demonstrate the ability of genetic algorithms to arrange furniture.
 
  - [x] Represent furniture objects in a 3D space.
- - [ ] Population is seeded with furniture having random position and rotation within the room.
- - [ ] Collision detection and resolution between placed objects.
+ - [x] Population is seeded with furniture having random position and rotation within the room.
+ - [x] Collision detection and resolution between placed objects.
  - [ ] Different "types"(tags) of furniture i.e. bed, chair, table.
  - [ ] A front facing or functional side for each "type" of furniture.
- - [ ] A basic genetic algorithm implementation with a function to determine room fitness.
- - [ ] Rooms have walls and doors.
+ - [x] A basic genetic algorithm implementation with a function to determine room fitness.
+ - [x] Rooms have walls. 
+ - [ ] Rooms have doors.
  - [ ] Furniture must have a clear path to their functional side.
  - [ ] Furniture interactions i.e. chairs near tables, chairs face objects of interest.
  - [ ] The available open space should be maximized. (furniture grouped up or along walls)

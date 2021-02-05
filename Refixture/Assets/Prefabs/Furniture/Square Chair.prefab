@@ -158,6 +158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureController: {fileID: 0}
+  settled: 0
+  movedLast: 0
+  timesMoved: 0
+  movedMax: 15
 --- !u!1 &6173557564718624232
 GameObject:
   m_ObjectHideFlags: 0

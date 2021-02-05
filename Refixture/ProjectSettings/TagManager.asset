@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Sofa
   - Desk Chair
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -61,7 +61,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9ea85a9556ae340942fa91dd2f5874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  furnitureController: {fileID: 0}
   settled: 0
+  movedLast: 0
+  timesMoved: 0
+  movedMax: 15
 --- !u!65 &6982624876072799726
 BoxCollider:
   m_ObjectHideFlags: 0
