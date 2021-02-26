@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3041468519007693909}
   - component: {fileID: 7404279156729994}
   - component: {fileID: 1584304874263747597}
+  - component: {fileID: -2075032922434937766}
   m_Layer: 0
   m_Name: Doorway
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,3 +131,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &-2075032922434937766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2918209866262106944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 342f6291b351130499f73c0392fc75e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliding: 0
+  controller: {fileID: 0}
+  isCollidingWall: 0
+  isWallFixture: 1
+  functionFaces: []

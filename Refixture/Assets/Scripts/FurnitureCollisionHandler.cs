@@ -5,15 +5,21 @@ using UnityEngine;
 //script attached to a furniture prefab
 public class FurnitureCollisionHandler : MonoBehaviour
 {
-    public GameObject furnitureController;
+    public FurnitureController furnitureController;
+    GameObject marker;
     private void Awake()
     {
-        
+        marker = Resources.Load<GameObject>("Marker");   
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        if (gameObject.CompareTag("Sofa") || gameObject.CompareTag("Desk"))
+        {
+            GameObject o = Instantiate(marker, gameObject.transform, false);
+            o.transform.localPosition += Vector3.right + new Vector3(0, 0.5f);
+        }
+        //elif (gameObject.CompareTag(""))
     }
 
     // Update is called once per frame

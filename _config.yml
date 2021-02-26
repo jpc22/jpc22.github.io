@@ -96,6 +96,12 @@ defaults:
     values:
       layout: single
       author_profile: true
+  # _splash
+  - scope:
+      path: "_splash"
+      type: splash
+    values:
+      layout: splash
 
 category_archive:
   type: liquid

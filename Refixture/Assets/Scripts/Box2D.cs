@@ -6,7 +6,9 @@ public class Box2D : MonoBehaviour
 {
     public bool colliding = false;
     public Room2D controller;
-    public bool collidingWall = false;
+    public bool isCollidingWall = false;
+    public bool isWallFixture;
+    public List<Vector3> functionFaces;
 
     void Start()
     {
@@ -14,7 +16,7 @@ public class Box2D : MonoBehaviour
     }
     void Update()
     {
-        
+        // Debug.DrawRay(gameObject.transform.localPosition, gameObject.transform.right, Color.green);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -22,13 +24,13 @@ public class Box2D : MonoBehaviour
         colliding = true;
         if (collision.gameObject.CompareTag("Wall"))
         {
-            collidingWall = true;
+            isCollidingWall = true;
         }
     }
 
     private void OnCollisionExit2D()
     {
         colliding = false;
-        collidingWall = false;
+        isCollidingWall = false;
     }
 }

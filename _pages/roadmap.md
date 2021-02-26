@@ -10,11 +10,11 @@ The goal of this phase is to develop a foundation for the project and identify a
  - [x] Represent furniture objects in a 3D space.
  - [x] Population is seeded with furniture having random position and rotation within the room.
  - [x] Collision detection and resolution between placed objects.
- - [ ] Different "types"(tags) of furniture i.e. bed, chair, table.
- - [ ] A front facing or functional side for each "type" of furniture.
+ - [x] Different "types"(tags) of furniture i.e. bed, chair, table.
+ - [x] A front facing or functional side for each "type" of furniture.
  - [x] A basic genetic algorithm implementation with a function to determine room fitness.
  - [x] Rooms have walls. 
- - [ ] Rooms have doors.
+ - [x] Rooms have doors.
  - [ ] Furniture must have a clear path to their functional side.
  - [ ] Furniture interactions i.e. chairs near tables, chairs face objects of interest.
  - [ ] The available open space should be maximized. (furniture grouped up or along walls)

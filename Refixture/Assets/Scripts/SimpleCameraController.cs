@@ -76,6 +76,8 @@ namespace UnityTemplateProjects
         [Tooltip("Whether or not to invert our Y axis for mouse input to rotation.")]
         public bool invertY = false;
 
+        private Transform originalPos;
+
         void OnEnable()
         {
             m_TargetCameraState.SetFromTransform(transform);
@@ -111,12 +113,13 @@ namespace UnityTemplateProjects
             }
             return direction;
         }
-        
         void Update()
         {
             Vector3 translation = Vector3.zero;
 
+
 #if ENABLE_LEGACY_INPUT_MANAGER
+
 
             // Exit Sample  
             if (Input.GetKey(KeyCode.Escape))

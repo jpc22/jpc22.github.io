@@ -33,11 +33,11 @@ public class RoomController : MonoBehaviour
             {
                 if (wallTearaways[i])
                 {
-                    walls[i].GetComponent<MeshRenderer>().enabled = true;
+                    walls[i].GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
                 }
                 else
                 {
-                    walls[i].GetComponent<MeshRenderer>().enabled = false;
+                    walls[i].GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
                 }
             }
         }

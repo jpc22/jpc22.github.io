@@ -41,9 +41,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674107272188244330}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 20
+  m_Drag: 10
+  m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -62,10 +62,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   furnitureController: {fileID: 0}
-  settled: 0
-  movedLast: 0
-  timesMoved: 0
-  movedMax: 15
 --- !u!65 &7949330187934385439
 BoxCollider:
   m_ObjectHideFlags: 0

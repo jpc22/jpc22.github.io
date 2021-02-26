@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6546609840101927556
+--- !u!1 &7849588356600462287
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6546609840101927562}
-  - component: {fileID: 6546609840101927557}
-  - component: {fileID: 6546609840101927560}
-  - component: {fileID: 6546609840101927563}
-  - component: {fileID: 4338324745741282515}
+  - component: {fileID: 2659423532634349172}
+  - component: {fileID: 5709769593201544986}
+  - component: {fileID: 7299103879503617325}
+  - component: {fileID: 8831531616309052770}
+  - component: {fileID: 1498020181772532394}
   m_Layer: 0
   m_Name: desk_with_chair2d
-  m_TagString: Untagged
+  m_TagString: Desk Chair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6546609840101927562
+--- !u!4 &2659423532634349172
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6546609840101927556}
+  m_GameObject: {fileID: 7849588356600462287}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1437373, y: 1.6082563, z: 1}
+  m_LocalScale: {x: 0.789655, y: 1.6082563, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6546609840101927557
+--- !u!212 &5709769593201544986
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6546609840101927556}
+  m_GameObject: {fileID: 7849588356600462287}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9e34defd01caae84dbf27ceccfc77b69, type: 3}
-  m_Color: {r: 0.8207547, g: 0.7238505, b: 0.41424885, a: 1}
+  m_Color: {r: 0.41568628, g: 0.73439026, b: 0.81960785, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,13 +84,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6546609840101927560
+--- !u!61 &7299103879503617325
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6546609840101927556}
+  m_GameObject: {fileID: 7849588356600462287}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -110,19 +110,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &6546609840101927563
+--- !u!50 &8831531616309052770
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6546609840101927556}
+  m_GameObject: {fileID: 7849588356600462287}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1.8394228
+  m_Mass: 1.2699677
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -131,13 +131,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4338324745741282515
+--- !u!114 &1498020181772532394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6546609840101927556}
+  m_GameObject: {fileID: 7849588356600462287}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 342f6291b351130499f73c0392fc75e9, type: 3}
@@ -146,3 +146,6 @@ MonoBehaviour:
   colliding: 0
   controller: {fileID: 0}
   collidingWall: 0
+  wallFixture: 0
+  functionFaces:
+  - {x: 1, y: 0, z: 0}

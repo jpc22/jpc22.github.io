@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 749556430771013450}
   m_Layer: 0
   m_Name: bed2d
-  m_TagString: Untagged
+  m_TagString: Bed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7820531754126491933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9186021, y: 2.1541839, z: 1}
+  m_LocalScale: {x: 2.21, y: 1.918602, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9e34defd01caae84dbf27ceccfc77b69, type: 3}
-  m_Color: {r: 0.8207547, g: 0.7238505, b: 0.41424885, a: 1}
+  m_Color: {r: 0.6415094, g: 0.11196155, b: 0.11196155, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 4.133022
+  m_Mass: 4.2401104
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -145,4 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliding: 0
   controller: {fileID: 0}
-  collidingWall: 0
+  isCollidingWall: 0
+  isWallFixture: 1
+  functionFaces:
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}

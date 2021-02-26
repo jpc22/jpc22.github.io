@@ -5,10 +5,10 @@ using UnityEngine;
 public class RoomEvo : MonoBehaviour
 {
     public GameObject roomPrefab;
-    public List<GameObject> boxPrefabs;
+    public List<GameObject> boxPrefabs = new List<GameObject>();
     public List<GameObject> roomPopulation;
     public List<GameObject> furnPrefabs;
-    public List<GameObject> populationList;
+    public float avg_fit;
 
     int populationSize;
     float mutationRate;
@@ -16,7 +16,6 @@ public class RoomEvo : MonoBehaviour
     Vector2 roomWidth;
 
     public bool paused = false;
-    // Start is called before the first frame update
     void Start()
     {
         furnPrefabs = new List<GameObject>();
@@ -26,13 +25,15 @@ public class RoomEvo : MonoBehaviour
         }
         populationSize = 64;
         mutationRate = 1.0f / (populationSize * furnPrefabs.Count);
-        crossoverRate = 0.5f;
+        crossoverRate = 0.95f;
         roomWidth = new Vector2(7.5f, 7.5f);
+        avg_fit = 0;
         CreatePopulation();
-        InvokeRepeating("CreateNewGeneration", 4.0f, 0.5f);
+        updateFitness();
+        normalizeFitness();
+        InvokeRepeating("CreateNewGeneration", 1.0f, 0.5f);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -74,8 +75,6 @@ public class RoomEvo : MonoBehaviour
     {
         if (!paused)
         {
-            updateFitness();
-            normalizeFitness();
             List<GameObject> matingPool = GetMatingPool();
             foreach (GameObject room in roomPopulation)
             {
@@ -104,8 +103,9 @@ public class RoomEvo : MonoBehaviour
                     }
                 }
             }
+            updateFitness();
+            normalizeFitness();
         }
-        
     }
 
     public void updateFitness()
@@ -127,6 +127,7 @@ public class RoomEvo : MonoBehaviour
         {
             room.GetComponent<Room2D>().fitnessNormalized = room.GetComponent<Room2D>().fitnessVal / fitnessSum;
         }
+        avg_fit = fitnessSum / roomPopulation.Count;
     }
 
     public List<GameObject> GetMatingPool()
@@ -165,14 +166,7 @@ public class RoomEvo : MonoBehaviour
                         p2Boxes[j].transform.localRotation = temp.Item2;
                     }
                 }
-
             }
-            else
-            {
-                
-            }
-
-
         }
         return matingPool;
     }

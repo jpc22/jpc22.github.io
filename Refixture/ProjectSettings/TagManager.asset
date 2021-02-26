@@ -10,6 +10,12 @@ TagManager:
   - Sofa
   - Desk Chair
   - Wall
+  - Desk
+  - Decoration
+  - Wall-Aligned
+  - Bed
+  - Cabinet
+  - Door
   layers:
   - Default
   - TransparentFX

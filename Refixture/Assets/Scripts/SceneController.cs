@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 //root script of the room scene
 public class SceneController : MonoBehaviour
@@ -12,6 +14,7 @@ public class SceneController : MonoBehaviour
     public List<GameObject> roomPopulation = new List<GameObject>(); // candidate of population
     public List<GameObject> roomPopulation2D = new List<GameObject>();
     public List<GameObject> furniturePrefabs = new List<GameObject>(); // List of furniture prefabs
+    public TextMeshProUGUI avgFitText;
 
     private void Awake()
     {
@@ -33,6 +36,7 @@ public class SceneController : MonoBehaviour
             roomPopulation2D = evo2D.roomPopulation;
             DrawRooms();
         }
+        avgFitText.text = "Avg. Fit: " + evo2D.GetComponent<RoomEvo>().avg_fit;
     }
 
     void DrawRooms()
@@ -60,9 +64,14 @@ public class SceneController : MonoBehaviour
             for (int j = 0; j < furnitureBoxes.Count; j++)
             {
                 GameObject box = furnitureBoxes[j];
+                GameObject furn = furniturePrefabs[j];
                 Vector3 pos = box.transform.localPosition;
                 Vector3 rot = box.transform.localEulerAngles;
-                room3D.SpawnObject(furniturePrefabs[j], new Vector3(pos.x, 0, pos.y), new Vector3(0, rot.z, 0));
+                GameObject newObj = Instantiate(furn, room3D.gameObject.transform, false);
+                newObj.GetComponent<FurnitureCollisionHandler>().furnitureController = room3D.gameObject.GetComponent<FurnitureController>();
+                newObj.transform.localPosition = new Vector3(pos.x, 0, pos.y);
+                newObj.transform.localEulerAngles = new Vector3(0, -rot.z, 0);
+                room3D.objectList.Add(newObj);
             }
         }
     }

@@ -48,11 +48,13 @@ MonoBehaviour:
   boxPrefabs:
   - {fileID: 7820531754126491933, guid: 7f0c9d58f1bf6354a8dd60a9aa757404, type: 3}
   - {fileID: 6397881000490396490, guid: 7f48d2df8ce72d64c94f863cff7f4c24, type: 3}
-  - {fileID: 6546609840101927556, guid: a52bd30e70993ce47ac963749b29cfe7, type: 3}
+  - {fileID: 7849588356600462287, guid: a52bd30e70993ce47ac963749b29cfe7, type: 3}
   - {fileID: 8856304928716344948, guid: 474ce459aa5afc0418b101527937926c, type: 3}
   - {fileID: 7417122545474153116, guid: cc183771cfc4a614da7277ede362a157, type: 3}
   - {fileID: 2159100505951730392, guid: 4c3d26061db3dff49be0a4f274b330f4, type: 3}
   - {fileID: 8097563805921772584, guid: 63903b24305455f438bc60cc65e854a6, type: 3}
+  - {fileID: 519411605475804389, guid: 96af4dfbe59727346b622a9e5f2a2349, type: 3}
+  - {fileID: 2918209866262106944, guid: c37bfea732d2e7a4aa668692ab09b15b, type: 3}
   roomPopulation: []
   furnPrefabs: []
-  populationList: []
+  paused: 0
