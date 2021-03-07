@@ -23,7 +23,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5892659279432669317}
   - component: {fileID: 330739735487862175}
-  - component: {fileID: 1769670487729469450}
   m_Layer: 0
   m_Name: coffee_table
   m_TagString: Untagged
@@ -62,19 +61,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1769670487729469450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5355426915528622838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e9ea85a9556ae340942fa91dd2f5874, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furnitureController: {fileID: 0}
 --- !u!1001 &5015774455708752192
 PrefabInstance:
   m_ObjectHideFlags: 0

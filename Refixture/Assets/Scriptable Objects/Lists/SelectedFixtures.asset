@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5e06804f75ec84daaab2f97a11c4a2, type: 3}
+  m_Name: SelectedFixtures
+  m_EditorClassIdentifier: 
+  _selectedList: []
+  _updateChannel: {fileID: 11400000, guid: 0039e1939baa0014198072acd02520e5, type: 2}

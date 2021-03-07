@@ -103,7 +103,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3579716430729215949}
   - component: {fileID: 595755763937335655}
-  - component: {fileID: -3979133989394463624}
   m_Layer: 0
   m_Name: Square Chair
   m_TagString: Chair
@@ -145,19 +144,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &-3979133989394463624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5147648996903918771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e9ea85a9556ae340942fa91dd2f5874, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furnitureController: {fileID: 0}
 --- !u!1 &6173557564718624232
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,7 +23,6 @@ public class Room2D : MonoBehaviour
     public void spawnBox(GameObject obj, Vector2 pos, Quaternion rot)
     {
         GameObject box = Instantiate(obj, gameObject.transform, false);
-        box.GetComponent<Box2D>().controller = gameObject.GetComponent<Room2D>();
         Boxes.Add(box);
         positionBox(box, pos, rot);
     }

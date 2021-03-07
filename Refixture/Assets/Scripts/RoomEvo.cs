@@ -15,7 +15,14 @@ public class RoomEvo : MonoBehaviour
     float crossoverRate;
     Vector2 roomWidth;
 
+    [Header("Listening on Channels:")]
+    [SerializeField] VoidEventChannelSO _pausedEventChannel = default;
     public bool paused = false;
+
+    private void Awake()
+    {
+        _pausedEventChannel.OnEventRaised += () => paused = !paused;
+    }
     void Start()
     {
         furnPrefabs = new List<GameObject>();
@@ -32,11 +39,6 @@ public class RoomEvo : MonoBehaviour
         updateFitness();
         normalizeFitness();
         InvokeRepeating("CreateNewGeneration", 1.0f, 0.5f);
-    }
-
-    void Update()
-    {
-        
     }
 
     public void CreatePopulation()

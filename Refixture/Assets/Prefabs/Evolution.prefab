@@ -57,4 +57,7 @@ MonoBehaviour:
   - {fileID: 2918209866262106944, guid: c37bfea732d2e7a4aa668692ab09b15b, type: 3}
   roomPopulation: []
   furnPrefabs: []
+  avg_fit: 0
+  _pausedEventChannel: {fileID: 11400000, guid: a6a08eeba8b1f5d44b9b40042e580ee8,
+    type: 2}
   paused: 0

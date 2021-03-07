@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3046538110636063990}
   - component: {fileID: 5920940844845707533}
-  - component: {fileID: 6964227755548637584}
   m_Layer: 0
   m_Name: table_and_chairs
   m_TagString: Untagged
@@ -53,19 +52,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &6964227755548637584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899913688511607521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e9ea85a9556ae340942fa91dd2f5874, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furnitureController: {fileID: 0}
 --- !u!1001 &3146527015239474948
 PrefabInstance:
   m_ObjectHideFlags: 0

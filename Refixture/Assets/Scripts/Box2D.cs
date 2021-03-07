@@ -5,7 +5,6 @@ using UnityEngine;
 public class Box2D : MonoBehaviour
 {
     public bool colliding = false;
-    public Room2D controller;
     public bool isCollidingWall = false;
     public bool isWallFixture;
     public List<Vector3> functionFaces;

@@ -37,7 +37,6 @@ public class FurnitureController : MonoBehaviour
     public void SpawnObject(GameObject obj, Vector3 pos, Vector3 rotation)
     {
         GameObject newObj = Instantiate(obj, gameObject.transform, false);
-        newObj.GetComponent<FurnitureCollisionHandler>().furnitureController = gameObject.GetComponent<FurnitureController>();
         objectList.Add(newObj);
         obj.transform.localPosition = pos;
         obj.transform.localEulerAngles = rotation;

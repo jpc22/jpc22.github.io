@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4503127962880916602}
   - component: {fileID: 1884188690954635550}
-  - component: {fileID: 7098334638604611448}
   m_Layer: 0
   m_Name: desk_with_chair
   m_TagString: Desk
@@ -50,19 +49,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &7098334638604611448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5051387035269333219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e9ea85a9556ae340942fa91dd2f5874, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furnitureController: {fileID: 0}
 --- !u!65 &8335596621427747748
 BoxCollider:
   m_ObjectHideFlags: 0

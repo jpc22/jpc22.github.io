@@ -200,7 +200,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4448390821767707020}
   - component: {fileID: 5690871472834132948}
-  - component: {fileID: 1993137402375659272}
   m_Layer: 0
   m_Name: kitchen_circle_table
   m_TagString: Untagged
@@ -239,19 +238,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1993137402375659272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4835053811031298337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e9ea85a9556ae340942fa91dd2f5874, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  furnitureController: {fileID: 0}
 --- !u!1001 &4288978618432965160
 PrefabInstance:
   m_ObjectHideFlags: 0
