@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5684551253087387378}
   - component: {fileID: 4783961611098566281}
+  - component: {fileID: 7704769503317053955}
   m_Layer: 0
   m_Name: cabinet_1
   m_TagString: Untagged
@@ -48,6 +49,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &7704769503317053955
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708000066527789425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.63194656, y: 2.0169294, z: 1.598549}
+  m_Center: {x: -0.014722064, y: 1.125337, z: 0.000000059604645}
 --- !u!65 &18166722572036846
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59,8 +73,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 200.00009, y: 60.00003, z: 160.42625}
-  m_Center: {x: -1.8189892e-12, y: -0.000011444097, z: -0.000007629396}
+  m_Size: {x: 200.00008, y: 61.72843, z: 160.42625}
+  m_Center: {x: -0.00000010302126, y: -0.86421067, z: -0.000005956665}
 --- !u!1001 &8125631791682380331
 PrefabInstance:
   m_ObjectHideFlags: 0

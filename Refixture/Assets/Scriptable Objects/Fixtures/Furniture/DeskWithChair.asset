@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
+  m_Name: DeskWithChair
+  m_EditorClassIdentifier: 
+  _name: Desk With Chair
+  _types: []
+  _prefab3d: {fileID: 5051387035269333219, guid: 12b9e8763b4ef3a4aad0c76ddeac88d7,
+    type: 3}
+  _prefab2d: {fileID: 7849588356600462287, guid: a52bd30e70993ce47ac963749b29cfe7,
+    type: 3}
+  _functionalSides: []
+  _previewTexture: {fileID: 8400000, guid: 79300d03205e86146b369ee7eedcec40, type: 2}

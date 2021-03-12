@@ -6,8 +6,9 @@ using UnityEngine;
 public class SettingsSO : ScriptableObject
 {
     [SerializeField] private VoidEventChannelSO _settingsChangedChannel;
-    [SerializeField] private bool _useImperial = false;
-    [SerializeField] private bool _useGA = false;
+    [SerializeField] private FixtureContainerSO _selectedFixtureSOList;
+    [SerializeField] private bool _useImperial;
+    [SerializeField] private bool _useGA;
     [SerializeField] private float _roomWidth;
     [SerializeField] private float _roomLength;
 
@@ -46,15 +47,5 @@ public class SettingsSO : ScriptableObject
         }
     }
 
-    public void toggleUseImperial()
-    {
-        _useImperial = !_useImperial;
-        _settingsChangedChannel.RaiseEvent();
-    }
-
-    public void toggleUseGA()
-    {
-        UseGA = !UseGA;
-        _settingsChangedChannel.RaiseEvent();
-    }
+    public FixtureContainerSO SelectedFixtureSOList { get => _selectedFixtureSOList; set => _selectedFixtureSOList = value; }
 }

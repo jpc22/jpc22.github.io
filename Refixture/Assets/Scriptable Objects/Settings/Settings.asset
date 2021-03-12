@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settingsChangedChannel: {fileID: 11400000, guid: 86c9ef5993d6e694fa2935dc6910d0b0,
     type: 2}
-  _useImperial: 1
+  _selectedFixtureSOList: {fileID: 11400000, guid: 12359b06ea7dc854b8297594949931f0,
+    type: 2}
+  _useImperial: 0
   _useGA: 0
   _roomWidth: 0
   _roomLength: 0

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ScrollListUITest : MonoBehaviour
 {
     [SerializeField] private GameObject _fixturePrefab;
-    [SerializeField] private SelectedFixtureListSO _selectedFixturesListSO;
+    [SerializeField] private FixtureContainerSO _selectedFixturesListSO;
     [SerializeField] private GameObject _canvas;
     [SerializeField] private GameObject _resetButton;
     private List<Fixture> _fixtureList = new List<Fixture>();
@@ -22,10 +22,10 @@ public class ScrollListUITest : MonoBehaviour
     {
         if (closeCanvas)
             _canvas.SetActive(false);
-        //_resetButton.SetActive(true);
-        List<FurnishingSO> spawnList = _selectedFixturesListSO.getCopy();
+        _resetButton.SetActive(true);
+        List<FixtureSO> spawnList = _selectedFixturesListSO.Fixtures;
         float x = 0;
-        foreach (FurnishingSO so in spawnList)
+        foreach (FixtureSO so in spawnList)
         {
             GameObject fixture = Instantiate(_fixturePrefab);
             Fixture fixtureScript = fixture.GetComponent<Fixture>();

@@ -7,13 +7,13 @@ using UnityEngine;
 /// </summary>
 public class Fixture : MonoBehaviour
 {
-    [SerializeField] private FurnishingSO _fixtureSO;
+    [SerializeField] private FixtureSO _fixtureSO;
     private GameObject _prefab2dInstance;
     private GameObject _prefab3dInstance;
     private Transform _transform2d;
     private Transform _transform3d;
 
-    public FurnishingSO FixtureSO
+    public FixtureSO FixtureSO
     {
         get => _fixtureSO; set
         {

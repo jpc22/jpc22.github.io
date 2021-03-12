@@ -16,12 +16,22 @@ public class SettingsUI : MonoBehaviour
     private TMP_InputField _lengthTMP;
     private bool _useImperial;
 
+    protected virtual bool UseImperial { get => _useImperial; set => _useImperial = value; }
+
     private void Awake()
     {
         _settingsUpdateChannel.OnEventRaised += UpdateSettings;
     }
     void Start()
     {
+        if (PlayerPrefs.HasKey("UseImperial"))
+        {
+            _settingsSO.UseImperial = (PlayerPrefs.GetInt("UseImperial") != 0);
+        }
+        if (PlayerPrefs.HasKey("UseGA"))
+        {
+            _settingsSO.UseGA = (PlayerPrefs.GetInt("UseGA") != 0);
+        }
         _toggleImperial.GetComponent<Toggle>().isOn = _settingsSO.UseImperial;
         _toggleGA.GetComponent<Toggle>().isOn = _settingsSO.UseGA;
         _widthTMP = _widthInput.GetComponent<TMP_InputField>();
@@ -30,7 +40,7 @@ public class SettingsUI : MonoBehaviour
 
     public void UpdateSettings()
     {
-        _useImperial = _settingsSO.UseImperial;
+        UseImperial = _settingsSO.UseImperial;
     }
 
     private float convertToInches(float meters) => meters * 39.37007874f;
@@ -50,5 +60,17 @@ public class SettingsUI : MonoBehaviour
         {
             _settingsSO.RoomLength = float.Parse(_lengthTMP.text);
         }
+    }
+
+    public void ImperialToggled()
+    {
+        _settingsSO.UseImperial = _toggleImperial.GetComponent<Toggle>().isOn;
+        PlayerPrefs.SetInt("UseImperial", (_toggleImperial.GetComponent<Toggle>().isOn ? 1 : 0));
+    }
+
+    public void GAToggled()
+    {
+        _settingsSO.UseGA = _toggleGA.GetComponent<Toggle>().isOn;
+        PlayerPrefs.SetInt("UseGa", (_toggleGA.GetComponent<Toggle>().isOn ? 1 : 0));
     }
 }

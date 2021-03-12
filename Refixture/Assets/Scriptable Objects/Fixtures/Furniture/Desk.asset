@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
+  m_Name: Desk
+  m_EditorClassIdentifier: 
+  _name: Desk
+  _types: []
+  _prefab3d: {fileID: 2337214581185409908, guid: 680ab43036cf18e4d81bfcfd3a6f5921,
+    type: 3}
+  _prefab2d: {fileID: 747278361402895952, guid: 456929b25648d634390b7aac4d202402,
+    type: 3}
+  _functionalSides: []
+  _previewTexture: {fileID: 8400000, guid: 3354b4f988380c647b452cb38e99e7fd, type: 2}

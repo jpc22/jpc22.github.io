@@ -18,13 +18,13 @@ public class SceneController : MonoBehaviour
     public TextMeshProUGUI avgFitText;
     [Header("Listening on Channels:")]
     [SerializeField] VoidEventChannelSO _pausedEventChannel = default;
-    private List<FurnishingSO> _furnishingsArray;
+    private List<FixtureSO> _furnishingsArray;
 
 
     private void Awake()
     {
-        FurnishingContainerSO furnishingContainer = Resources.Load("Assets/Resources/AllFurnishings") as FurnishingContainerSO;
-        _furnishingsArray = furnishingContainer.Furnishings;
+        FixtureContainerSO furnishingContainer = Resources.Load("Assets/Resources/AllFurnishings") as FixtureContainerSO;
+        _furnishingsArray = furnishingContainer.Fixtures;
         GameObject scene2D = Instantiate(roomEvoPrefab);
         scene2D.transform.localPosition = new Vector3(0, 60f);
         evo2D = scene2D.GetComponent<RoomEvo>();

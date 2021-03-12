@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4503127962880916602}
   - component: {fileID: 1884188690954635550}
+  - component: {fileID: 6895660623439664091}
   m_Layer: 0
   m_Name: desk_with_chair
   m_TagString: Desk
@@ -49,6 +50,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &6895660623439664091
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051387035269333219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1213794, y: 1.06936, z: 1.5938923}
+  m_Center: {x: 0.14738953, y: 0.66325223, z: 0.002167374}
 --- !u!65 &8335596621427747748
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -179,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 6759877870195796958, guid: e86d2809573cff84da5e0b926bfff32b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.029
       objectReference: {fileID: 0}
     - target: {fileID: 6759877870195796958, guid: e86d2809573cff84da5e0b926bfff32b,
         type: 3}

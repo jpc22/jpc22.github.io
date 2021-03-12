@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3046538110636063990}
   - component: {fileID: 5920940844845707533}
+  - component: {fileID: 4012275234532989511}
   m_Layer: 0
   m_Name: table_and_chairs
   m_TagString: Untagged
@@ -52,6 +53,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &4012275234532989511
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899913688511607521}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.648423, y: 1.0123903, z: 1.6442928}
+  m_Center: {x: 0.002064973, y: 0.6133173, z: 0}
 --- !u!1001 &3146527015239474948
 PrefabInstance:
   m_ObjectHideFlags: 0
