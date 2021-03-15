@@ -16,6 +16,8 @@ MonoBehaviour:
     type: 2}
   _selectedFixtureSOList: {fileID: 11400000, guid: 12359b06ea7dc854b8297594949931f0,
     type: 2}
+  _staticFixtureSOList: {fileID: 11400000, guid: 1180c7f8b9f04994c9ef657e982c44f6,
+    type: 2}
   _useImperial: 0
   _useGA: 0
   _roomWidth: 0

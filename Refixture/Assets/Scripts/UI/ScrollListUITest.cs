@@ -44,4 +44,9 @@ public class ScrollListUITest : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void EditRoomPressed()
+    {
+        SceneManager.LoadScene("EditRoomScene");
+    }
 }

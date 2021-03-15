@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 89131f46d6bfc864699138153a2cc996, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 89131f46d6bfc864699138153a2cc996, type: 3}
       propertyPath: m_LocalPosition.z
@@ -165,6 +165,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: office_chair
       objectReference: {fileID: 0}
+    - target: {fileID: 2944442158419193954, guid: e86d2809573cff84da5e0b926bfff32b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2944442158421619330, guid: e86d2809573cff84da5e0b926bfff32b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -193,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 6759877870195796958, guid: e86d2809573cff84da5e0b926bfff32b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.029
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6759877870195796958, guid: e86d2809573cff84da5e0b926bfff32b,
         type: 3}

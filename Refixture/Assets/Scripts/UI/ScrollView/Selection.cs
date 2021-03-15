@@ -12,12 +12,12 @@ public class Selection : ScrollContent
     [SerializeField] private GameObject _heightInput;
     [SerializeField] private GameObject _previewImage;
     [SerializeField] private GameObject _previewRenderer;
-    private float _initialWidth;
-    private float _initialLength;
-    private float _initialHeight;
-    private float _widthValue;
-    private float _lengthValue;
-    private float _heightValue;
+    protected float _initialWidth;
+    protected float _initialLength;
+    protected float _initialHeight;
+    protected float _widthValue;
+    protected float _lengthValue;
+    protected float _heightValue;
     private TMP_InputField _widthTMP;
     private TMP_InputField _lengthTMP;
     private TMP_InputField _heightTMP;

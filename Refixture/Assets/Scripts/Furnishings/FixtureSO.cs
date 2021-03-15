@@ -11,23 +11,34 @@ using UnityEditor;
 public class FixtureSO : ScriptableObject
 {
 	[SerializeField] private string _name;
-
 	[SerializeField] private FixtureTypeSO[] _types;
-
 	[SerializeField] private GameObject _prefab3d;
-
 	[SerializeField] private GameObject _prefab2d;
-
 	[SerializeField] private string[] _functionalSides;
-
 	[SerializeField] private RenderTexture _previewTexture;
+	[SerializeField] private VoidEventChannelSO _updateChannel;
 
 	public string Name => _name;
 	public FixtureTypeSO[] Types => _types;
-	public GameObject Prefab3d { get => _prefab3d; set => _prefab3d = value; }
-	public GameObject Prefab2d { get => _prefab2d; set => _prefab2d = value; }
+	public GameObject Prefab3d
+    {
+        get => _prefab3d; set
+        {
+            _prefab3d = value;
+			UpdateChannel.RaiseEvent();
+        }
+    }
+    public GameObject Prefab2d
+    {
+        get => _prefab2d; set
+        {
+            _prefab2d = value;
+			UpdateChannel.RaiseEvent();
+        }
+    }
     public string[] FunctionalSides => _functionalSides;
     public RenderTexture PreviewTexture => _previewTexture;
+    public VoidEventChannelSO UpdateChannel { get => _updateChannel; set => _updateChannel = value; }
 
     /// <summary>
     /// Checks if the furniture is of the specified type

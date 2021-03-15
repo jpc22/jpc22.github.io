@@ -7,6 +7,7 @@ public class SettingsSO : ScriptableObject
 {
     [SerializeField] private VoidEventChannelSO _settingsChangedChannel;
     [SerializeField] private FixtureContainerSO _selectedFixtureSOList;
+    [SerializeField] private FixtureContainerSO _staticFixtureSOList;
     [SerializeField] private bool _useImperial;
     [SerializeField] private bool _useGA;
     [SerializeField] private float _roomWidth;
@@ -48,4 +49,5 @@ public class SettingsSO : ScriptableObject
     }
 
     public FixtureContainerSO SelectedFixtureSOList { get => _selectedFixtureSOList; set => _selectedFixtureSOList = value; }
+    public FixtureContainerSO StaticFixtureSOList { get => _staticFixtureSOList; set => _staticFixtureSOList = value; }
 }

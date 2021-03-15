@@ -7,7 +7,7 @@ using TMPro;
 public class Selected : ScrollContent
 {
     [SerializeField] protected GameObject _sizeText;
-    private TextMeshProUGUI _sizeTMP;
+    protected TextMeshProUGUI _sizeTMP;
     protected override bool UseImperial { get => base.UseImperial; set => base.UseImperial = value; }
 
     protected override void Awake()
@@ -28,7 +28,7 @@ public class Selected : ScrollContent
     }
 
     
-    private void SetSizeText()
+    protected virtual void SetSizeText()
     {
         Vector3 size = _settingsSO.SelectedFixtureSOList.SizeAt(Index);
         float width = size.z;

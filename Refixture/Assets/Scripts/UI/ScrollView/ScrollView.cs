@@ -13,6 +13,17 @@ public class ScrollView : MonoBehaviour
     protected float _contentHeight;
     protected float _contentDelta;
 
+    public virtual FixtureContainerSO FixtureContainer
+    {
+        get => _fixtureContainer; set
+        {
+            _fixtureContainer = value;
+            OnDisable();
+            OnEnable();
+            Start();
+        }
+    }
+
     public virtual void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();

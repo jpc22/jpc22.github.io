@@ -18,3 +18,4 @@ MonoBehaviour:
   _prefab2d: {fileID: 0}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: 061c5e8061eafdc49b486f99c0460d28, type: 2}
+  _updateChannel: {fileID: 11400000, guid: 56c3911cd407caa4cbd98eb5940db3ba, type: 2}
