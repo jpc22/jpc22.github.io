@@ -12,13 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6c177b5f0cddd4eb329321dad14548, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  _settingsChangedChannel: {fileID: 11400000, guid: 86c9ef5993d6e694fa2935dc6910d0b0,
-    type: 2}
   _selectedFixtureSOList: {fileID: 11400000, guid: 12359b06ea7dc854b8297594949931f0,
     type: 2}
   _staticFixtureSOList: {fileID: 11400000, guid: 1180c7f8b9f04994c9ef657e982c44f6,
     type: 2}
   _useImperial: 0
   _useGA: 0
-  _roomWidth: 0
-  _roomLength: 0
+  _roomWidth: 5
+  _roomLength: 5
+  _populationCount: 36
+  _mutationRate: 0.1
+  _crossoverRate: 0.5
+  _settingsChangedChannel: {fileID: 11400000, guid: 86c9ef5993d6e694fa2935dc6910d0b0,
+    type: 2}
+  _widthChangedChannel: {fileID: 11400000, guid: 98c2ae83fbc591c47821297bb475fa41,
+    type: 2}
+  _lengthChangedChannel: {fileID: 11400000, guid: 1223c0538ca3eb6489b5823e4a8c05fd,
+    type: 2}
+  _popChangedChannel: {fileID: 11400000, guid: cb44a3798658c65489f8387a83f36f0d, type: 2}
+  _mutationChangedChannel: {fileID: 11400000, guid: 8ed534ce23320f140990a730f597b184,
+    type: 2}
+  _crossChangedChannel: {fileID: 11400000, guid: d9f97e3142d5ef6499f3f8d45d583dee,
+    type: 2}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class SettingsUI : MonoBehaviour
 {
@@ -11,18 +12,13 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] GameObject _toggleGA;
     [SerializeField] GameObject _widthInput;
     [SerializeField] GameObject _lengthInput;
+    [SerializeField] GameObject _widthPreview;
+    [SerializeField] GameObject _lengthPreview;
     [SerializeField] VoidEventChannelSO _settingsUpdateChannel;
     private TMP_InputField _widthTMP;
     private TMP_InputField _lengthTMP;
-    private bool _useImperial;
-
-    protected virtual bool UseImperial { get => _useImperial; set => _useImperial = value; }
 
     private void Awake()
-    {
-        _settingsUpdateChannel.OnEventRaised += UpdateSettings;
-    }
-    void Start()
     {
         if (PlayerPrefs.HasKey("UseImperial"))
         {
@@ -37,20 +33,71 @@ public class SettingsUI : MonoBehaviour
         _widthTMP = _widthInput.GetComponent<TMP_InputField>();
         _lengthTMP = _lengthInput.GetComponent<TMP_InputField>();
     }
+    void Start()
+    {
+        SetPreviewWidth();
+        SetPreviewLength();
+    }
+
+    private void OnEnable()
+    {
+        _settingsUpdateChannel.OnEventRaised += UpdateSettings;
+    }
 
     public void UpdateSettings()
     {
-        UseImperial = _settingsSO.UseImperial;
+        SetPreviewLength();
+        SetPreviewWidth();
+        SetInputText();
     }
 
     private float convertToInches(float meters) => meters * 39.37007874f;
     private float convertToMeters(float inches) => inches / 39.37007874f;
 
+    void SetPreviewWidth()
+    {
+        if (_settingsSO.UseImperial == false)
+            _widthPreview.GetComponent<TextMeshProUGUI>().text = _settingsSO.RoomWidth.ToString("F2");
+        else
+            _widthPreview.GetComponent<TextMeshProUGUI>().text = convertToInches(_settingsSO.RoomWidth).ToString("F2");
+    }
+
+    void SetPreviewLength()
+    {
+        if (_settingsSO.UseImperial == false)
+            _lengthPreview.GetComponent<TextMeshProUGUI>().text = _settingsSO.RoomLength.ToString("F2");
+        else
+            _lengthPreview.GetComponent<TextMeshProUGUI>().text = convertToInches(_settingsSO.RoomLength).ToString("F2");
+    }
+    private void SetInputText()
+    {
+        if (_settingsSO.UseImperial == true)
+        {
+            if (_widthTMP.text != "")
+                _widthTMP.text = convertToInches(_settingsSO.RoomWidth).ToString("F2");
+            if (_lengthTMP.text != "")
+                _lengthTMP.text = convertToInches(_settingsSO.RoomLength).ToString("F2");
+        }
+        else
+        {
+            if (_widthTMP.text != "")
+                _widthTMP.text = _settingsSO.RoomWidth.ToString("F2");
+            if (_lengthTMP.text != "")
+                _lengthTMP.text = _settingsSO.RoomLength.ToString("F2");
+        }
+    }
     public void OnWidthInput()
     {
         if (_widthTMP.text != "")
         {
-            _settingsSO.RoomWidth = float.Parse(_widthTMP.text);
+            if (_settingsSO.UseImperial == false)
+                _settingsSO.RoomWidth = float.Parse(_widthTMP.text);
+            else
+                _settingsSO.RoomWidth = convertToMeters(float.Parse(_widthTMP.text));
+        }
+        else
+        {
+            SetPreviewWidth();
         }
     }
 
@@ -58,7 +105,14 @@ public class SettingsUI : MonoBehaviour
     {
         if (_lengthTMP.text != "")
         {
-            _settingsSO.RoomLength = float.Parse(_lengthTMP.text);
+            if (_settingsSO.UseImperial == false)
+                _settingsSO.RoomLength = float.Parse(_lengthTMP.text);
+            else
+                _settingsSO.RoomLength = convertToMeters(float.Parse(_lengthTMP.text));
+        }
+        else
+        {
+            SetPreviewLength();
         }
     }
 
@@ -72,5 +126,10 @@ public class SettingsUI : MonoBehaviour
     {
         _settingsSO.UseGA = _toggleGA.GetComponent<Toggle>().isOn;
         PlayerPrefs.SetInt("UseGa", (_toggleGA.GetComponent<Toggle>().isOn ? 1 : 0));
+    }
+
+    private void OnDisable()
+    {
+        _settingsUpdateChannel.OnEventRaised -= UpdateSettings;
     }
 }

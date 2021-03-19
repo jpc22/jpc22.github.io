@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EditRoomScene.unity
     guid: e0571ad56b8c01c42a1513d9b2ad1132
+  - enabled: 1
+    path: Assets/Scenes/ViewScene.unity
+    guid: c47814af332e84a4ea209d195c60a74e
+  - enabled: 1
+    path: Assets/Scenes/AlgorithmScene.unity
+    guid: 3ec8c32c6e559144cae2d487380017b1
   m_configObjects: {}

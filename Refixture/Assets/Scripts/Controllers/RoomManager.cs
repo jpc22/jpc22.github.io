@@ -8,12 +8,11 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private FixtureContainerSO _roomObjects;
     [SerializeField] private BoolEventChannelSO _moveChannel;
     [SerializeField] private BoolEventChannelSO _rotateChannel;
+    [SerializeField] private SettingsSO _settingsSO;
     
     private FixtureSO _foundationSO;
     private GameObject _rootObject;
     private List<GameObject> _objectList;
-    private float _width;
-    private float _length;
     private bool _moveState;
     private bool _rotateState;
 
@@ -21,12 +20,11 @@ public class RoomManager : MonoBehaviour
 
     private void Awake()
     {
-        _width = PlayerPrefs.GetFloat("RoomWidth", 5f);
-        _length = PlayerPrefs.GetFloat("RoomLength", 5f);
+
         _rootObject = new GameObject("Room");
         _foundationSO = _roomObjects.Fixtures[0];
         AddToRoot(0);
-        _objectList[0].transform.localScale = new Vector3(_length, 1, _width);
+        _objectList[0].transform.localScale = new Vector3(_settingsSO.RoomLength, 1, _settingsSO.RoomWidth);
         for (int i = 1; i < _roomObjects.Fixtures.Count; i++)
         {
             AddToRoot(i);
@@ -200,15 +198,22 @@ public class RoomManager : MonoBehaviour
 
     public void FinishedPressed()
     {
-        for(int i = 0; i < _objectList.Count; i++)
+        if (SceneManager.GetActiveScene().name == "EditRoomScene")
         {
-            Transform transform = _objectList[i].transform;
-            _roomObjects.SetScaleAt(i, transform.localScale.x, transform.localScale.y, transform.localScale.z);
-            _roomObjects.SetPosAt(i, transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
-            _roomObjects.SetRotAt(i, transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z);
-        }
+            for (int i = 0; i < _objectList.Count; i++)
+            {
+                Transform transform = _objectList[i].transform;
+                _roomObjects.SetScaleAt(i, transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                _roomObjects.SetPosAt(i, transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
+                _roomObjects.SetRotAt(i, transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z);
+            }
 
-        SceneManager.LoadScene("SettingScene");
+            SceneManager.LoadScene("SettingScene");
+        }
+        else if (SceneManager.GetActiveScene().name == "ViewScene")
+        {
+            SceneManager.LoadScene("SettingScene");
+        }
     }
 
     private void OnDisable()

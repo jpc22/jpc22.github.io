@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3046538110636063990}
-  - component: {fileID: 5920940844845707533}
   - component: {fileID: 4012275234532989511}
   m_Layer: 0
   m_Name: table_and_chairs
@@ -37,22 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &5920940844845707533
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899913688511607521}
-  serializedVersion: 2
-  m_Mass: 20
-  m_Drag: 10
-  m_AngularDrag: 10
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!65 &4012275234532989511
 BoxCollider:
   m_ObjectHideFlags: 0

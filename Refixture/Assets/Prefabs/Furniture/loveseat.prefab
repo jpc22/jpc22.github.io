@@ -22,7 +22,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 237799231213512724}
-  - component: {fileID: 636753936100987919}
   - component: {fileID: 2594441677120311608}
   m_Layer: 0
   m_Name: loveseat
@@ -46,22 +45,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &636753936100987919
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2839501757574524101}
-  serializedVersion: 2
-  m_Mass: 20
-  m_Drag: 10
-  m_AngularDrag: 10
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!65 &2594441677120311608
 BoxCollider:
   m_ObjectHideFlags: 0

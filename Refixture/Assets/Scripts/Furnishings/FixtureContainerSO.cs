@@ -108,4 +108,5 @@ public class FixtureContainerSO : ScriptableObject
         if (_rotList != null)
             _rotList[index] = new Vector3(x, y, z);
     }
+
 }

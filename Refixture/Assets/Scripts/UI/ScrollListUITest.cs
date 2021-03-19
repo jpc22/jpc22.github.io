@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class ScrollListUITest : MonoBehaviour
@@ -9,13 +11,65 @@ public class ScrollListUITest : MonoBehaviour
     [SerializeField] private FixtureContainerSO _selectedFixturesListSO;
     [SerializeField] private GameObject _canvas;
     [SerializeField] private GameObject _resetButton;
+    [SerializeField] private FixtureSO _roomSO;
+    [SerializeField] private FixtureContainerSO _staticFixtures;
+    [SerializeField] private SettingsSO _settingsSO;
+    [SerializeField] private List<GameObject> _selectPanels;
+
     private List<Fixture> _fixtureList = new List<Fixture>();
+    private VoidEventChannelSO _settingChangedChannel;
 
     public bool closeCanvas;
 
-    void Start()
+    void Awake()
     {
+        _settingChangedChannel = _settingsSO.SettingsChangedChannel;
+        
+    }
 
+    private void Start()
+    {
+        /*
+        if (_settingsSO.UseGA)
+        {
+            foreach (GameObject obj in _selectPanels)
+            {
+                obj.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (GameObject obj in _selectPanels)
+            {
+                obj.SetActive(false);
+            }
+        }
+        */
+    }
+
+    private void OnEnable()
+    {
+        _settingChangedChannel.OnEventRaised += SettingsUpdated;
+    }
+
+    private void SettingsUpdated()
+    {
+        /*
+        if (_settingsSO.UseGA)
+        {
+            foreach (GameObject obj in _selectPanels)
+            {
+                obj.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (GameObject obj in _selectPanels)
+            {
+                obj.SetActive(false);
+            }
+        }
+        */
     }
 
     public void StartRun()
@@ -48,5 +102,23 @@ public class ScrollListUITest : MonoBehaviour
     public void EditRoomPressed()
     {
         SceneManager.LoadScene("EditRoomScene");
+    }
+
+    public void StartPressed()
+    {
+        if (_settingsSO.UseGA)
+        {
+            SceneManager.LoadScene("AlgorithmScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("ViewScene");
+        }
+
+    }
+
+    private void OnDisable()
+    {
+        _settingChangedChannel.OnEventRaised -= SettingsUpdated;
     }
 }

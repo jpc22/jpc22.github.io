@@ -7,6 +7,22 @@ public class RenderCameraController : MonoBehaviour
 {
     public GameObject content;
     private GameObject _model;
+    [SerializeField] SettingsSO _settingsSO;
+    VoidEventChannelSO _settingsUpdated;
+
+    private void Awake()
+    {
+        if (_settingsSO != null)
+        {
+            _settingsUpdated = _settingsSO.SettingsChangedChannel;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (_settingsUpdated != null)
+            _settingsUpdated.OnEventRaised += SettingChanged;
+    }
 
     public GameObject Model
     {
@@ -24,19 +40,35 @@ public class RenderCameraController : MonoBehaviour
 
     public void UpdateCameraView()
     {
-        BoxCollider collider = _model.GetComponent<BoxCollider>();
-        float magnitude = collider.bounds.size.magnitude;
-        content.transform.localPosition = new Vector3(content.transform.localPosition.x, content.transform.localPosition.y, magnitude + 1f);
-        transform.LookAt(content.transform.position + collider.center);
+        if (Model != null)
+        {
+            BoxCollider collider = _model.GetComponent<BoxCollider>();
+            float magnitude = collider.bounds.size.magnitude;
+            content.transform.localPosition = new Vector3(content.transform.localPosition.x, content.transform.localPosition.y, magnitude + 1f);
+            transform.LookAt(content.transform.position + collider.center);
+        }
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public void SettingChanged()
     {
         if (_model == null && content.transform.childCount > 0)
         {
             Model = content.transform.GetChild(0).gameObject;
         }
+        UpdateCameraView();
+    }
+    
+    void FixedUpdate()
+    {
+        if (_model == null && content.transform.childCount > 0)
+        {
+            Model = content.transform.GetChild(0).gameObject;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (_settingsUpdated != null)
+            _settingsUpdated.OnEventRaised -= SettingChanged;
     }
 }

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5684551253087387378}
-  - component: {fileID: 4783961611098566281}
   - component: {fileID: 7704769503317053955}
   m_Layer: 0
   m_Name: cabinet_1
@@ -33,22 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &4783961611098566281
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6708000066527789425}
-  serializedVersion: 2
-  m_Mass: 20
-  m_Drag: 10
-  m_AngularDrag: 10
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!65 &7704769503317053955
 BoxCollider:
   m_ObjectHideFlags: 0
