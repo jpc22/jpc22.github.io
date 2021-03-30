@@ -20,7 +20,12 @@ public class FixtureContainerSO : ScriptableObject
     public List<FixtureSO> Fixtures { get => new List<FixtureSO>(_fixtures); set => _fixtures = value; }
     /// <summary>get returns copy</summary>
     public List<Vector3> RescaleList { get => new List<Vector3>(_rescaleList); set => _rescaleList = value; }
+    /// <summary>get returns copy</summary>
     public List<Vector3> SizeList { get => new List<Vector3>(_sizeList); set => _sizeList = value; }
+    /// <summary>get returns copy</summary>
+    public List<Vector3> PosList { get => new List<Vector3>(_posList); set => _posList = value; }
+    /// <summary>get returns copy</summary>
+    public List<Vector3> RotList { get => new List<Vector3>(_rotList); set => _rotList = value; }
     public VoidEventChannelSO UpdateChannel { get => _updateChannel; set => _updateChannel = value; }
     public VoidEventChannelSO AddedChannel { get => _addedChannel; set => _addedChannel = value; }
     public IntEventChannelSO RemovedChannel { get => _removedChannel; set => _removedChannel = value; }
@@ -28,10 +33,15 @@ public class FixtureContainerSO : ScriptableObject
     public void Add(FixtureSO so, float width = 0, float length = 0, float height = 0, float x = 1, float y = 1, float z = 1)
     {
         if (_fixtures == null)
-        {
             _fixtures = new List<FixtureSO>();
+        if (_rescaleList == null)
             RescaleList = new List<Vector3>();
-        }
+        if (_sizeList == null)
+            _sizeList = new List<Vector3>();
+        if (_posList == null)
+            _posList = new List<Vector3>();
+        if (_rotList == null)
+            _rotList = new List<Vector3>();
 
         _fixtures.Add(so);
         _rescaleList.Add(new Vector3(x, y, z));
@@ -47,22 +57,21 @@ public class FixtureContainerSO : ScriptableObject
 
     public void Remove(int index)
     {
-        if (_fixtures != null)
-        {
-            if (index < _fixtures.Count)
-            {
-                _fixtures.RemoveAt(index);
-                _rescaleList.RemoveAt(index);
-                _sizeList.RemoveAt(index);
-                _posList.RemoveAt(index);
-                _rotList.RemoveAt(index);
+        if (_fixtures != null && index < _fixtures.Count)
+            _fixtures.RemoveAt(index);
+        if (_rescaleList != null && index < _rescaleList.Count)
+            _rescaleList.RemoveAt(index);
+        if (_sizeList != null && index < _sizeList.Count)
+            _sizeList.RemoveAt(index);
+        if (_posList != null && index < _posList.Count)
+            _posList.RemoveAt(index);
+        if (_rotList != null && index < _posList.Count)
+            _rotList.RemoveAt(index);
 
-                if (UpdateChannel != null)
-                    UpdateChannel.RaiseEvent();
-                if (RemovedChannel != null)
-                    RemovedChannel.RaiseEvent(index);
-            }
-        }
+        if (UpdateChannel != null)
+            UpdateChannel.RaiseEvent();
+        if (RemovedChannel != null)
+            RemovedChannel.RaiseEvent(index);
     }
 
     public Vector3 ScaleAt(int index)
@@ -109,4 +118,12 @@ public class FixtureContainerSO : ScriptableObject
             _rotList[index] = new Vector3(x, y, z);
     }
 
+    public void AppendWith(FixtureContainerSO other)
+    {
+        _fixtures.AddRange(other.Fixtures);
+        _rescaleList.AddRange(other.RescaleList);
+        _sizeList.AddRange(other.SizeList);
+        _posList.AddRange(other.PosList);
+        _rotList.AddRange(other.RotList);
+    }
 }

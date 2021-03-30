@@ -12,6 +12,7 @@ public class RoomPreview : MonoBehaviour
     List<GameObject> _previewObjects;
     FloatEventChannelSO _widthCh;
     FloatEventChannelSO _lengthCh;
+    VoidEventChannelSO _updateCh;
     GameObject _renderCamera;
     Vector3 _defaultCameraPosition = new Vector3(25, 50, -25);
     int _renderLayer = 8;
@@ -20,6 +21,7 @@ public class RoomPreview : MonoBehaviour
     {
         _widthCh = _settingsSO.WidthChangedChannel;
         _lengthCh = _settingsSO.LengthChangedChannel;
+        _updateCh = _roomObjects.UpdateChannel;
         _previewObjects = new List<GameObject>();
         StartPreviewRender();
     }
@@ -39,6 +41,7 @@ public class RoomPreview : MonoBehaviour
     {
         _widthCh.OnEventRaised += UpdateWidth;
         _lengthCh.OnEventRaised += UpdateLength;
+        _updateCh.OnEventRaised += StartPreviewRender;
     }
 
     private void UpdateWidth(float width)
@@ -56,6 +59,8 @@ public class RoomPreview : MonoBehaviour
 
     private void StartPreviewRender()
     {
+        if (_renderCamera != null)
+            Destroy(_renderCamera);
         // create and position camera
         _renderCamera = Instantiate(_previewRenderer, transform);
         _renderCamera.transform.position = _defaultCameraPosition;
@@ -98,5 +103,6 @@ public class RoomPreview : MonoBehaviour
     {
         _widthCh.OnEventRaised -= UpdateWidth;
         _lengthCh.OnEventRaised -= UpdateLength;
+        _updateCh.OnEventRaised -= StartPreviewRender;
     }
 }

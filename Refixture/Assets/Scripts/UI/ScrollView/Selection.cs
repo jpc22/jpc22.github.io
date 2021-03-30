@@ -107,6 +107,14 @@ public class Selection : ScrollContent
         float scaleX = _lengthValue / _initialLength;
         float scaleY = _heightValue / _initialHeight;
         _previewModel.transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
+        /*
+        Transform model = _renderCamera.transform.GetChild(0);
+        Transform camera = _renderCamera.transform.GetChild(1);
+        BoxCollider collider = _previewModel.GetComponent<BoxCollider>();
+        float magnitude = (_widthValue + _lengthValue) / 2;
+        model.localPosition = new Vector3(0, -4f, magnitude);
+        camera.LookAt(model.transform.position + collider.center);
+        */
         _renderCamera.GetComponentInChildren<RenderCameraController>().UpdateCameraView();
     }
 

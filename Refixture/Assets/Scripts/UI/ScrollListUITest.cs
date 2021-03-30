@@ -10,16 +10,14 @@ public class ScrollListUITest : MonoBehaviour
     [SerializeField] private GameObject _fixturePrefab;
     [SerializeField] private FixtureContainerSO _selectedFixturesListSO;
     [SerializeField] private GameObject _canvas;
-    [SerializeField] private GameObject _resetButton;
     [SerializeField] private FixtureSO _roomSO;
     [SerializeField] private FixtureContainerSO _staticFixtures;
     [SerializeField] private SettingsSO _settingsSO;
     [SerializeField] private List<GameObject> _selectPanels;
+    [SerializeField] private GameObject _saveWindow;
 
-    private List<Fixture> _fixtureList = new List<Fixture>();
     private VoidEventChannelSO _settingChangedChannel;
 
-    public bool closeCanvas;
 
     void Awake()
     {
@@ -29,22 +27,23 @@ public class ScrollListUITest : MonoBehaviour
 
     private void Start()
     {
-        /*
+        
         if (_settingsSO.UseGA)
-        {
-            foreach (GameObject obj in _selectPanels)
-            {
-                obj.SetActive(true);
-            }
-        }
-        else
         {
             foreach (GameObject obj in _selectPanels)
             {
                 obj.SetActive(false);
             }
         }
-        */
+        else
+        {
+            foreach (GameObject obj in _selectPanels)
+            {
+                if (!obj.activeSelf)
+                    obj.SetActive(true);
+            }
+        }
+        
     }
 
     private void OnEnable()
@@ -54,44 +53,23 @@ public class ScrollListUITest : MonoBehaviour
 
     private void SettingsUpdated()
     {
-        /*
+        
         if (_settingsSO.UseGA)
-        {
-            foreach (GameObject obj in _selectPanels)
-            {
-                obj.SetActive(true);
-            }
-        }
-        else
         {
             foreach (GameObject obj in _selectPanels)
             {
                 obj.SetActive(false);
             }
         }
-        */
-    }
-
-    public void StartRun()
-    {
-        if (closeCanvas)
-            _canvas.SetActive(false);
-        _resetButton.SetActive(true);
-        List<FixtureSO> spawnList = _selectedFixturesListSO.Fixtures;
-        float x = 0;
-        foreach (FixtureSO so in spawnList)
+        else
         {
-            GameObject fixture = Instantiate(_fixturePrefab);
-            Fixture fixtureScript = fixture.GetComponent<Fixture>();
-            fixtureScript.FixtureSO = so;
-            fixtureScript.Spawn2dFixture();
-            fixtureScript.Spawn3dFixture();
-            _fixtureList.Add(fixtureScript);
-
-            fixture.transform.position = new Vector3(x, 0);
-            x += 2;
-            fixtureScript.Transform2d.eulerAngles = new Vector3(90, 0);
+            foreach (GameObject obj in _selectPanels)
+            {
+                if (!obj.activeSelf)
+                    obj.SetActive(true);
+            }
         }
+        
     }
 
     public void Reset()
@@ -101,6 +79,7 @@ public class ScrollListUITest : MonoBehaviour
 
     public void EditRoomPressed()
     {
+        PlayerPrefs.Save();
         SceneManager.LoadScene("EditRoomScene");
     }
 
@@ -108,13 +87,45 @@ public class ScrollListUITest : MonoBehaviour
     {
         if (_settingsSO.UseGA)
         {
+
+            PlayerPrefs.Save();
             SceneManager.LoadScene("AlgorithmScene");
         }
         else
         {
+
+            PlayerPrefs.Save();
             SceneManager.LoadScene("ViewScene");
         }
 
+    }
+
+    public void SaveLoadStaticPressed()
+    {
+        if(!_saveWindow.activeSelf)
+        {
+            _saveWindow.GetComponent<SaveManager>().Container = _settingsSO.StaticFixtureSOList;
+            _saveWindow.SetActive(true);
+        }
+        else
+        {
+            _saveWindow.SetActive(false);
+            _saveWindow.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0);
+        }
+    }
+
+    public void SaveLoadSelectedPressed()
+    {
+        if (!_saveWindow.activeSelf)
+        {
+            _saveWindow.GetComponent<SaveManager>().Container = _settingsSO.SelectedFixtureSOList;
+            _saveWindow.SetActive(true);
+        }
+        else
+        {
+            _saveWindow.SetActive(false);
+            _saveWindow.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0);
+        }
     }
 
     private void OnDisable()

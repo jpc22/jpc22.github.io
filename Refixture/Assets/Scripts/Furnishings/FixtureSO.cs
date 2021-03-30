@@ -93,6 +93,34 @@ public class FixtureSO : ScriptableObject
 		}
 	}
 
+	public bool IsWallFixture()
+    {
+		bool value = false;
+		for (int i = 0; i < _types.Length; i++)
+        {
+			if (_types[i].IsWallFixture)
+            {
+				value = true;
+				break;
+            }
+        }
+		return value;
+    }
+
+	public bool IsLightEmitter()
+    {
+		bool value = false;
+		for (int i = 0; i < _types.Length; i++)
+		{
+			if (_types[i].IsLightEmitter)
+			{
+				value = true;
+				break;
+			}
+		}
+		return value;
+	}
+
 }
 
 

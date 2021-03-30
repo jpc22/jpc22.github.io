@@ -1,6 +1,8 @@
 main:
   - title: "Roadmap"
     url: /roadmap/
+  - title: "Testing Plan"
+    url: /testingplan/
   - title: "Posts"
     url: /posts/
   - title: "Categories"

@@ -16,11 +16,12 @@ MonoBehaviour:
     type: 2}
   _staticFixtureSOList: {fileID: 11400000, guid: 1180c7f8b9f04994c9ef657e982c44f6,
     type: 2}
+  _roomSOList: []
   _useImperial: 0
-  _useGA: 0
+  _useGA: 1
   _roomWidth: 5
-  _roomLength: 5
-  _populationCount: 36
+  _roomLength: 4
+  _populationCount: 16
   _mutationRate: 0.1
   _crossoverRate: 0.5
   _settingsChangedChannel: {fileID: 11400000, guid: 86c9ef5993d6e694fa2935dc6910d0b0,

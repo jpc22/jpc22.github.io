@@ -10,22 +10,16 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private BoolEventChannelSO _rotateChannel;
     [SerializeField] private SettingsSO _settingsSO;
     
-    private FixtureSO _foundationSO;
     private GameObject _rootObject;
     private List<GameObject> _objectList;
     private bool _moveState;
     private bool _rotateState;
 
-    public FixtureSO FoundationSO { get => _foundationSO; set => _foundationSO = value; }
 
     private void Awake()
     {
-
         _rootObject = new GameObject("Room");
-        _foundationSO = _roomObjects.Fixtures[0];
-        AddToRoot(0);
-        _objectList[0].transform.localScale = new Vector3(_settingsSO.RoomLength, 1, _settingsSO.RoomWidth);
-        for (int i = 1; i < _roomObjects.Fixtures.Count; i++)
+        for (int i = 0; i < _roomObjects.Fixtures.Count; i++)
         {
             AddToRoot(i);
             UpdateScale(i);
@@ -212,7 +206,7 @@ public class RoomManager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "ViewScene")
         {
-            SceneManager.LoadScene("SettingScene");
+            SceneManager.LoadScene("StartScene");
         }
     }
 

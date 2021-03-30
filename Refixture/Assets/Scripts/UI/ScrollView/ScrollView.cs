@@ -18,8 +18,8 @@ public class ScrollView : MonoBehaviour
         get => _fixtureContainer; set
         {
             _fixtureContainer = value;
-            OnDisable();
-            OnEnable();
+            DestroyContents();
+            UpdateContents();
             Start();
         }
     }
@@ -27,6 +27,7 @@ public class ScrollView : MonoBehaviour
     public virtual void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
+        _contents = new List<GameObject>();
     }
 
     public virtual void OnEnable()
@@ -34,7 +35,6 @@ public class ScrollView : MonoBehaviour
         _updateChannel = _fixtureContainer.UpdateChannel;
         if(_updateChannel != null)
             _updateChannel.OnEventRaised += OnContainerUpdated;
-        _contents = new List<GameObject>();
     }
 
     public virtual void Start()

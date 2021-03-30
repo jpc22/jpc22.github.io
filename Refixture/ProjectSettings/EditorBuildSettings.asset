@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AlgorithmScene.unity
     guid: 3ec8c32c6e559144cae2d487380017b1
+  - enabled: 1
+    path: Assets/Scenes/ViewResultScene.unity
+    guid: 148341c4ebf71f041aa335b67e6109c8
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: bc8854ce0fd049c44a845f14d43ec388
   m_configObjects: {}

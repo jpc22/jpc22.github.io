@@ -16,8 +16,8 @@ public class FixtureTypeSO : ScriptableObject
 	[Tooltip("If true, the object emits light like a lamp")]
 	[SerializeField] private bool _isLightEmitter;
 
-	[Tooltip("If true, the object should be placed on the floor")]
-	[SerializeField] private bool _isOnFloor;
+	[Tooltip("If true, the object can have variable height")]
+	[SerializeField] private bool _isHeightEnabled;
 
 	[Tooltip("If true, the object's rear should be against the wall")]
 	[SerializeField] private bool _isWallFixture;
@@ -25,6 +25,6 @@ public class FixtureTypeSO : ScriptableObject
 	public string Name => _name;
 	public string Description => _description;
 	public bool IsLightEmitter => _isLightEmitter;
-	public bool IsOnFloor => _isOnFloor;
+	public bool IsHeightEnabled => _isHeightEnabled;
 	public bool IsWallFixture => _isWallFixture;
 }

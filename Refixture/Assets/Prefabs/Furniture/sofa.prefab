@@ -28,7 +28,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7899638065742779497}
+  - {fileID: 640190694866396085}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43,8 +43,39 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.95186186, y: 0.6774745, z: 2.7233443}
-  m_Center: {x: -0.0048137903, y: 0.42120862, z: -0.0048137307}
+  m_Size: {x: 0.94240284, y: 0.672745, z: 2.7233443}
+  m_Center: {x: -0.00008429587, y: 0.32898343, z: -0.004813671}
+--- !u!1 &4082269800272811483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 640190694866396085}
+  m_Layer: 0
+  m_Name: sofa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &640190694866396085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4082269800272811483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7899638065742779497}
+  m_Father: {fileID: 2532935925761693944}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6982624876072799726
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56,14 +87,14 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.7216375, y: 0.9416394, z: 0.64011097}
-  m_Center: {x: -0.004862666, y: 0.009726763, z: 0.34529972}
+  m_Size: {x: 2.7216375, y: 0.9416394, z: 0.6637583}
+  m_Center: {x: -0.004862666, y: 0.009726763, z: 0.33347607}
 --- !u!1001 &7899638065743171303
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2532935925761693944}
+    m_TransformParent: {fileID: 640190694866396085}
     m_Modifications:
     - target: {fileID: 100014, guid: 8cef4c90a64b6564ca61184c68b8d442, type: 3}
       propertyPath: m_Name

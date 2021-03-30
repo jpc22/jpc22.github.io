@@ -12,27 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ea3b8f9f3ccce4a849fdf1e9b5cc47, type: 3}
   m_Name: StaticFixtures
   m_EditorClassIdentifier: 
-  _name: StaticFixtures
+  _name: Static Fixtures
   _fixtures:
   - {fileID: 11400000, guid: 8b6955406f8041c43af1613a3ae12f69, type: 2}
-  - {fileID: 11400000, guid: d791a12e3cd7e094d86f0afe3759fe62, type: 2}
-  - {fileID: 11400000, guid: ee341844a1d50a643aa9742293346c79, type: 2}
+  - {fileID: 11400000, guid: 9fd71be60293a04418d7d798aa7df568, type: 2}
+  - {fileID: 11400000, guid: 9fd71be60293a04418d7d798aa7df568, type: 2}
   _rescaleList:
-  - {x: 5, y: 1, z: 5}
-  - {x: 0.9017548, y: 1, z: 0.52756166}
-  - {x: 1.2174771, y: 1, z: 0.627395}
+  - {x: 4, y: 1, z: 5}
+  - {x: 1, y: 1, z: 1}
+  - {x: 1, y: 1, z: 1}
   _sizeList:
   - {x: 1, y: 1, z: 1}
-  - {x: 2, y: 1.0102344, z: 1}
-  - {x: 1, y: 0.7510581, z: 1}
+  - {x: 1.397795, y: 0.5514604, z: 0.30217308}
+  - {x: 1.397795, y: 0.5514604, z: 0.30217308}
   _posList:
   - {x: 0, y: 0, z: 0}
-  - {x: -1.7436756, y: 0.0000053048134, z: 0.96307373}
-  - {x: 1.9404632, y: 0, z: -2.0583177}
+  - {x: 1.1677635, y: 0, z: 1.7224464}
+  - {x: -1.2757276, y: 0, z: -1.479517}
   _rotList:
-  - {x: -0, y: 0, z: 0}
-  - {x: -0.0000012073577, y: 90.000175, z: -0.000039844803}
-  - {x: 4.1688167e-10, y: -2.035555e-13, z: -4.07111e-13}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 228.40001, z: 0}
+  - {x: 0, y: 0, z: 0}
   _updateChannel: {fileID: 11400000, guid: db257f946428aa046a8853340a85e592, type: 2}
   _addedChannel: {fileID: 11400000, guid: 675464a58bda7b04a811658eb7eea371, type: 2}
   _removedChannel: {fileID: 11400000, guid: ca0eac6e22e56f24197db9263bb5d238, type: 2}

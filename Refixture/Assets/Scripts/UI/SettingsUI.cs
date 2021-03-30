@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 public class SettingsUI : MonoBehaviour
 {
@@ -20,14 +19,6 @@ public class SettingsUI : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.HasKey("UseImperial"))
-        {
-            _settingsSO.UseImperial = (PlayerPrefs.GetInt("UseImperial") != 0);
-        }
-        if (PlayerPrefs.HasKey("UseGA"))
-        {
-            _settingsSO.UseGA = (PlayerPrefs.GetInt("UseGA") != 0);
-        }
         _toggleImperial.GetComponent<Toggle>().isOn = _settingsSO.UseImperial;
         _toggleGA.GetComponent<Toggle>().isOn = _settingsSO.UseGA;
         _widthTMP = _widthInput.GetComponent<TMP_InputField>();
@@ -119,13 +110,11 @@ public class SettingsUI : MonoBehaviour
     public void ImperialToggled()
     {
         _settingsSO.UseImperial = _toggleImperial.GetComponent<Toggle>().isOn;
-        PlayerPrefs.SetInt("UseImperial", (_toggleImperial.GetComponent<Toggle>().isOn ? 1 : 0));
     }
 
     public void GAToggled()
     {
         _settingsSO.UseGA = _toggleGA.GetComponent<Toggle>().isOn;
-        PlayerPrefs.SetInt("UseGa", (_toggleGA.GetComponent<Toggle>().isOn ? 1 : 0));
     }
 
     private void OnDisable()
