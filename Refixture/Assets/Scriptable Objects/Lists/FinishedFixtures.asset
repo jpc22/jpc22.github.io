@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ea3b8f9f3ccce4a849fdf1e9b5cc47, type: 3}
   m_Name: FinishedFixtures
   m_EditorClassIdentifier: 
-  _name: 
+  _name: Finished Fixtures
   _fixtures: []
   _rescaleList: []
   _sizeList: []
