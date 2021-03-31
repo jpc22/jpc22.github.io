@@ -29,7 +29,7 @@ Each objective contains some sub criteria that help determine if they are satisf
 - The user feels that the algorithm's attempt to arrange the furniture was helpful.
 - The user feels that the program helped solve a furniture arrangement problem. (e.g., found a new way to arrange their furniture)
 
-## Miscellanious Testing
+## Miscellaneous Testing
 
 - The program will be tested and limits will be imposed on the maximum and minimum value of input parameters. These include room size, algorithm population size, furniture size, and furniture count.
 
