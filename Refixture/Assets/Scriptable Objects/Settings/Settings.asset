@@ -18,11 +18,27 @@ MonoBehaviour:
     type: 2}
   _finishedFixtureSOList: {fileID: 11400000, guid: 6dcf24d368f634547a84a28db556a17b,
     type: 2}
-  _roomSOList: []
+  _roomSOList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _useImperial: 0
   _useGA: 1
-  _roomWidth: 5
-  _roomLength: 4
+  _roomWidth: 4
+  _roomLength: 5
   _populationCount: 16
   _mutationRate: 0.1
   _crossoverRate: 0.5

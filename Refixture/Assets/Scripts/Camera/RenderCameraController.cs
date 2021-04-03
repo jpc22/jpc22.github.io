@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RefixUtilities;
 
 public class RenderCameraController : MonoBehaviour
 {
@@ -42,10 +43,10 @@ public class RenderCameraController : MonoBehaviour
     {
         if (Model != null)
         {
-            BoxCollider collider = _model.GetComponent<BoxCollider>();
-            float magnitude = collider.bounds.size.magnitude;
+            Bounds box = RefixUtility.GetCombinedBoundingBoxOfChildren(_model.transform);
+            float magnitude = box.size.magnitude;
             content.transform.localPosition = new Vector3(content.transform.localPosition.x, content.transform.localPosition.y, magnitude + 1f);
-            transform.LookAt(content.transform.position + collider.center);
+            transform.LookAt(content.transform.position + new Vector3(0, box.extents.y, 0));
         }
     }
 

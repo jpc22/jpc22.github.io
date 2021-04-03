@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ea3b8f9f3ccce4a849fdf1e9b5cc47, type: 3}
   m_Name: Decoration
   m_EditorClassIdentifier: 
-  _name: Tables
+  _name: Decoration
   _fixtures:
   - {fileID: 11400000, guid: 9fd71be60293a04418d7d798aa7df568, type: 2}
   _rescaleList: []

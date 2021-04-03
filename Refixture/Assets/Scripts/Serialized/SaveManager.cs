@@ -4,17 +4,25 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
 
 public class SaveManager : MonoBehaviour
 {
     [SerializeField] private SettingsSO _settingsSO;
     [SerializeField] private FixtureContainerSO _container;
     [SerializeField] private TextMeshProUGUI _titleTMP;
+    [SerializeField] private TMP_InputField _pathTMP;
     [SerializeField] private GameObject _toggleGroup;
     [SerializeField] private GameObject _saveContentPrefab;
     [SerializeField] private GameObject _newSavePrefab;
 
     [SerializeField] protected StringEventChannelSO _fileNameCh;
+
+    [SerializeField] private Button _saveButton;
+    [SerializeField] private Button _loadButton;
+    [SerializeField] private Button _deleteButton;
+    [SerializeField] private GameObject _confirmWindow;
+    [SerializeField] private TextMeshProUGUI _confirmTMP;
 
     private string _fileName;
     private string _filePath;
@@ -24,6 +32,9 @@ public class SaveManager : MonoBehaviour
 
     public FixtureContainerSO Container { get => _container; set => _container = value; }
     public string FileName { get => _fileName; set => _fileName = value; }
+    public bool SaveInteractable { get => _saveButton.interactable; set => _saveButton.interactable = value; }
+    public bool LoadInteractable { get => _loadButton.interactable; set => _loadButton.interactable = value; }
+    public string TitleText { get => _titleTMP.text; set => _titleTMP.text = value; }
 
     private void Awake()
     {
@@ -34,6 +45,7 @@ public class SaveManager : MonoBehaviour
     {
         _titleTMP.text = "Save / Load " + _container.Name;
         _filePath = Application.persistentDataPath + "/" + _container.Name + "/";
+        _pathTMP.text = _filePath;
         UpdateFileNamesFromDirectory();
         _fileNameCh.OnEventRaised += FileNameSelected;
     }
@@ -114,22 +126,41 @@ public class SaveManager : MonoBehaviour
 
     private void Save(string saveName)
     {
-        string data = JsonUtility.ToJson(_container, true);
+        string data = EditorJsonUtility.ToJson(_container, true);
         File.WriteAllText(_filePath + saveName + ".json", data);
+        UpdateFileNamesFromDirectory();
     }
 
     private void Delete(string saveName)
     {
         File.Delete(_filePath + saveName + ".json");
+        UpdateFileNamesFromDirectory();
     }
 
     private void Load(string saveName)
     {
         string retrievedData = File.ReadAllText(_filePath + saveName + ".json");
-        JsonUtility.FromJsonOverwrite(retrievedData, _container);
+        EditorJsonUtility.FromJsonOverwrite(retrievedData, _container);
+        if(_container.Name == "Static Fixtures")
+        {
+            UpdateRoomDimensions();
+        }
         VoidEventChannelSO updateCh = _container.UpdateChannel;
         if (updateCh != null)
             updateCh.RaiseEvent();
+    }
+
+    private void UpdateRoomDimensions()
+    {
+        Vector3 foundationScale = _container.ScaleAt(0);
+        _settingsSO.RoomLength = foundationScale.x;
+        _settingsSO.RoomWidth = foundationScale.z;
+    }
+
+    private void ShowConfirmationWindow()
+    {
+        _confirmWindow.SetActive(true);
+        _confirmTMP.text = "Are you sure you want to overwrite " + _fileName + "?";
     }
 
     public void XPressed()
@@ -140,31 +171,34 @@ public class SaveManager : MonoBehaviour
 
     public void SavePressed()
     {
-        if (_fileName != "")
+        if (_fileName != "" && !_confirmWindow.activeSelf)
         {
-            // save with _fileName
-            Save(_fileName);
-
-            UpdateFileNamesFromDirectory();
+            if (_fileNames.Exists(x => x == _fileName))
+            {
+                ShowConfirmationWindow();
+            }
+            else
+            {
+                Save(_fileName);
+            }
         }
     }
 
     public void DeletePressed()
     {
-        if (_fileName != "")
+        if (_fileName != "" && !_confirmWindow.activeSelf)
         {
             if (_fileNames.Exists(x => x == _fileName))
             {
                 // Delete found 
                 Delete(_fileName);
             }
-            UpdateFileNamesFromDirectory();
         }
     }
 
     public void LoadPressed()
     {
-        if (_fileName != "")
+        if (_fileName != "" && !_confirmWindow.activeSelf)
         {
             if (_fileNames.Exists(x => x == _fileName))
             {
@@ -173,5 +207,18 @@ public class SaveManager : MonoBehaviour
             }
         }
     }
-}
 
+    public void ConfirmPressed()
+    {
+        if (_fileName != "")
+        {
+            Save(_fileName);
+        }
+        _confirmWindow.SetActive(false);
+    }
+
+    public void CancelPressed()
+    {
+        _confirmWindow.SetActive(false);
+    }
+}

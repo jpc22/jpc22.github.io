@@ -60,7 +60,6 @@ public class RoomGA : MonoBehaviour
 
             PosConstraints posC = fixture.AddComponent<PosConstraints>();
             posC.SetLocalConstraints(-_dimensions.x / 2, _dimensions.x / 2, 0f, _dimensions.y, -_dimensions.z / 2, _dimensions.z / 2);
-            posC.SetConstraintsOnBounds();
             fixtureScript.Constraints = posC;
 
             Rigidbody rb = fixture.AddComponent<Rigidbody>();
@@ -95,7 +94,16 @@ public class RoomGA : MonoBehaviour
 
     public void CalculateFitness()
     {
+        float value = 0;
+        float sumOfFixtures = 0;
+        foreach (Fixture fixture in _fixtureScripts)
+        {
+            sumOfFixtures += fixture.LocalFitness;
+        }
 
+        value += sumOfFixtures;
+
+        _fitness = value;
     }
 
     private void RecordFixtures()
@@ -103,6 +111,7 @@ public class RoomGA : MonoBehaviour
         for (int i = 0; i < _fixtureObjects.Count; i++)
         {
             Transform objT = _fixtureObjects[i].transform;
+            _fixtures.SetScaleAt(i, objT.localScale.x, objT.localScale.y, objT.localScale.z);
             _fixtures.SetPosAt(i, objT.localPosition.x, objT.localPosition.y, objT.localPosition.z);
             _fixtures.SetRotAt(i, objT.localEulerAngles.x, objT.localEulerAngles.y, objT.localEulerAngles.z);
         }

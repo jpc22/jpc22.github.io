@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using RefixUtilities;
 public class PosConstraints : MonoBehaviour
 {
+    [SerializeField]
     private float _xMin, _xMax, _yMin, _yMax, _zMin, _zMax;
     private float _xMinI, _xMaxI, _yMinI, _yMaxI, _zMinI, _zMaxI;
     private bool _set = false;
@@ -23,6 +24,10 @@ public class PosConstraints : MonoBehaviour
         if (!_set)
         {
             SetLocalConstraints();
+        }
+        else
+        {
+            SetConstraintsOnBounds();
         }
     }
 
@@ -47,16 +52,34 @@ public class PosConstraints : MonoBehaviour
     }
     public void SetConstraintsOnBounds()
     {
-        if (ThisBounds == null)
-            ThisBounds = GetCombinedBoundingBoxOfChildren(transform);
-        _xMin += ThisBounds.extents.x;
-        _xMax -= ThisBounds.extents.x;
+        ThisBounds = RefixUtility.GetCombinedBoundingBoxOfChildren(gameObject.transform);
+        float xDiff = ThisBounds.extents.x;
+        float zDiff = ThisBounds.extents.z;
+        if (xDiff > zDiff)
+        {
+            _xMin = _xMinI + zDiff;
+            _zMin = _zMinI + zDiff;
+            _xMax = _xMaxI - zDiff;
+            _zMax = _zMaxI - zDiff;
+        }
+        else
+        {
+            _xMin = _xMinI + xDiff;
+            _zMin = _zMinI + xDiff;
+            _xMax = _xMaxI - xDiff;
+            _zMax = _zMaxI - xDiff;
+        }
         _yMax -= ThisBounds.size.y;
-        _zMin += ThisBounds.extents.z;
-        _zMax -= ThisBounds.extents.z;
     }
 
     void LateUpdate()
+    {
+        PositionReset();
+
+        RotationReset();
+    }
+
+    private void PositionReset()
     {
         Vector3 pos = transform.localPosition;
 
@@ -78,24 +101,11 @@ public class PosConstraints : MonoBehaviour
         transform.localPosition = pos;
     }
 
-    public static Bounds GetCombinedBoundingBoxOfChildren(Transform root)
+    private void RotationReset()
     {
-        if (root == null)
-        {
-            throw new ArgumentException("The supplied transform was null");
-        }
-
-        var colliders = root.GetComponentsInChildren<Collider>();
-        if (colliders.Length == 0)
-        {
-            throw new ArgumentException("The supplied transform " + root?.name + " does not have any children with colliders");
-        }
-
-        Bounds totalBBox = colliders[0].bounds;
-        foreach (var collider in colliders)
-        {
-            totalBBox.Encapsulate(collider.bounds);
-        }
-        return totalBBox;
+        Vector3 rot = gameObject.transform.localEulerAngles;
+        rot.x = 0;
+        rot.z = 0;
+        gameObject.transform.localEulerAngles = rot;
     }
 }

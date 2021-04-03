@@ -12,28 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ea3b8f9f3ccce4a849fdf1e9b5cc47, type: 3}
   m_Name: StaticFixtures
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   _name: Static Fixtures
   _fixtures:
   - {fileID: 11400000, guid: 8b6955406f8041c43af1613a3ae12f69, type: 2}
-  - {fileID: 11400000, guid: 9fd71be60293a04418d7d798aa7df568, type: 2}
-  - {fileID: 11400000, guid: 9fd71be60293a04418d7d798aa7df568, type: 2}
   _rescaleList:
   - {x: 4, y: 1, z: 5}
-  - {x: 1, y: 1, z: 1}
-  - {x: 1, y: 1, z: 1}
   _sizeList:
   - {x: 1, y: 1, z: 1}
-  - {x: 1.397795, y: 0.5514604, z: 0.30217308}
-  - {x: 1.397795, y: 0.5514604, z: 0.30217308}
   _posList:
   - {x: 0, y: 0, z: 0}
-  - {x: 1.1677635, y: 0, z: 1.7224464}
-  - {x: -1.2757276, y: 0, z: -1.479517}
   _rotList:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 228.40001, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: -0, y: 0, z: 0}
   _updateChannel: {fileID: 11400000, guid: db257f946428aa046a8853340a85e592, type: 2}
   _addedChannel: {fileID: 11400000, guid: 675464a58bda7b04a811658eb7eea371, type: 2}
   _removedChannel: {fileID: 11400000, guid: ca0eac6e22e56f24197db9263bb5d238, type: 2}

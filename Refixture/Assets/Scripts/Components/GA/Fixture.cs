@@ -15,14 +15,20 @@ public class Fixture : MonoBehaviour
     [SerializeField] private float _localFitness;
     [SerializeField] private bool _isTouchingWall;
     private bool _isMoving;
+    private bool _notMoved;
     private float _timeMoving;
     private float _moveTimeTolerance = 0.2f;
+    [SerializeField] private int _collisionCount = 0;
+    [SerializeField] private int _triggerCount = 0;
+
+    private bool _valueUpdated;
+
+
 
     public float LocalFitness
     {
         get
         {
-            CalculateLocalFitness();
             return _localFitness;
         }
         set => _localFitness = value;
@@ -31,20 +37,62 @@ public class Fixture : MonoBehaviour
     public FixtureSO FixtureSO { get => _fixtureSO; set => _fixtureSO = value; }
     public Rigidbody Rigidbody { get => _thisRigidbody; set => _thisRigidbody = value; }
     public PosConstraints Constraints { get => _thisConstraints; set => _thisConstraints = value; }
+    public int CollisionCount
+    {
+        get => _collisionCount; set
+        {
+            _collisionCount = value;
+            _valueUpdated = true;
+        }
+    }
+
+    public int TriggerCount
+    {
+        get => _triggerCount; set
+        {
+            _triggerCount = value;
+            _valueUpdated = true;
+        }
+    }
+
+    public bool IsTouchingWall
+    {
+        get => _isTouchingWall; set
+        {
+            _isTouchingWall = value;
+            _valueUpdated = true;
+        }
+    }
 
     private void Awake()
     {
-        _isTouchingWall = false;
+        IsTouchingWall = false;
         _isMoving = false;
+        _notMoved = false;
+        _valueUpdated = false;
         _timeMoving = 0;
     }
 
     private void FixedUpdate()
     {
         CheckIfStuck();
-        if (!_isMoving && Constraints != null)
+        
+        if (!_isMoving)
         {
-            CheckIfNearEdge();
+            if (Constraints != null)
+            {
+                CheckIfNearEdge();
+            }
+            if (_notMoved == true && _valueUpdated)
+            {
+                CalculateLocalFitness();
+                _valueUpdated = false;
+            }
+            _notMoved = true;
+        }
+        else
+        {
+            _notMoved = false;
         }
     }
 
@@ -52,7 +100,9 @@ public class Fixture : MonoBehaviour
     {
         if (_thisRigidbody != null)
         {
-            if (_thisRigidbody.velocity.magnitude > 0.05f || _thisRigidbody.angularVelocity.magnitude > 0.05f)
+            Vector3 horizontalVelocity = _thisRigidbody.velocity;
+            horizontalVelocity.y = 0f;
+            if (horizontalVelocity.magnitude > 0.025f || _thisRigidbody.angularVelocity.magnitude > 0.015f)
             {
                 _isMoving = true;
             }
@@ -76,32 +126,103 @@ public class Fixture : MonoBehaviour
     private void CheckIfNearEdge()
     {
         Vector3 pos = transform.localPosition;
-        if (pos.x > Constraints.XMax - 0.3f ||
-            pos.x < Constraints.XMin + 0.3f ||
-            pos.z > Constraints.ZMax - 0.3f ||
-            pos.z < Constraints.ZMin + 0.3f)
+        if (pos.x > Constraints.XMax - 0.1f ||
+            pos.x < Constraints.XMin + 0.1f ||
+            pos.z > Constraints.ZMax - 0.1f ||
+            pos.z < Constraints.ZMin + 0.1f)
         {
-            _isTouchingWall = true;
+            IsTouchingWall = true;
         }
     }
 
     private void CalculateLocalFitness()
     {
         float value = 0;
-        if (_isTouchingWall) value += 1;
+        if (IsTouchingWall) value += 6;
+        value += EvaluateTriggerCt();
+        value += EvaluateCollisionCt();
         _localFitness = value;
+    }
+
+    private float EvaluateTriggerCt()
+    {
+        float value = 0;
+        switch(TriggerCount)
+        {
+            case 0:
+                value = 10;
+                break;
+            case 1:
+                value = 6;
+                break;
+            case 2:
+                value = 3;
+                break;
+            case 3:
+                value = 1;
+                break;
+            default:
+                value = 0;
+                break;
+        }
+
+        return value;
+    }
+
+    private float EvaluateCollisionCt()
+    {
+        float value = 0;
+        switch (CollisionCount)
+        {
+            case 0:
+                value = 4;
+                break;
+            case 1:
+                value = 3;
+                break;
+            case 2:
+                value = 2;
+                break;
+            case 3:
+                value = 2;
+                break;
+            case 4:
+                value = 1;
+                break;
+            default:
+                value = 0;
+                break;
+        }
+
+        return value;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        CollisionCount++;
         ContactPoint[] contactPoints = new ContactPoint[collision.contactCount];
         collision.GetContacts(contactPoints);
         TestContactPoints(contactPoints);
     }
 
+    private void OnCollisionExit()
+    {
+        CollisionCount--;
+    }
+
+    private void OnTriggerEnter()
+    {
+        TriggerCount++;
+    }
+
+    private void OnTriggerExit()
+    {
+        TriggerCount--;
+    }
+
     private void TestContactPoints(ContactPoint[] contactPoints)
     {
-        _isTouchingWall = false;
+        IsTouchingWall = false;
         foreach (ContactPoint point in contactPoints)
         {
 
@@ -118,13 +239,13 @@ public class Fixture : MonoBehaviour
     {
         if (otherFixture.FixtureSO.IsOfType("Wall"))
         {
-            _isTouchingWall = true;
+            IsTouchingWall = true;
         }
     }
 
     public void SetNewRandomPos()
     {
-        _isTouchingWall = false;
+        IsTouchingWall = false;
         Vector3 pos = transform.localPosition;
         pos.x = Random.Range(Constraints.XMin, Constraints.XMax);
         pos.z = Random.Range(Constraints.ZMin, Constraints.ZMax);

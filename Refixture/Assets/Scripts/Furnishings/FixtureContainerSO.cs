@@ -65,7 +65,7 @@ public class FixtureContainerSO : ScriptableObject
             _sizeList.RemoveAt(index);
         if (_posList != null && index < _posList.Count)
             _posList.RemoveAt(index);
-        if (_rotList != null && index < _posList.Count)
+        if (_rotList != null && index < _rotList.Count)
             _rotList.RemoveAt(index);
 
         if (UpdateChannel != null)
@@ -125,5 +125,14 @@ public class FixtureContainerSO : ScriptableObject
         _sizeList.AddRange(other.SizeList);
         _posList.AddRange(other.PosList);
         _rotList.AddRange(other.RotList);
+    }
+
+    public void Copy(FixtureContainerSO other)
+    {
+        _fixtures = other.Fixtures;
+        _rescaleList = other.RescaleList;
+        _sizeList = other.SizeList;
+        _posList = other.PosList;
+        _rotList = other.RotList;
     }
 }

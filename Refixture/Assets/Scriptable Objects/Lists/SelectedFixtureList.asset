@@ -13,30 +13,11 @@ MonoBehaviour:
   m_Name: SelectedFixtureList
   m_EditorClassIdentifier: 
   _name: Selected Fixtures
-  _fixtures:
-  - {fileID: 11400000, guid: cb69e80e56053fb46a8496dc5e5d64ec, type: 2}
-  - {fileID: 11400000, guid: ee341844a1d50a643aa9742293346c79, type: 2}
-  - {fileID: 11400000, guid: 1ce1216d260d8a1458a089d7833b708b, type: 2}
-  _rescaleList:
-  - {x: 0.555946, y: 1.6896355, z: 1}
-  - {x: 1, y: 1, z: 0.627395}
-  - {x: 1, y: 1, z: 0.6255673}
-  _sizeList:
-  - {x: 0.5, y: 0.5, z: 0.5023632}
-  - {x: 0.8213707, y: 0.74746394, z: 1}
-  - {x: 0.63194656, y: 2.0205455, z: 1}
-  _posList:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  _rotList:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  _fixtures: []
+  _rescaleList: []
+  _sizeList: []
+  _posList: []
+  _rotList: []
   _updateChannel: {fileID: 11400000, guid: 0039e1939baa0014198072acd02520e5, type: 2}
   _addedChannel: {fileID: 0}
   _removedChannel: {fileID: 0}

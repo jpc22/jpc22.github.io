@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using RefixUtilities;
 
 public class Selection : ScrollContent
 {
@@ -63,12 +64,13 @@ public class Selection : ScrollContent
         PreviewImage = ContentSO.PreviewTexture;
         StartPreviewRender();
 
-        BoxCollider collider = _previewModel.GetComponent<BoxCollider>();
-        if (collider != null)
+        //BoxCollider collider = _previewModel.GetComponent<BoxCollider>();
+        Bounds box = RefixUtility.GetCombinedBoundingBoxOfChildren(_previewModel.transform);
+        if (box != null)
         {
-            _widthValue = collider.size.z;
-            _lengthValue = collider.size.x;
-            _heightValue = collider.size.y;
+            _widthValue = box.size.z;
+            _lengthValue = box.size.x;
+            _heightValue = box.size.y;
 
             _initialWidth = _widthValue;
             _initialLength = _lengthValue;

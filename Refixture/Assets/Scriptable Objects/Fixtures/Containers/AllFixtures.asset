@@ -12,21 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ea3b8f9f3ccce4a849fdf1e9b5cc47, type: 3}
   m_Name: AllFixtures
   m_EditorClassIdentifier: 
-  _name: AllFixtures
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _name: Essentials
   _fixtures:
   - {fileID: 11400000, guid: d791a12e3cd7e094d86f0afe3759fe62, type: 2}
   - {fileID: 11400000, guid: 1ce1216d260d8a1458a089d7833b708b, type: 2}
   - {fileID: 11400000, guid: cb69e80e56053fb46a8496dc5e5d64ec, type: 2}
   - {fileID: 11400000, guid: ee341844a1d50a643aa9742293346c79, type: 2}
+  - {fileID: 11400000, guid: 8a1c5a6726582cb4d8993520cee204c0, type: 2}
   - {fileID: 11400000, guid: 3298b3d855fbbdf4db8dfc207d7d3291, type: 2}
   - {fileID: 11400000, guid: 34f1f98db4605ca4d9a3b8cd71f8462e, type: 2}
+  - {fileID: 11400000, guid: ce4ff4b3cedbdee4ba6903c0825409bf, type: 2}
   - {fileID: 11400000, guid: 120f1028940eaec4e945c86918f7996b, type: 2}
   - {fileID: 11400000, guid: f42856aaa8a98294796d1b285986e93c, type: 2}
   - {fileID: 11400000, guid: 5c3e6eab03065b74cb25cd38ae9b4ad9, type: 2}
   - {fileID: 11400000, guid: 9fd71be60293a04418d7d798aa7df568, type: 2}
-  - {fileID: 11400000, guid: 85272e46480e44d49a1f8102706cf946, type: 2}
-  - {fileID: 11400000, guid: 8b6955406f8041c43af1613a3ae12f69, type: 2}
-  - {fileID: 11400000, guid: 0b0af4e1c98a0b647b21a6aa74dd68d4, type: 2}
   _rescaleList: []
   _sizeList: []
+  _posList: []
+  _rotList: []
   _updateChannel: {fileID: 0}
+  _addedChannel: {fileID: 0}
+  _removedChannel: {fileID: 0}

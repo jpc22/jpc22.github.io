@@ -18,6 +18,8 @@ TagManager:
   - Door
   - Fixture
   - NewSave
+  - Cube
+  - Trigger
   layers:
   - Default
   - TransparentFX
