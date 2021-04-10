@@ -81,9 +81,16 @@ public class ViewResultManager : MonoBehaviour
     {
         if (_objectList == null)
             _objectList = new List<GameObject>();
-        _objectList.Add(Instantiate(_roomObjects.Fixtures[index].Prefab3d, _rootObject.transform));
+        _objectList.Add(Instantiate(_roomObjects.Fixtures[index].GetPrefab3d(), _rootObject.transform));
         _objectList[index].transform.localScale = _roomObjects.ScaleAt(index);
         //add components
+        if (!_objectList[index].CompareTag("Ground"))
+        {
+            Rigidbody rb = _objectList[index].AddComponent<Rigidbody>();
+            rb.useGravity = false;
+            rb.isKinematic = true;
+            _objectList[index].AddComponent<SelectGlow>();
+        }
         if (_moveState)
             AddMoveComponent(_objectList[index]);
         else if (_rotateState)

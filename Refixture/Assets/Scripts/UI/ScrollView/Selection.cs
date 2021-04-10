@@ -93,7 +93,7 @@ public class Selection : ScrollContent
         // set object to render in camera
         Camera cam = _renderCamera.GetComponentInChildren<Camera>();
         cam.targetTexture = PreviewImage;
-        _previewModel = Instantiate(ContentSO.Prefab3d, _renderCamera.transform.GetChild(0), false);
+        _previewModel = Instantiate(ContentSO.GetPrefab3d(), _renderCamera.transform.GetChild(0), false);
 
         int renderLayer = 8; // render layer for these cameras
         _previewModel.layer = renderLayer;

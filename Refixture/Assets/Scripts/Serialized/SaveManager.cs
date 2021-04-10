@@ -4,7 +4,6 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor;
 
 public class SaveManager : MonoBehaviour
 {
@@ -126,7 +125,7 @@ public class SaveManager : MonoBehaviour
 
     private void Save(string saveName)
     {
-        string data = EditorJsonUtility.ToJson(_container, true);
+        string data = _container.GetJsonString();
         File.WriteAllText(_filePath + saveName + ".json", data);
         UpdateFileNamesFromDirectory();
     }
@@ -140,7 +139,7 @@ public class SaveManager : MonoBehaviour
     private void Load(string saveName)
     {
         string retrievedData = File.ReadAllText(_filePath + saveName + ".json");
-        EditorJsonUtility.FromJsonOverwrite(retrievedData, _container);
+        _container.LoadJsonString(retrievedData);
         if(_container.Name == "Static Fixtures")
         {
             UpdateRoomDimensions();

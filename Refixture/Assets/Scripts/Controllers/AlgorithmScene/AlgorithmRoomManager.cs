@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using RefixUtilities;
 
 /// <summary>
 /// Contains and manages a list of rooms who have a list of fixtures and fitness for the GA
 /// </summary>
+[RequireComponent(typeof(AlgorithmRunner))]
 public class AlgorithmRoomManager : MonoBehaviour
 {
     [SerializeField] private SettingsSO _settingsSO;
-    [SerializeField] private AlgorithmRunner _runner;
+    private AlgorithmRunner _runner;
 
     private FixtureContainerSO _selectedFixtureSO;
     private List<GameObject> _roomObjects;
@@ -17,7 +19,12 @@ public class AlgorithmRoomManager : MonoBehaviour
 
     private float _mutRate, _crossRate;
     private FloatEventChannelSO _mutUpdateCh, _crossUpdateCh;
+    [SerializeField] private FloatEventChannelSO _avgFitCh;
+    [SerializeField] private IntEventChannelSO _genCtCh;
     private bool _paused = true;
+
+    [SerializeField] private float _avgFitness;
+    [SerializeField] private int _generationCount;
 
     public List<GameObject> RoomObjects
     {
@@ -27,14 +34,34 @@ public class AlgorithmRoomManager : MonoBehaviour
         }
     }
     public List<RoomGA> RoomPop { get => _roomPop; }
+    public float AvgFitness
+    {
+        get => _avgFitness; set
+        {
+            _avgFitness = value;
+            _avgFitCh.RaiseEvent(value);
+        }
+    }
+
+    public int GenerationCount
+    {
+        get => _generationCount; set
+        {
+            _generationCount = value;
+            _genCtCh.RaiseEvent(value);
+        }
+    }
 
     private void Awake()
     {
+        _runner = GetComponent<AlgorithmRunner>();
         _selectedFixtureSO = _settingsSO.SelectedFixtureSOList;
         _mutRate = _settingsSO.MutationRate;
         _crossRate = _settingsSO.CrossoverRate;
         _mutUpdateCh = _settingsSO.MutationChangedChannel;
         _crossUpdateCh = _settingsSO.CrossChangedChannel;
+        AvgFitness = 0;
+        GenerationCount = 0;
     }
 
     private void OnEnable()
@@ -95,15 +122,17 @@ public class AlgorithmRoomManager : MonoBehaviour
         else Debug.Log("UpdateRoomPop found no difference in pop count");
     }
 
-    public List<RoomGA> GetBestFitList()
+    public List<FixtureContainerSO> GetBestFitList()
     {
+        /*
         List<RoomGA> list = new List<RoomGA>();
         var sortedRooms = _roomPop.OrderByDescending(p => p.Fitness);
         foreach (RoomGA room in sortedRooms)
         {
             list.Add(room);
         }
-        return list;
+        */
+        return _runner.Best;
     }
 
     public void StartAlgorithm()
@@ -111,15 +140,48 @@ public class AlgorithmRoomManager : MonoBehaviour
         if (_paused == true)
         {
             _paused = false;
-            Debug.Log("unpaused");
+            //Debug.Log("unpaused");
+            CalculateFitness();
         }
+    }
+    private void GenerationFinished()
+    {
+        //Debug.Log("New Generation created");
+        CalculateFitness();
+    }
+    private void NewGeneration()
+    {
+        if (_paused == false)
+        {
+            GenerationCount++;
+            _runner.StartNewGeneration(_roomPop, () => GenerationFinished());
+            //Debug.Log("New Generation Started");
+        }
+    }
+    private void CalculateFitness()
+    {
+        CallbackCounter cbct = new CallbackCounter(_roomPop.Count, () => FitnessCalculated());
+        //Debug.Log("Fitness calculating...");
+        foreach (RoomGA room in _roomPop)
+        {
+            room.CalculateFitness(cbct.Callback);
+        }
+    }
+    private void FitnessCalculated()
+    {
+
+        AvgFitness = (_roomPop.Sum(room => room.Fitness) / _roomPop.Count);
+        Debug.Log("Fitness Calculated. Avg Fit = " + AvgFitness);
+        Invoke("NewGeneration", 0.5f);
     }
     public void PauseAlgorithm()
     {
         if (_paused == false)
         {
             _paused = true;
-            Debug.Log("paused");
+            //Debug.Log("paused");
         }
     }
 }
+
+

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 /// <summary>
 /// Takes the static room fixtures and instantiates and positions them. Also serves as manager for UI buttons pressed.
@@ -11,6 +12,7 @@ public class AlgorithmManager : MonoBehaviour
 {
     [SerializeField] private SettingsSO _settingsSO;
     [SerializeField] private BoolEventChannelSO _startToggleChannel;
+    [SerializeField] private TMP_Dropdown _dropdownTMP;
 
     private AlgorithmRoomManager _roomManager;
     private GameObject _roomContainer;
@@ -44,7 +46,7 @@ public class AlgorithmManager : MonoBehaviour
 
     private void PopUpdated(int val)
     {
-        Debug.Log("new pop: " + val);
+        //Debug.Log("new pop: " + val);
         if (val > _currentPop)
             SpawnRooms(val);
         else if (val < _currentPop)
@@ -91,7 +93,7 @@ public class AlgorithmManager : MonoBehaviour
         _roomTemplate = new GameObject("RoomTemplate");
         for (int i = 0; i < prefabs.Count; i++)
         {
-            GameObject fixture = Instantiate(prefabs[i].Prefab3d, _roomTemplate.transform);
+            GameObject fixture = Instantiate(prefabs[i].GetPrefab3d(), _roomTemplate.transform);
             fixture.transform.localScale = statics.ScaleAt(i);
             fixture.transform.localPosition = statics.PosAt(i);
             fixture.transform.localEulerAngles = statics.RotAt(i);
@@ -118,8 +120,8 @@ public class AlgorithmManager : MonoBehaviour
         int count = _rooms.Count;
         float x = 0;
         float z = 0;
-        float xStep = _settingsSO.RoomLength * 1.5f;
-        float zStep = _settingsSO.RoomWidth * 1.5f;
+        float xStep = _settingsSO.RoomLength * 2f;
+        float zStep = _settingsSO.RoomWidth * 2f;
         int index = 0;
         for (int i = 0; i < Mathf.Sqrt(count); i++)
         {
@@ -143,12 +145,12 @@ public class AlgorithmManager : MonoBehaviour
 
     public void SaveGAResults()
     {
-        List<RoomGA> roomList = _roomManager.GetBestFitList();
+        List<FixtureContainerSO> roomList = _roomManager.GetBestFitList();
         List<FixtureContainerSO> roomSOList = new List<FixtureContainerSO>();
-        foreach (RoomGA room in roomList)
+        foreach (FixtureContainerSO room in roomList)
         {
             FixtureContainerSO roomSO = Instantiate(_settingsSO.StaticFixtureSOList);
-            roomSO.AppendWith(room.Fixtures);
+            roomSO.AppendWith(room);
             roomSOList.Add(roomSO);
         }
         _settingsSO.RoomSOList = roomSOList;
@@ -156,6 +158,7 @@ public class AlgorithmManager : MonoBehaviour
 
     public void StartToggled(bool value)
     {
+        _dropdownTMP.interactable = !value;
         if (value)
         {
             _roomManager.StartAlgorithm();

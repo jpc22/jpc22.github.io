@@ -71,7 +71,7 @@ public class RoomPreview : MonoBehaviour
         cam.targetTexture = _renderTexture;
         for(int i = 0; i < _roomObjects.Fixtures.Count; i++)
         {
-            GameObject model = Instantiate(_roomObjects.Fixtures[i].Prefab3d, _renderCamera.transform.GetChild(0));
+            GameObject model = Instantiate(_roomObjects.Fixtures[i].GetPrefab3d(), _renderCamera.transform.GetChild(0));
             model.layer = _renderLayer;
             foreach (var child in model.GetComponentsInChildren(typeof(Transform), true))
             {

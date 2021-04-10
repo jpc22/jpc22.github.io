@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
-  m_Name: Cabinet
+  m_Name: KitchenTableWithChairs
   m_EditorClassIdentifier: 
-  _name: Cabinet
+  _name: Kitchen Table With Chairs
+  _prefabName: table_and_chairs
   _types: []
-  _prefab3d: {fileID: 6708000066527789425, guid: 5c8dd373f1048ab4eb1faad885764fee,
-    type: 3}
-  _prefab2d: {fileID: 519411605475804389, guid: 96af4dfbe59727346b622a9e5f2a2349,
-    type: 3}
   _functionalSides: []
-  _previewTexture: {fileID: 8400000, guid: 5e6bd2e74d3eb35409990f66b3654f48, type: 2}
+  _previewTexture: {fileID: 8400000, guid: 4447405e61eeff0439ac6eddc8e2ce1d, type: 2}

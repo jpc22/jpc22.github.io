@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
-  m_Name: OfficeChair
+  m_Name: Loveseat
   m_EditorClassIdentifier: 
-  _name: Office Chair
+  _name: Loveseat
+  _prefabName: loveseat
   _types: []
-  _prefab3d: {fileID: 674107272188244330, guid: e86d2809573cff84da5e0b926bfff32b,
-    type: 3}
-  _prefab2d: {fileID: 8650419670461132124, guid: f0858ede43b93b84082c964dff1061a0,
-    type: 3}
   _functionalSides: []
-  _previewTexture: {fileID: 8400000, guid: baf2cb8f3c1867f48936a8fb4dbc3cc9, type: 2}
+  _previewTexture: {fileID: 8400000, guid: 40dd5906a3de69542b3f036273fcda07, type: 2}

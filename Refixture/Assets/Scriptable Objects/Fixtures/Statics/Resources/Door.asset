@@ -10,15 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
-  m_Name: Wall
+  m_Name: Door
   m_EditorClassIdentifier: 
-  _name: Wall
+  _name: Door
+  _prefabName: Door
   _types:
-  - {fileID: 11400000, guid: 5d3fe24b3d077fd4ca73f8bf53249816, type: 2}
-  _prefab3d: {fileID: 9058376119473997864, guid: 6d5a0e592ff56b64ab2a123574fd5964,
-    type: 3}
-  _prefab2d: {fileID: 1546322426694610934, guid: 53ae2486744cb0e4dbdf86fd61310054,
-    type: 3}
+  - {fileID: 11400000, guid: 9ddfe974cf2a49d48a66ba38ed222a8b, type: 2}
   _functionalSides: []
-  _previewTexture: {fileID: 8400000, guid: 59cdfecdaa10ef84083182a5dc80a8c2, type: 2}
-  _updateChannel: {fileID: 0}
+  _previewTexture: {fileID: 8400000, guid: d03a06daf6a72284d86f01bcb2d4b1b1, type: 2}

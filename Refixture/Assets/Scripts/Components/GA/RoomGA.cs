@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RefixUtilities;
 
 /// <summary>
 /// One of a population of rooms used in the GA
@@ -15,7 +16,8 @@ public class RoomGA : MonoBehaviour
     private int _roomIndex;
     private Vector3 _dimensions; // x = length, y = height, z = width
 
-    private float _fitness;
+    [SerializeField] private float _fitness;
+    public float normalizedFitness;
 
     public FixtureContainerSO Fixtures
     {
@@ -38,7 +40,7 @@ public class RoomGA : MonoBehaviour
     {
         get
         {
-            CalculateFitness();
+            //CalculateFitness();
             return _fitness;
         } 
         set => _fitness = value;
@@ -49,7 +51,7 @@ public class RoomGA : MonoBehaviour
         List<FixtureSO> fixtureList = _fixtures.Fixtures;
         for (int i = 0; i < fixtureList.Count; i++)
         {
-            GameObject fixture = Instantiate(fixtureList[i].Prefab3d, transform);
+            GameObject fixture = Instantiate(fixtureList[i].GetPrefab3d(), transform);
             fixture.name = fixtureList[i].Name;
             fixture.transform.localScale = _fixtures.ScaleAt(i);
             _fixtureObjects.Add(fixture);
@@ -69,6 +71,15 @@ public class RoomGA : MonoBehaviour
 
             RandomizePosition(i);
             RandomizeRotation(i);
+        }
+    }
+
+    public void ReInitializeFixtures()
+    {
+        for (int i = 0; i < _fixtureObjects.Count; i++)
+        {
+            _fixtureObjects[i].transform.localPosition = _fixtures.PosAt(i);
+            _fixtureObjects[i].transform.localEulerAngles = _fixtures.RotAt(i);
         }
     }
 
@@ -104,6 +115,57 @@ public class RoomGA : MonoBehaviour
         value += sumOfFixtures;
 
         _fitness = value;
+    }
+
+    public void CalculateFitness(System.Action callback)
+    {
+        CallbackCounter cbct = new CallbackCounter(_fixtureScripts.Count, () => 
+        { 
+            CalculateFitness();
+            //Debug.Log("All local fixtures calculated. Fitness = " + _fitness);
+            callback();
+        });
+        foreach (Fixture fixture in _fixtureScripts)
+        {
+            fixture.CalculateLocalFitness(cbct.Callback);
+        }
+        
+    }
+
+    public void Crossover(FixtureContainerSO parentA, FixtureContainerSO parentB)
+    {
+        UniformCrossover(parentA, parentB);
+        ReInitializeFixtures();
+    }
+
+    private void UniformCrossover(FixtureContainerSO parentA, FixtureContainerSO parentB)
+    {
+        for (int i = 0; i < _fixtureScripts.Count; i++)
+        {
+            if (Random.value >= 0.5f)
+            {
+                _fixtures.Copy(parentA, i);
+            }
+            else
+            {
+                _fixtures.Copy(parentB, i);
+            }
+        }
+    }
+
+    public void Mutate(float mutateRate)
+    {
+        foreach (Fixture fixture in _fixtureScripts)
+        {
+            if (Random.value <= mutateRate)
+            {
+                fixture.SetNewRandomPos();
+            }
+            else if (Random.value <= mutateRate)
+            {
+                fixture.SetNewRandomRot();
+            }
+        }
     }
 
     private void RecordFixtures()

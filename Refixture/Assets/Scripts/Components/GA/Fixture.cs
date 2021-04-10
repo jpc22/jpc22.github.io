@@ -22,6 +22,7 @@ public class Fixture : MonoBehaviour
     [SerializeField] private int _triggerCount = 0;
 
     private bool _valueUpdated;
+    private bool _fitnessCalculated;
 
 
 
@@ -70,6 +71,7 @@ public class Fixture : MonoBehaviour
         _isMoving = false;
         _notMoved = false;
         _valueUpdated = false;
+        _fitnessCalculated = false;
         _timeMoving = 0;
     }
 
@@ -141,7 +143,26 @@ public class Fixture : MonoBehaviour
         if (IsTouchingWall) value += 6;
         value += EvaluateTriggerCt();
         value += EvaluateCollisionCt();
+        value += EvaluatePosition();
         _localFitness = value;
+    }
+
+    public void CalculateLocalFitness(System.Action callback)
+    {
+        StartCoroutine(FitnessCalculated(callback));
+    }
+
+    IEnumerator FitnessCalculated(System.Action callback)
+    {
+        float maxWaitTime = 5f;
+        float waitTime = 0;
+        while(_fitnessCalculated && !_isMoving && !_valueUpdated || waitTime >= maxWaitTime)
+        {
+            yield return new WaitForSeconds(0.1f);
+            waitTime += 0.1f;
+        }
+        _fitnessCalculated = false;
+        callback();
     }
 
     private float EvaluateTriggerCt()
@@ -193,6 +214,15 @@ public class Fixture : MonoBehaviour
                 value = 0;
                 break;
         }
+
+        return value;
+    }
+
+    private float EvaluatePosition()
+    {
+        float value = 0;
+
+        value += Mathf.Abs(transform.position.magnitude);
 
         return value;
     }
@@ -257,7 +287,8 @@ public class Fixture : MonoBehaviour
     public void SetNewRandomRot()
     {
         Vector3 rot = transform.localEulerAngles;
-        rot.y = Random.Range(-180, 180);
+        int rand = Random.Range(0, 4);
+        rot.y = rand * 90f;
         transform.localEulerAngles = rot;
     }
 }

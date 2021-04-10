@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
-  m_Name: CofeeTable
+  m_Name: DeskWithChair
   m_EditorClassIdentifier: 
-  _name: Coffee Table
+  _name: Desk With Chair
+  _prefabName: desk_with_chair
   _types: []
-  _prefab3d: {fileID: 5355426915528622838, guid: 14557d77b3258834bb367c10b1e793e7,
-    type: 3}
-  _prefab2d: {fileID: 6397881000490396490, guid: 7f48d2df8ce72d64c94f863cff7f4c24,
-    type: 3}
   _functionalSides: []
-  _previewTexture: {fileID: 8400000, guid: 9643fc9dce084a146af4401d66c68234, type: 2}
+  _previewTexture: {fileID: 8400000, guid: 79300d03205e86146b369ee7eedcec40, type: 2}

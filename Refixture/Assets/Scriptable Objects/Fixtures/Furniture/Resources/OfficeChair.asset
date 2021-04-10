@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
-  m_Name: KitchenChair
+  m_Name: OfficeChair
   m_EditorClassIdentifier: 
-  _name: Kitchen Chair
+  _name: Office Chair
+  _prefabName: office_chair
   _types: []
-  _prefab3d: {fileID: 5843829786023156930, guid: 95ef975be3e692340a06e772d31effcb,
-    type: 3}
-  _prefab2d: {fileID: 3216573184762697963, guid: 8f1778391ec3200458328400cdc132cc,
-    type: 3}
   _functionalSides: []
-  _previewTexture: {fileID: 8400000, guid: 1670eb6e893e90d448cc9b31b0aa10b4, type: 2}
+  _previewTexture: {fileID: 8400000, guid: baf2cb8f3c1867f48936a8fb4dbc3cc9, type: 2}

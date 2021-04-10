@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using Newtonsoft.Json;
 
 [CreateAssetMenu(menuName = "Fixture/Fixture Object Container")]
 public class FixtureContainerSO : ScriptableObject
@@ -134,5 +136,73 @@ public class FixtureContainerSO : ScriptableObject
         _sizeList = other.SizeList;
         _posList = other.PosList;
         _rotList = other.RotList;
+    }
+
+    public void Copy(FixtureContainerSO other, int index)
+    {
+        _fixtures[index] = other._fixtures[index];
+        _rescaleList[index] = other.RescaleList[index];
+        _sizeList[index] = other.SizeList[index];
+        _posList[index] = other.PosList[index];
+        _rotList[index] = other.RotList[index];
+    }
+
+    public string GetJsonString()
+    {
+        FixtureContainer save = new FixtureContainer();
+        save.fixtures.AddRange(_fixtures.Select(fixture => fixture.name));
+        save.scales = _rescaleList;
+        save.sizes = _sizeList;
+        save.positions = _posList;
+        save.rotations = _rotList;
+        if (_updateChannel != null)
+            save.update = _updateChannel.name;
+        if (_addedChannel != null)
+            save.added = _addedChannel.name;
+        if (_removedChannel != null)
+            save.removed = _removedChannel.name;
+
+        return JsonConvert.SerializeObject(save, Formatting.Indented);
+    }
+
+    public void LoadJsonString(string jsonData)
+    {
+        FixtureContainer save = JsonConvert.DeserializeObject<FixtureContainer>(jsonData);
+        _fixtures = new List<FixtureSO>();
+        foreach (string name in save.fixtures)
+        {
+            _fixtures.Add(Resources.Load<FixtureSO>(name));
+        }
+        _rescaleList = save.scales;
+        _sizeList = save.sizes;
+        _posList = save.positions;
+        _rotList = save.rotations;
+        if (save.update != null)
+            _updateChannel = Resources.Load<VoidEventChannelSO>(save.update);
+        if (save.added != null)
+            _addedChannel = Resources.Load<VoidEventChannelSO>(save.added);
+        if (save.removed != null)
+            _removedChannel = Resources.Load<IntEventChannelSO>(save.removed);
+    }
+
+    
+
+}
+
+
+public class FixtureContainer
+{
+    public List<string> fixtures;
+    public List<Vector3> scales;
+    public List<Vector3> sizes;
+    public List<Vector3> positions;
+    public List<Vector3> rotations;
+    public string update;
+    public string added;
+    public string removed;
+
+    public FixtureContainer()
+    {
+        fixtures = new List<string>();
     }
 }

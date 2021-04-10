@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: Foundation
   m_EditorClassIdentifier: 
   _name: Foundation
+  _prefabName: Foundation
   _types: []
-  _prefab3d: {fileID: 7152280495952064767, guid: e60628f0f4dc92047a7eb37156f76760,
-    type: 3}
-  _prefab2d: {fileID: 5111636437940615466, guid: 1e4fd5bbcba73964ba719db7e7774c89,
-    type: 3}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: 317a09bf26668444795c6ec85258dcee, type: 2}

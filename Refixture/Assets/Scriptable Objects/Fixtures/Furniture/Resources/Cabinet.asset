@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
-  m_Name: Sofa
+  m_Name: Cabinet
   m_EditorClassIdentifier: 
-  _name: Sofa
+  _name: Cabinet
+  _prefabName: cabinet_1
   _types: []
-  _prefab3d: {fileID: 2686880755741940574, guid: 0c00f99bb07d23c46a3c9f7a341b478a,
-    type: 3}
-  _prefab2d: {fileID: 2159100505951730392, guid: 4c3d26061db3dff49be0a4f274b330f4,
-    type: 3}
   _functionalSides: []
-  _previewTexture: {fileID: 8400000, guid: 23c986c3f933ca54ebe0473e4f6e7be8, type: 2}
+  _previewTexture: {fileID: 8400000, guid: 5e6bd2e74d3eb35409990f66b3654f48, type: 2}

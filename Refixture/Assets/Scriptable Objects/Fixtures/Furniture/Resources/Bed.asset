@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
-  m_Name: TableDecor
+  m_Name: Bed
   m_EditorClassIdentifier: 
-  _name: Table Decor
+  _name: Bed
+  _prefabName: bed_3
   _types: []
-  _prefab3d: {fileID: 2895620710032250694, guid: daeec3f0a61a1c4458dcaa42b169ac61,
-    type: 3}
-  _prefab2d: {fileID: 8097563805921772584, guid: 63903b24305455f438bc60cc65e854a6,
-    type: 3}
   _functionalSides: []
-  _previewTexture: {fileID: 8400000, guid: c9d24c335dabecf4386ee69ba076c7d4, type: 2}
+  _previewTexture: {fileID: 8400000, guid: bb56c19a0ab718e41ab7e34d364b64c0, type: 2}

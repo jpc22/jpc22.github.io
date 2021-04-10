@@ -30,4 +30,26 @@ namespace RefixUtilities
             return totalBBox;
         }
     }
+
+    public class CallbackCounter
+    {
+        private int _popCount;
+        private int _callbackCt;
+        private System.Action _allAccountedFor;
+        public CallbackCounter(int popCount, System.Action callback)
+        {
+            _popCount = popCount;
+            _allAccountedFor = callback;
+            _callbackCt = 0;
+        }
+
+        public void Callback()
+        {
+            _callbackCt++;
+            if (_callbackCt == _popCount)
+            {
+                _allAccountedFor();
+            }
+        }
+    }
 }
