@@ -1,5 +1,5 @@
 ---
-title: "Splash Page"
+title: "Refixture"
 layout: splash
 permalink: /
 date: 2016-03-23T11:48:41-04:00
@@ -11,30 +11,30 @@ header:
     - label: "Download"
       url: "https://github.com/mmistakes/minimal-mistakes/"
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
-excerpt: "Bacon ipsum dolor sit amet salami ham hock ham, hamburger corned beef short ribs kielbasa biltong t-bone drumstick tri-tip tail sirloin pork chop."
+excerpt: "Refixture helps you arrange your furniture with the help of genetic algorithms."
 intro: 
-  - excerpt: 'Nullam suscipit et nam, tellus velit pellentesque at malesuada, enim eaque. Quis nulla, netus tempor in diam gravida tincidunt, *proin faucibus* voluptate felis id sollicitudin. Centered with `type="center"`'
+  - excerpt: 'We sometimes find difficulty when attempting to fit everything we want in a limited space. In some cases, rearranging can result in wasted effort through trial and error. Although keeping a list of measurements can help, Refixture allows you to use those measurements to model a virtual room that you can modify freely.'
 feature_row:
   - image_path: assets/images/unsplash-gallery-image-1-th.jpg
     alt: "placeholder image 1"
-    title: "Placeholder 1"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+    title: "Define"
+    excerpt: "Visualize a scale model of your room by applying real-world measurements to a large variety of furniture."
   - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
     image_caption: "Image courtesy of [Unsplash](https://unsplash.com/)"
     alt: "placeholder image 2"
-    title: "Placeholder 2"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+    title: "Arrange"
+    excerpt: "Accurately model your room by interactively moving furniture and saving the result."
     url: "#test-link"
     btn_label: "Read More"
     btn_class: "btn--primary"
   - image_path: /assets/images/unsplash-gallery-image-3-th.jpg
-    title: "Placeholder 3"
-    excerpt: "This is some sample content that goes here with **Markdown** formatting."
+    title: "Generate"
+    excerpt: "Unsure about what should go where? Refixture can take a list of your furniture and attempt to come up with a solution in real time."
 feature_row2:
   - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
     alt: "placeholder image 2"
-    title: "Placeholder Image Left Aligned"
-    excerpt: 'This is some sample content that goes here with **Markdown** formatting. Left aligned with `type="left"`'
+    title: "Who can benefit from Refixture?"
+    excerpt: 'People adding new life to a room, people moving into a new home, people looking for procedurally generated content.'
     url: "#test-link"
     btn_label: "Read More"
     btn_class: "btn--primary"

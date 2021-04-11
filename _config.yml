@@ -59,7 +59,7 @@ plugins:
 author:
   name   : "James Cunningham"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "A programmer who majored in computer science Universty of Alaska Anchorage"
+  bio    : "A programmer who majored in computer science at Universty of Alaska Anchorage"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -109,3 +109,7 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+
+atom_feed:
+  hide: true
