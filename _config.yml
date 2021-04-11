@@ -16,11 +16,11 @@
 title: Refixture
 email: 
 description: >- # this means to ignore newlines until "baseurl:"
-  Refixture is a program for automatically arranging furniture in a room using genetic algorithms.
+  Refixture helps you arrange your furniture with the help of genetic algorithms.
 twitter_username: username
 github_username: jpc22
-minimal_mistakes_skin: sunrise
-search: true
+minimal_mistakes_skin: dirt
+search: false
 
 # Build settings
 markdown: kramdown
@@ -59,7 +59,7 @@ plugins:
 author:
   name   : "James Cunningham"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "A computer science and engineering student at Universty of Alaska Anchorage"
+  bio    : "A programmer who majored in computer science Universty of Alaska Anchorage"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
