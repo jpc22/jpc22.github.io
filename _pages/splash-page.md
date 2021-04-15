@@ -40,7 +40,7 @@ feature_row2:
     btn_label: "More About"
     btn_class: "btn--primary"
 feature_row3:
-  - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
+  - image_path: /assets/images/Timeline.png
     alt: "placeholder image 2"
     title: "Project Timeline"
     excerpt: 'This project was developed over a three month period. '
