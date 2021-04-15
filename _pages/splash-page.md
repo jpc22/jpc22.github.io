@@ -47,8 +47,8 @@ feature_row3:
     btn_label: "Roadmap"
     btn_class: "btn--primary"
 feature_row4:
-  - image_path: /assets/images/Refixture-Flowchart
-    alt: "placeholder image 2"
+  - image_path: /assets/images/Refixture-Flowchart.png
+    alt: "Flowchart"
     title: "How it works"
     excerpt: 'Users define, arrange, and generate their rooms by taking the steps in the flowchart. Users create a close approximation of their rooms using the preset furniture designs included. The result may not look the same, but by applying measurements they can be scaled to match their real counterparts in size. Using the algorithm to place furniture is optional, and some fixtures in the room are static, meaning they do not move around.'
     url: "/documentation/"
