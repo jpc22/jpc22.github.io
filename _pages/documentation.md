@@ -14,7 +14,7 @@ This documentation is split into workflow and genetic algorithm sections. Workfl
 ![Flowchart](/assets/images/Refixture-Flowchart.png)
 
 ## Menu Screen
-This is the start and end screen for the program.
+This is the start and end screen for the program. To close the program, press Esc.
 
 **Create Room**  
 : Select this option to start the process of making a room.
