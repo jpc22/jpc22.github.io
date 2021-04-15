@@ -1,13 +1,11 @@
 main:
+  - title: "Releases"
+    url: /releases/
   - title: "Roadmap"
     url: /roadmap/
+  - title: "Documentation"
+    url: /documentation/
   - title: "Testing Plan"
     url: /testing-plan/
-  - title: "Posts"
-    url: /posts/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
   - title: "About"
     url: /about/

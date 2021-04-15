@@ -9,7 +9,7 @@ header:
   overlay_image: /assets/images/unsplash-image-1.jpg
   actions:
     - label: "Try It Now"
-      url: "https://github.com/mmistakes/minimal-mistakes/"
+      url: "/releases/"
   #caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 excerpt: "Refixture helps you arrange your furniture with the help of genetic algorithms."
 intro: 
@@ -34,7 +34,7 @@ feature_row2:
   - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
     alt: "placeholder image 2"
     title: "Who can benefit from Refixture?"
-    excerpt: 'The idea for this project arose during the copious amounts of time spent indoors during the Covid-19 pandemic. Spending time working and relaxing at home encouraged bringing in more anemities at the cost of increased space management. Management can be made easier with planning, but visualizing those plans becomes easy with Refixture. Therefore, this program helps users imagine a new shelf, chair, or excercise bike. For those moving into a new space, save a few different arrangements to evaluate layout options. For those knowledgable with Unity, the project can be modified and used freely through the GitHub repository.'
+    excerpt: 'The idea for this project arose due to new indoor lifestyles during the COVID-19 pandemic. Spending time working and relaxing at home encouraged bringing in more anemities at the cost of increased space management. Management can be made easier with planning, but visualizing those plans becomes easy with Refixture. Therefore, this program helps users imagine a new shelf, chair, or excercise bike. For those moving into a new space, save a few different arrangements to evaluate layout options. For those knowledgable with Unity, the project can be modified and used freely through the GitHub repository.'
     url: "/about/"
     btn_label: "More About"
     btn_class: "btn--primary"
@@ -69,7 +69,7 @@ feature_row7:
   - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
     title: "Conclusion"
     excerpt: 'Refixture may be highly useful for your next furniture project. With simple yet effective design, it can take the work out of the process of rearranging your room. Test it out in your browser, or try running the source code or desktop program from the GitHub repository.'
-    url: "/testing-plan/"
+    url: "/releases/"
     btn_label: "Try Refixture"
     btn_class: "btn--primary"
 ---
@@ -78,7 +78,7 @@ feature_row7:
 
 {% include feature_row %}
 
-{% include feature_row id="feature_row2" type="left" %}
+{% include feature_row id="feature_row2" type="center" %}
 
 {% include feature_row id="feature_row3" type="right" %}
 
