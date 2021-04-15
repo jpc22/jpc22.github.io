@@ -3,6 +3,12 @@ permalink: /about/
 title: "About"
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+Refixture was developed in the spring of 2021 for a Computer Science capstone project by James Cunningham. The idea for this project came from a need to rearrange furniture without the sweat and planning of actually moving things around. Furthermore, learning about evolutionary algorithms brought up the idea that this process could be automated through a computer by testing out random configurations of the room. The initial proposal for this project can be read about [here](https://jpc22.github.io/blog/Project-Proposal/).
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+## Source Code
+
+The [GitHub](https://github.com/jpc22/jpc22.github.io) page contains nearly everything about the project, with exception of some assets used in the release version. The program was developed using the Unity editor version 2019.4.21f1.
+
+## Credits
+
+This project was made with Unity and other open license assets and resources. Additionaly, it was designed as an open source non-commercial prototype.

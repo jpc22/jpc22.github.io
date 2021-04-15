@@ -1,12 +1,12 @@
 ﻿---
 permalink: /documentation/
-title: "Documentation"
+title: "Documentation Overview"
 image_path: /assets/images/Refixture-Flowchart.png
 toc: true
 toc_label: "Documentation"
 toc_icon: "bars"
+toc_sticky: true
 ---
-# Overview
 
 This documentation is split into workflow and genetic algorithm sections. Workflow best describes how to use Refixture, while the algorithm section describes the inner workings and methods involved.
 
