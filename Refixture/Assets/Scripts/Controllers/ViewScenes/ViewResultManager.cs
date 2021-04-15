@@ -8,6 +8,7 @@ public class ViewResultManager : MonoBehaviour
     
     [SerializeField] private BoolEventChannelSO _moveChannel;
     [SerializeField] private BoolEventChannelSO _rotateChannel;
+    [SerializeField] private BoolEventChannelSO _elevateChannel;
     [SerializeField] private SettingsSO _settingsSO;
     [SerializeField] private SaveManager _saveManager;
 
@@ -17,6 +18,7 @@ public class ViewResultManager : MonoBehaviour
     private List<GameObject> _objectList;
     private bool _moveState;
     private bool _rotateState;
+    private bool _elevateState;
 
 
     private void Awake()
@@ -36,11 +38,23 @@ public class ViewResultManager : MonoBehaviour
     {
         _moveChannel.OnEventRaised += OnMoveToggle;
         _rotateChannel.OnEventRaised += OnRotateToggle;
+        _elevateChannel.OnEventRaised += OnElevateToggle;
+    }
+    private void OnDisable()
+    {
+        _moveChannel.OnEventRaised -= OnMoveToggle;
+        _rotateChannel.OnEventRaised -= OnRotateToggle;
+        _elevateChannel.OnEventRaised -= OnElevateToggle;
     }
 
     private void UpdateView()
     {
-        _roomObjects = _settingsSO.RoomSOList[_listIndex];
+        if (_settingsSO.RoomSOList != null && _settingsSO.RoomSOList.Count != 0)
+        {
+            _roomObjects = _settingsSO.RoomSOList[_listIndex];
+        }
+        else
+            _roomObjects = _settingsSO.StaticFixtureSOList;
 
         if (_rootObject == null)
         {
@@ -95,6 +109,8 @@ public class ViewResultManager : MonoBehaviour
             AddMoveComponent(_objectList[index]);
         else if (_rotateState)
             AddRotateComponent(_objectList[index]);
+        else if (_elevateState)
+            AddElevateComponent(_objectList[index]);
         //add position recorder
     }
 
@@ -124,37 +140,9 @@ public class ViewResultManager : MonoBehaviour
         foreach (GameObject obj in _objectList)
         {
             if (!obj.CompareTag("Ground"))
+            {
                 AddMoveComponent(obj);
-        }
-    }
-    private void AddMoveComponent(GameObject obj)
-    {
-        if(obj.TryGetComponent(out PlaneDrag move))
-        {
-            // Already has PlaneDrag
-        }
-        else
-        {
-            obj.AddComponent<PlaneDrag>();
-        }
-    }
-    private void RemoveMoveComponents()
-    {
-        foreach (GameObject obj in _objectList)
-        {
-            if (!obj.CompareTag("Ground"))
-                RemoveMoveComponent(obj);
-        }
-    }
-    private void RemoveMoveComponent(GameObject obj)
-    {
-        if (obj.TryGetComponent(out PlaneDrag move))
-        {
-            Destroy(move);
-        }
-        else
-        {
-            // Does not have PlaneDrag
+            }
         }
     }
     private void AddRotateComponents()
@@ -165,6 +153,24 @@ public class ViewResultManager : MonoBehaviour
                 AddRotateComponent(obj);
         }
     }
+    private void AddElevateComponents()
+    {
+        foreach (GameObject obj in _objectList)
+        {
+            if (!obj.CompareTag("Ground"))
+                AddElevateComponent(obj);
+        }
+    }
+
+    private void AddMoveComponent(GameObject obj)
+    {
+        if (obj.TryGetComponent(out PlaneDrag move))
+        {
+            // Already has PlaneDrag
+        }
+        else
+            obj.AddComponent<PlaneDrag>();
+    }
     private void AddRotateComponent(GameObject obj)
     {
         if (obj.TryGetComponent(out RotateDrag rotate))
@@ -172,8 +178,23 @@ public class ViewResultManager : MonoBehaviour
             // Already has RotateDrag
         }
         else
-        {
             obj.AddComponent<RotateDrag>();
+    }
+    private void AddElevateComponent(GameObject obj)
+    {
+        if (obj.TryGetComponent(out ElevateDrag elevate))
+        { }
+        else
+            obj.AddComponent<ElevateDrag>();
+    }
+    private void RemoveMoveComponents()
+    {
+        foreach (GameObject obj in _objectList)
+        {
+            if (!obj.CompareTag("Ground"))
+            {
+                RemoveMoveComponent(obj);
+            }
         }
     }
     private void RemoveRotateComponents()
@@ -184,16 +205,28 @@ public class ViewResultManager : MonoBehaviour
                 RemoveRotateComponent(obj);
         }
     }
+    private void RemoveElevateComponents()
+    {
+        foreach (GameObject obj in _objectList)
+        {
+            if (!obj.CompareTag("Ground"))
+                RemoveElevateComponent(obj);
+        }
+    }
+    private void RemoveMoveComponent(GameObject obj)
+    {
+        if (obj.TryGetComponent(out PlaneDrag move))
+            Destroy(move);
+    }
     private void RemoveRotateComponent(GameObject obj)
     {
         if (obj.TryGetComponent(out RotateDrag rotate))
-        {
             Destroy(rotate);
-        }
-        else
-        {
-            // Does not have RotateDrag
-        }
+    }
+    private void RemoveElevateComponent(GameObject obj)
+    {
+        if (obj.TryGetComponent(out ElevateDrag elevate))
+            Destroy(elevate);
     }
 
     private void OnObjectRemoved(int index)
@@ -232,7 +265,18 @@ public class ViewResultManager : MonoBehaviour
         }
         _rotateState = value;
     }
-
+    private void OnElevateToggle(bool value)
+    {
+        if (value == true)
+        {
+            AddElevateComponents();
+        }
+        else
+        {
+            RemoveElevateComponents();
+        }
+        _elevateState = value;
+    }
     public void ViewNextPressed()
     {
         _listIndex += 1;
@@ -284,9 +328,5 @@ public class ViewResultManager : MonoBehaviour
         SceneManager.LoadScene("StartScene");
     }
 
-    private void OnDisable()
-    {
-        _moveChannel.OnEventRaised -= OnMoveToggle;
-        _rotateChannel.OnEventRaised -= OnRotateToggle;
-    }
+    
 }

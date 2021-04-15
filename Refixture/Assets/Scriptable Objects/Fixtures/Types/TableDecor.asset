@@ -15,5 +15,6 @@ MonoBehaviour:
   _name: TableDecor
   _description: Decorative table placed along wall.
   _isLightEmitter: 0
-  _isOnFloor: 1
   _isWallFixture: 1
+  _isGroundFixture: 1
+  _isGravityEnabled: 1

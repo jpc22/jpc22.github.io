@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Office Chair
   _prefabName: office_chair
-  _types: []
+  _types:
+  - {fileID: 11400000, guid: 39f0ccc4a33570b4fa398f010f63ce3c, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: baf2cb8f3c1867f48936a8fb4dbc3cc9, type: 2}

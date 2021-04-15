@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Bed
   _prefabName: bed_3
-  _types: []
+  _types:
+  - {fileID: 11400000, guid: 5c423e473d6fa0846b56532368edc33d, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: bb56c19a0ab718e41ab7e34d364b64c0, type: 2}

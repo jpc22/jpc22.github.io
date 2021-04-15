@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Kitchen Table With Chairs
   _prefabName: table_and_chairs
-  _types: []
+  _types:
+  - {fileID: 11400000, guid: 0f7c4aff4310c75478462b6d1bb68977, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: 4447405e61eeff0439ac6eddc8e2ce1d, type: 2}

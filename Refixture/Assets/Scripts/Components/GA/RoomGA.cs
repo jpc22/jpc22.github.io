@@ -46,6 +46,8 @@ public class RoomGA : MonoBehaviour
         set => _fitness = value;
     }
 
+    public List<GameObject> FixtureObjects { get => _fixtureObjects; set => _fixtureObjects = value; }
+
     public void InitializeFixtures()
     {
         List<FixtureSO> fixtureList = _fixtures.Fixtures;
@@ -58,6 +60,7 @@ public class RoomGA : MonoBehaviour
 
             Fixture fixtureScript = fixture.AddComponent<Fixture>();
             fixtureScript.FixtureSO = fixtureList[i];
+            fixtureScript.roomGA = this;
             _fixtureScripts.Add(fixtureScript);
 
             PosConstraints posC = fixture.AddComponent<PosConstraints>();
@@ -65,12 +68,20 @@ public class RoomGA : MonoBehaviour
             fixtureScript.Constraints = posC;
 
             Rigidbody rb = fixture.AddComponent<Rigidbody>();
-            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            if(fixtureScript.FixtureSO.IsGravityEnabled)
+            {
+                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            }
+            else
+            {
+                rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            }
             _fixtureRBs.Add(rb);
             fixtureScript.Rigidbody = rb;
 
             RandomizePosition(i);
             RandomizeRotation(i);
+            RandomPush(i);
         }
     }
 
@@ -96,6 +107,11 @@ public class RoomGA : MonoBehaviour
     public void RandomizePosition(int index)
     {
         _fixtureScripts[index].SetNewRandomPos();
+    }
+
+    public void RandomPush(int index)
+    {
+        _fixtureScripts[index].RandomPush();
     }
 
     public void RandomizeRotation(int index)
@@ -159,7 +175,11 @@ public class RoomGA : MonoBehaviour
         {
             if (Random.value <= mutateRate)
             {
-                fixture.SetNewRandomPos();
+                if(Random.value <= mutateRate / 2)
+                {
+                    fixture.SetNewRandomPos();
+                }
+                fixture.RandomPush();
             }
             else if (Random.value <= mutateRate)
             {

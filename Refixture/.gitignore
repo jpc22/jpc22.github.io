@@ -13,6 +13,11 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/[Aa]ssets/AssetFurniture/Modular/
+/[Aa]ssets/AssetFurniture/Wall/
+/[Aa]ssets/AssetFurniture/Misc/
+/[Aa]ssets/AssetFurniture/FreeFurniture/
+/[Aa]ssets/AssetFurniture/ToonFurniture/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data

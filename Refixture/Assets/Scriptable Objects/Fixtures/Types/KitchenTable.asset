@@ -15,5 +15,6 @@ MonoBehaviour:
   _name: KitchenTable
   _description: Table that is used for eating.
   _isLightEmitter: 0
-  _isOnFloor: 1
   _isWallFixture: 0
+  _isGroundFixture: 1
+  _isGravityEnabled: 1

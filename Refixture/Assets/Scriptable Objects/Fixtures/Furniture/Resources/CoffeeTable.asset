@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Coffee Table
   _prefabName: coffee_table
-  _types: []
+  _types:
+  - {fileID: 11400000, guid: 1356bcb9ac18ec8409a44ca715412cb6, type: 2}
+  - {fileID: 11400000, guid: 0f7c4aff4310c75478462b6d1bb68977, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: 9643fc9dce084a146af4401d66c68234, type: 2}

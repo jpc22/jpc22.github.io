@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Cabinet
   _prefabName: cabinet_1
-  _types: []
+  _types:
+  - {fileID: 11400000, guid: bbe9d2137ab9355449b3c71fca60348c, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: 5e6bd2e74d3eb35409990f66b3654f48, type: 2}

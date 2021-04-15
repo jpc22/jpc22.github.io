@@ -15,5 +15,6 @@ MonoBehaviour:
   _name: CoffeeTable
   _description: Table placed in front of living room chairs or sofas.
   _isLightEmitter: 0
-  _isOnFloor: 1
   _isWallFixture: 0
+  _isGroundFixture: 1
+  _isGravityEnabled: 1

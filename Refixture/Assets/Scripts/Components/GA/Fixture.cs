@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -8,6 +9,7 @@ using UnityEngine;
 public class Fixture : MonoBehaviour
 {
     [SerializeField] private FixtureSO _fixtureSO;
+    public RoomGA roomGA;
     
 
     private Rigidbody _thisRigidbody;
@@ -15,6 +17,7 @@ public class Fixture : MonoBehaviour
     [SerializeField] private float _localFitness;
     [SerializeField] private bool _isTouchingWall;
     private bool _isMoving;
+    private bool _isPushed;
     private bool _notMoved;
     private float _timeMoving;
     private float _moveTimeTolerance = 0.2f;
@@ -69,6 +72,7 @@ public class Fixture : MonoBehaviour
     {
         IsTouchingWall = false;
         _isMoving = false;
+        _isPushed = false;
         _notMoved = false;
         _valueUpdated = false;
         _fitnessCalculated = false;
@@ -112,11 +116,15 @@ public class Fixture : MonoBehaviour
                 _isMoving = false;
         }
 
-        if (_isMoving)
+        if (_isMoving && !_isPushed)
         {
             _timeMoving += Time.deltaTime;
         }
-        else _timeMoving = 0;
+        else
+        {
+            _timeMoving = 0;
+            _isPushed = false;
+        }
 
         if (_timeMoving > _moveTimeTolerance)
         {
@@ -144,7 +152,11 @@ public class Fixture : MonoBehaviour
         value += EvaluateTriggerCt();
         value += EvaluateCollisionCt();
         value += EvaluatePosition();
+        value -= EvaluateClosest();
+        if (value < 0)
+            value = 0;
         _localFitness = value;
+        //_fitnessCalculated = true;
     }
 
     public void CalculateLocalFitness(System.Action callback)
@@ -227,6 +239,24 @@ public class Fixture : MonoBehaviour
         return value;
     }
 
+    private float EvaluateClosest()
+    {
+        var transforms = from gameObject in roomGA.FixtureObjects
+                         select gameObject.transform;
+        float value = ReturnClosestDistance(transforms.ToArray());
+        value = 100 / value; // closer is higher
+        if (value > 200f)
+            value = 200f;
+        return value;
+    }
+
+    private float ReturnClosestDistance(Transform[] transforms)
+    {
+        var closest = transforms.OrderBy(t => (t.position - transform.position).sqrMagnitude)
+                                .ElementAt(1);
+        return (closest.position - transform.position).sqrMagnitude;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         CollisionCount++;
@@ -290,5 +320,12 @@ public class Fixture : MonoBehaviour
         int rand = Random.Range(0, 4);
         rot.y = rand * 90f;
         transform.localEulerAngles = rot;
+    }
+
+    public void RandomPush()
+    {
+        Vector3 forceVector = new Vector3(Random.Range(-4f, 4f), 0, Random.Range(-4f, 4f));
+        _thisRigidbody.AddForce(forceVector, ForceMode.VelocityChange);
+        _isPushed = true;
     }
 }

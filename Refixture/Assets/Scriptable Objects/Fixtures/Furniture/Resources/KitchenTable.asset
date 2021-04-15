@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Kitchen Table
   _prefabName: kitchen_circle_table
-  _types: []
+  _types:
+  - {fileID: 11400000, guid: 0f7c4aff4310c75478462b6d1bb68977, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: a51e2aa4d16498e4cb62d181e35c4fb0, type: 2}

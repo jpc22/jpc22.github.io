@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Kitchen Chair
   _prefabName: Kitchen_chair_2
-  _types: []
+  _types:
+  - {fileID: 11400000, guid: 39f0ccc4a33570b4fa398f010f63ce3c, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: 1670eb6e893e90d448cc9b31b0aa10b4, type: 2}

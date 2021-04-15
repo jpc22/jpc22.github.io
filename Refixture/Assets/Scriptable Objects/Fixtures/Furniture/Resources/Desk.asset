@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Desk
   _prefabName: desk
-  _types: []
+  _types:
+  - {fileID: 11400000, guid: 0f7c4aff4310c75478462b6d1bb68977, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: 3354b4f988380c647b452cb38e99e7fd, type: 2}

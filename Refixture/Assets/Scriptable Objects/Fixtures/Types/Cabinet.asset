@@ -15,5 +15,6 @@ MonoBehaviour:
   _name: Cabinet
   _description: A furnishing made of drawers or doors placed against a wall.
   _isLightEmitter: 0
-  _isOnFloor: 1
   _isWallFixture: 1
+  _isGroundFixture: 1
+  _isGravityEnabled: 1

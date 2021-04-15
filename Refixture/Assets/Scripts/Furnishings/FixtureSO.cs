@@ -15,6 +15,14 @@ public class FixtureSO : ScriptableObject
 	[SerializeField] private FixtureTypeSO[] _types;
 	[SerializeField] private string[] _functionalSides;
 	[SerializeField] private RenderTexture _previewTexture;
+	private bool _isWallFixture;
+	private bool _isGroundFixture;
+	private bool _isLightEmitter;
+	private bool _isGravityEnabled;
+	private bool _isWallFixtureInit = false;
+	private bool _isGroundFixtureInit = false;
+	private bool _isLightEmitterInit = false;
+	private bool _isGravityEnabledInit = false;
 
 	public string Name => _name;
 	public FixtureTypeSO[] Types => _types;
@@ -25,6 +33,55 @@ public class FixtureSO : ScriptableObject
     }
     public string[] FunctionalSides => _functionalSides;
     public RenderTexture PreviewTexture => _previewTexture;
+
+    public bool IsWallFixture
+    {
+        get
+        {
+			if (!_isWallFixtureInit)
+            {
+				_isWallFixture = CheckIfWallFixture();
+				_isWallFixtureInit = true;
+            }
+            return _isWallFixture;
+        }
+    }
+    public bool IsGroundFixture
+    {
+        get
+        {
+			if (!_isGroundFixtureInit)
+            {
+				_isGroundFixture = CheckIfGroundFixture();
+				_isGroundFixtureInit = true;
+            }
+            return _isGroundFixture;
+        }
+    }
+    public bool IsLightEmitter
+    {
+        get
+        {
+			if (!_isLightEmitterInit)
+            {
+				_isLightEmitter = CheckIfLightEmitter();
+				_isLightEmitterInit = true;
+            }
+            return _isLightEmitter;
+        }
+    }
+
+    public bool IsGravityEnabled
+    {
+        get
+        {	if (!_isGravityEnabledInit)
+            {
+				_isGravityEnabled = CheckIfGravityEnabled();
+				_isGravityEnabledInit = true;
+            }
+            return _isGravityEnabled;
+        }
+    }
 
     /// <summary>
     /// Checks if the furniture is of the specified type
@@ -78,8 +135,8 @@ public class FixtureSO : ScriptableObject
 			return false;
 		}
 	}
-
-	public bool IsWallFixture()
+	
+	private bool CheckIfWallFixture()
     {
 		bool value = false;
 		for (int i = 0; i < _types.Length; i++)
@@ -92,8 +149,20 @@ public class FixtureSO : ScriptableObject
         }
 		return value;
     }
-
-	public bool IsLightEmitter()
+	private bool CheckIfGroundFixture()
+	{
+		bool value = false;
+		for (int i = 0; i < _types.Length; i++)
+		{
+			if (_types[i].IsGroundFixture)
+			{
+				value = true;
+				break;
+			}
+		}
+		return value;
+	}
+	private bool CheckIfLightEmitter()
     {
 		bool value = false;
 		for (int i = 0; i < _types.Length; i++)
@@ -106,7 +175,19 @@ public class FixtureSO : ScriptableObject
 		}
 		return value;
 	}
-
+	private bool CheckIfGravityEnabled()
+    {
+		bool value = false;
+		for (int i = 0; i < _types.Length; i++)
+		{
+			if (_types[i].IsGravityEnabled)
+			{
+				value = true;
+				break;
+			}
+		}
+		return value;
+	}
 }
 
 

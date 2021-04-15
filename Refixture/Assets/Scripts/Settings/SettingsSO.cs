@@ -11,6 +11,7 @@ public class SettingsSO : ScriptableObject
     [SerializeField] private List<FixtureContainerSO> _roomSOList;
     [SerializeField] private bool _useImperial;
     [SerializeField] private bool _useGA;
+    [SerializeField] private bool _isSnapEnabled;
     [SerializeField] private float _roomWidth;
     [SerializeField] private float _roomLength;
     [SerializeField] private int _populationCount;
@@ -26,6 +27,7 @@ public class SettingsSO : ScriptableObject
 
     private static string _imperialKey = "UseImperial";
     private static string _gaKey = "UseGA";
+    private static string _snapKey = "IsSnapEnabled";
     private static string _widthKey = "RoomWidth";
     private static string _lengthKey = "RoomLength";
     private static string _popKey = "PopulationCount";
@@ -79,6 +81,30 @@ public class SettingsSO : ScriptableObject
             int keyValue = value ? 1 : 0;
             PlayerPrefs.SetInt(_gaKey, keyValue);
             _useGA = value;
+            SettingsChangedChannel.RaiseEvent();
+        }
+    }
+
+    public bool IsSnapEnabled
+    {
+        get
+        {
+            if(!PlayerPrefs.HasKey(_snapKey))
+            {
+                PlayerPrefs.SetInt(_snapKey, 0);
+            }
+            bool keyValue = PlayerPrefs.GetInt(_snapKey) == 1 ? true : false;
+            if (keyValue != _isSnapEnabled)
+            {
+                _isSnapEnabled = keyValue;
+            }
+            return _isSnapEnabled;
+        }
+        set
+        {
+            int keyValue = value ? 1 : 0;
+            PlayerPrefs.SetInt(_snapKey, keyValue);
+            _isSnapEnabled = value;
             SettingsChangedChannel.RaiseEvent();
         }
     }
@@ -208,4 +234,5 @@ public class SettingsSO : ScriptableObject
     public FloatEventChannelSO MutationChangedChannel { get => _mutationChangedChannel; set => _mutationChangedChannel = value; }
     public FloatEventChannelSO CrossChangedChannel { get => _crossChangedChannel; set => _crossChangedChannel = value; }
     public List<FixtureContainerSO> RoomSOList { get => _roomSOList; set => _roomSOList = value; }
+    
 }

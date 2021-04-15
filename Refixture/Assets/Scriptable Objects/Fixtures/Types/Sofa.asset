@@ -15,5 +15,6 @@ MonoBehaviour:
   _name: Sofa
   _description: A multiple seat furnishing used in a living room.
   _isLightEmitter: 0
-  _isOnFloor: 1
   _isWallFixture: 0
+  _isGroundFixture: 1
+  _isGravityEnabled: 1

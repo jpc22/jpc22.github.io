@@ -132,7 +132,10 @@ public class AlgorithmRoomManager : MonoBehaviour
             list.Add(room);
         }
         */
-        return _runner.Best;
+        List<FixtureContainerSO> best = _runner.Best;
+        if (best == null)
+            best = new List<FixtureContainerSO>();
+        return best;
     }
 
     public void StartAlgorithm()
@@ -171,7 +174,7 @@ public class AlgorithmRoomManager : MonoBehaviour
     {
 
         AvgFitness = (_roomPop.Sum(room => room.Fitness) / _roomPop.Count);
-        Debug.Log("Fitness Calculated. Avg Fit = " + AvgFitness);
+        //Debug.Log("Fitness Calculated. Avg Fit = " + AvgFitness);
         Invoke("NewGeneration", 0.5f);
     }
     public void PauseAlgorithm()

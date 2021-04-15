@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Loveseat
   _prefabName: loveseat
-  _types: []
+  _types:
+  - {fileID: 11400000, guid: 39f0ccc4a33570b4fa398f010f63ce3c, type: 2}
+  - {fileID: 11400000, guid: f13750a0cc969a54cbeba2c1c50696a7, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: 40dd5906a3de69542b3f036273fcda07, type: 2}

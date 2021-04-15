@@ -15,5 +15,6 @@ MonoBehaviour:
   _name: DiningChair
   _description: Chair used for eating at.
   _isLightEmitter: 0
-  _isOnFloor: 1
   _isWallFixture: 0
+  _isGroundFixture: 1
+  _isGravityEnabled: 1
