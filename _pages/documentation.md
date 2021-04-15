@@ -70,41 +70,41 @@ Data structures containing the representation of the rooms you create and modify
 **Room Settings**  
 : This sub panel displays some important configuration controls.
 
-: __Use Imperial__  
-: This selection will change all numerical values from meters to inches. Your input should also match this setting.
+  __Use Imperial__  
+  : This selection will change all numerical values from meters to inches. Your input should also match this setting.
 
-: __Room Width / Length__  
-: Rooms have a set height, but you can modify the room width and length. All fixtures will need to be placed on the foundation unless they are non-moving.
+  __Room Width / Length__  
+  : Rooms have a set height, but you can modify the room width and length. All fixtures will need to be placed on the foundation unless they are non-moving.
 
-: __Use Genetic Algorithm__  
-: With this setting enabled, the two lists on the side become accessable. They control the list of fixtures you define to be used by the algorithm to arrange within the specified room.
+  __Use Genetic Algorithm__  
+  : With this setting enabled, the two lists on the side become accessable. They control the list of fixtures you define to be used by the algorithm to arrange within the specified room.
 
 **Static Room Preview**  
 : This gives a preview of the room configuration to be used in the next step. What is shown here is static, which means they will not move if using the GA feature to automatically arrange furniture.
 
-: __Edit Room__  
-: This button takes you to the [Edit Room](#edit-room-screen) view where you can modify its contents.
+  __Edit Room__  
+  : This button takes you to the [Edit Room](#edit-room-screen) view where you can modify its contents.
 
-: __Save / Load__  
-: This button opens up the [Save Window](#save-window) for this particular static room configuration. 
+  __Save / Load__  
+  : This button opens up the [Save Window](#save-window) for this particular static room configuration. 
 
 **Select Fixtures**  
 This panel on the left allows you to define and select fixtures to be used in the genetic algorithm.
 
-: __Dropdown__  
-: This dropdown contains separate categories of furniture selection.
+  __Dropdown__  
+  : This dropdown contains separate categories of furniture selection.
 
-: __Resizing and Selection__  
-: The three input fields next to each fixture control its dimensions and then scales accordingly. Double-clicking the fixture then adds it to the selected list.
+  __Resizing and Selection__  
+  : The three input fields next to each fixture control its dimensions and then scales accordingly. Double-clicking the fixture then adds it to the selected list.
 
 **Fixture List**  
 This is the list of fixtures to be used by the genetic algorithm to arrange in the room automatically.
 
-: __Removing Fixtures__  
-: Double-click a fixture in the list to remove it.
+  __Removing Fixtures__  
+  : Double-click a fixture in the list to remove it.
 
-: __Save / Load__  
-: Save and load list configurations through the [save window](#save-window).
+  __Save / Load__  
+  : Save and load list configurations through the [save window](#save-window).
 
 ## Edit Room Screen
 

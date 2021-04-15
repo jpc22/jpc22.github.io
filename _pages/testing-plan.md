@@ -2,7 +2,7 @@
 permalink: /testing-plan/
 title: "Testing Plan"
 ---
-Last Updated: 3/30/2021
+Last Updated: 4/15/2021
 
 The primary need for testing is that the user must identify the dimensions of a room and come up with a list of furniture of different dimensions. The user can specify a list of furniture and move and rotate it around the room, but they may also specify some furniture and let the program arrange it via algorithm.
 
@@ -35,4 +35,4 @@ Each objective contains some sub criteria that help determine if they are satisf
 
 ## Testing Page
 
-A dedicated page for displaying development builds and survey links will be added soon. After iterating on the results, a newer build and survey will be available.
+See the [Releases](/releases/) page for information on latest builds and surveys. After iterating on the results, a newer build and survey will be available.
