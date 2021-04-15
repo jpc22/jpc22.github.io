@@ -14,7 +14,7 @@ This documentation is split into workflow and genetic algorithm sections. Workfl
 ![Flowchart](/assets/images/Refixture-Flowchart.png)
 
 ## Menu Screen
-: This is the start and end screen for the program.
+This is the start and end screen for the program.
 
 **Create Room**  
 : Select this option to start the process of making a room.
@@ -37,17 +37,17 @@ Controls appear in the top right. Use the keyboard keys to move the camera, and 
 Control Bar  
 : This top panel allows you to control fixtures in the scene. Hovering the mouse on movable objects causes them to glow green. Clicking and dragging will adjust the fixture based on the selected control.
 
-Move  
-: Click and drag to move the fixture on the horizontal plane.
+: Move  
+    : Click and drag to move the fixture on the horizontal plane.
 
-__Rotate__  
-: Click and drag to rotate around the vertical axis.
+: Rotate  
+    : Click and drag to rotate around the vertical axis.
 
-__Elevate__  
-: Click and drag to move the fixture vertically.
+: Elevate   
+    : Click and drag to move the fixture vertically.
 
-__Grid Snap__  
-: With this setting enabled, your adjustments will be moved based on uniform increments. This helps aligning different fixtures together, like walls.
+: Grid Snap  
+    : With this setting enabled, your adjustments will be moved based on uniform increments. This helps aligning different fixtures together, like walls.
 
 **Load / Save**  
 Pressing this opens a window to load and save your room. There will be no room loaded initially. See the documentation on the save window for more [details](#save-window).
