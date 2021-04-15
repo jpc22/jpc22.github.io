@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
-  m_Name: Basket
+  m_Script: {fileID: 11500000, guid: 1797a9dc13f9fe043b69965b27f65436, type: 3}
+  m_Name: ExerciseEquipment
   m_EditorClassIdentifier: 
-  _name: Basket
-  _prefabName: Basket
-  _types:
-  - {fileID: 11400000, guid: f1985be1a4f590f4d955bcbdb286409b, type: 2}
-  _functionalSides: []
-  _previewTexture: {fileID: 0}
+  _name: ExerciseEquipment
+  _description: 
+  _isLightEmitter: 0
+  _isWallFixture: 0
+  _isGroundFixture: 1
+  _isGravityEnabled: 1

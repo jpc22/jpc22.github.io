@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb98ac912534e3945bc1b2e0726ddb7a, type: 3}
-  m_Name: Basket
+  m_Name: Treadmill
   m_EditorClassIdentifier: 
-  _name: Basket
-  _prefabName: Basket
+  _name: Treadmill
+  _prefabName: Treadmill
   _types:
-  - {fileID: 11400000, guid: f1985be1a4f590f4d955bcbdb286409b, type: 2}
+  - {fileID: 11400000, guid: 79179ae86d092284691a648626e85110, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 0}

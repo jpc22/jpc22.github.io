@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class DropdownControl : MonoBehaviour
 {
@@ -14,13 +15,18 @@ public class DropdownControl : MonoBehaviour
     {
         _scrollView = _scrollViewObj.GetComponent<ScrollView>();
         List<Dropdown.OptionData> optionList = new List<Dropdown.OptionData>();
-        for (int i = 0; i < _dropdowns.Count; i++)
+
+        var dropdowns = Resources.LoadAll("Containers", typeof(FixtureContainerSO)).Cast<FixtureContainerSO>().ToList();
+        
+
+        for (int i = 0; i < dropdowns.Count; i++)
         {
             Dropdown.OptionData option = new Dropdown.OptionData();
-            option.text = _dropdowns[i].Name;
+            option.text = dropdowns[i].Name;
             optionList.Add(option);
         }
         _dropdown.options = optionList;
+        _dropdowns = dropdowns;
     }
 
     public void OnDropdownChanged(int index)

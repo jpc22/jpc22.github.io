@@ -13,6 +13,7 @@ header:
   #caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 excerpt: "Refixture helps you arrange your furniture with the help of genetic algorithms."
 intro: 
+  - title: "About Refixture"
   - excerpt: 'We sometimes find difficulty when attempting to fit everything we want in a limited space. In some cases, rearranging can result in wasted effort through trial and error. Although keeping a list of measurements can help, Refixture allows you to use those measurements to model a virtual room that you can modify freely.'
 feature_row:
   - image_path: assets/images/unsplash-gallery-image-1-th.jpg
@@ -82,7 +83,7 @@ feature_row7:
 
 {% include feature_row id="feature_row3" type="right" %}
 
-{% include feature_row id="feature_row4" type="left" %}
+{% include feature_row id="feature_row4" type="center" %}
 
 {% include feature_row id="feature_row5" type="right" %}
 

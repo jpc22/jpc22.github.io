@@ -15,6 +15,7 @@ public class FixtureSO : ScriptableObject
 	[SerializeField] private FixtureTypeSO[] _types;
 	[SerializeField] private string[] _functionalSides;
 	[SerializeField] private RenderTexture _previewTexture;
+	private RenderTexture _thisRT;
 	private bool _isWallFixture;
 	private bool _isGroundFixture;
 	private bool _isLightEmitter;
@@ -32,7 +33,29 @@ public class FixtureSO : ScriptableObject
 		return Resources.Load<GameObject>(_prefabName);
     }
     public string[] FunctionalSides => _functionalSides;
-    public RenderTexture PreviewTexture => _previewTexture;
+    public RenderTexture PreviewTexture
+    {
+        get
+        {
+			if (_thisRT == null)
+			{
+				_thisRT = new RenderTexture(TexturePreset);
+			}
+			
+            return _thisRT;
+        }
+    }
+	public RenderTexture TexturePreset
+    {
+		get
+        {
+			if (_previewTexture == null)
+            {
+				_previewTexture = Resources.Load<RenderTexture>("RenderTexture");
+            }
+			return _previewTexture;
+        }
+    }
 
     public bool IsWallFixture
     {
