@@ -25,9 +25,9 @@ feature_row:
     alt: "placeholder image 2"
     title: "Arrange"
     excerpt: "Accurately model your room by interactively moving furniture and saving the result."
-    #url: "#test-link"
-    #btn_label: "Read More"
-    #btn_class: "btn--primary"
+    url: "#test-link"
+    btn_label: "View Demonstration"
+    btn_class: "btn--primary"
   - image_path: /assets/images/unsplash-gallery-image-3-th.jpg
     title: "Generate"
     excerpt: "Unsure about what should go where? Refixture can take a list of your furniture and attempt to come up with a solution in real time."
