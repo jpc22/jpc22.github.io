@@ -35,12 +35,13 @@ Displays one of the saved room configurations, allowing you to move around and m
 : Controls appear in the top right. Use the keyboard keys to move the camera, and hold right click and drag around to change the angle. Scroll wheel and shift adjust the movement speed, allowing finer adjustments.
 
 Control Bar  
+
 : This top panel allows you to control fixtures in the scene. Hovering the mouse on movable objects causes them to glow green. Clicking and dragging will adjust the fixture based on the selected control.
 
-: Move  
+Move  
 : Click and drag to move the fixture on the horizontal plane.
 
-: Rotate  
+Rotate  
 : Click and drag to rotate around the vertical axis.
 
 : Elevate   
