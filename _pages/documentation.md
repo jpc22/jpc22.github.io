@@ -50,7 +50,7 @@ __Grid Snap__
 With this setting enabled, your adjustments will be moved based on uniform increments. This helps aligning different fixtures together, like walls.
 
 **Load / Save**
-Pressing this opens a window to load and save your room. There will be no room loaded initially. See the documentation on the save window for more [details](## Save Window).
+Pressing this opens a window to load and save your room. There will be no room loaded initially. See the documentation on the save window for more [details](#Save-Window).
 
 ## Save Window
 Data structures containing the representation of the rooms you create and modify can be saved to the disk in this window.
@@ -67,16 +67,22 @@ There may already be some save files in the folder for you to try as examples or
 ## Setting Screen
 
 **Room Settings**
+This sub panel displays some important configuration controls.
 
 __Use Imperial__
+This selection will change all numerical values from meters to inches. Your input should also match this setting.
 
 __Room Width / Length__
+Rooms have a set height, but you can modify the room width and length. All fixtures will need to be placed on the foundation unless they are non-moving.
 
 __Use Genetic Algorithm__
+With this setting enabled, the two lists on the side become accessable. They control the list of fixtures you define to be used by the algorithm to arrange within the specified room.
 
 **Static Room Preview**
+This gives a preview of the room configuration to be used in the next step. What is shown here is static, which means they will not move if using the GA feature to automatically arrange furniture.
 
 __Edit Room__
+This button takes you to the [Edit Room](#Edit-Room-Screen) view where you can modify its contents.
 
 __Save / Load__
 
