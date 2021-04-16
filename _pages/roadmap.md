@@ -38,16 +38,16 @@ The goal of phase two is to allow user interaction to determine parameters like 
 ## Phase Three - Feature Expansion
 The final phase implements additional functionality while testing and refining.
 
- - [ ] Large furniture variety (e.g., electronics, kitchen, and bathroom.)
+ - [x] Large furniture variety (e.g., electronics, kitchen, and bathroom.)
  - [ ] Interface Tooltips.
- - [ ] Object Highlighting.
+ - [x] Object Highlighting.
  - [ ] Additional furniture types: decorative, lighting.
  - [ ] Export result to 3D model format.
  - [ ] Wall/ceiling fixtures.
  - [ ] Import and tag models/materials.
  - [ ] Automatic material/color selection.
  - [ ] Retrieve feedback from testing.
- - [ ] Suggested features.
+ - [x] Snap to grid when positioning fixtures.
 
 ### Timeline
 
