@@ -78,6 +78,11 @@ public class RoomPreview : MonoBehaviour
                 child.gameObject.layer = _renderLayer;
             }
 
+            if(_roomObjects.Fixtures[i].IsOfType("Hideable"))
+            {
+                AddTransparency(model);
+            }
+
             model.transform.localScale = _roomObjects.ScaleAt(i);
             model.transform.localPosition = _roomObjects.PosAt(i);
             model.transform.localEulerAngles = _roomObjects.RotAt(i);
@@ -110,6 +115,12 @@ public class RoomPreview : MonoBehaviour
         //*/
     }
 
+    private void AddTransparency(GameObject model)
+    {
+        WallTransparency wt = model.AddComponent<WallTransparency>();
+        wt.Foundation = _renderCamera.transform.GetChild(0).GetChild(0);
+        wt.PlayerCamera = _renderCamera.transform.GetChild(1);
+    }
 
     private void OnDisable()
     {

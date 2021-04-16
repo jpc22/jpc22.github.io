@@ -16,5 +16,6 @@ MonoBehaviour:
   _prefabName: Door
   _types:
   - {fileID: 11400000, guid: 9ddfe974cf2a49d48a66ba38ed222a8b, type: 2}
+  - {fileID: 11400000, guid: 1d794c0fc9620d847a04e659bead40ad, type: 2}
   _functionalSides: []
   _previewTexture: {fileID: 8400000, guid: d03a06daf6a72284d86f01bcb2d4b1b1, type: 2}
