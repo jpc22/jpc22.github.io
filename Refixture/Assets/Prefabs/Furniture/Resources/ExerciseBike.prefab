@@ -881,7 +881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2215585317823541423}
   - component: {fileID: 391477883638167440}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger
   m_TagString: Trigger
   m_Icon: {fileID: 0}

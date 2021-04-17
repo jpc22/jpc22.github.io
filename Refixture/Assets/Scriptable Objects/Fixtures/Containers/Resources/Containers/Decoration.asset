@@ -15,6 +15,7 @@ MonoBehaviour:
   _name: Decoration
   _fixtures:
   - {fileID: 11400000, guid: 9fd71be60293a04418d7d798aa7df568, type: 2}
+  - {fileID: 11400000, guid: 429f509df5423074bba624d66f64c07d, type: 2}
   - {fileID: 11400000, guid: 62faafe081001b845b2c00599b47705f, type: 2}
   _rescaleList: []
   _sizeList: []

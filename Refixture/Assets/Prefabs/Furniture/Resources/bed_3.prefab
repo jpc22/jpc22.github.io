@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8677239284584879277}
   - component: {fileID: 3849684553289212394}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Right Trigger
   m_TagString: Trigger
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2499316215650036885}
   - component: {fileID: 4557706367483493552}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Left Trigger
   m_TagString: Trigger
   m_Icon: {fileID: 0}

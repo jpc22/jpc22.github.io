@@ -7,9 +7,11 @@ public class WallTransparency : MonoBehaviour
     private Transform _foundation;
     private Transform _playerCamera;
 
-    Material tempMaterial;
-    Color opaqueColor;
-    Color transparentColor;
+    Renderer[] renderers;
+    List<Material> materialList;
+    List<Color> colorList;
+    Material transparentMaterial;
+   
     float _transparentAlpha = 0.0f;
     float _opaqueAlpha = 1.0f;
     float _checkInterval = 0.5f;
@@ -21,7 +23,6 @@ public class WallTransparency : MonoBehaviour
         get => _transparentAlpha; set
         {
             _transparentAlpha = value;
-            transparentColor.a = _transparentAlpha;
         }
     }
 
@@ -30,47 +31,75 @@ public class WallTransparency : MonoBehaviour
         get => _opaqueAlpha; set
         {
             _opaqueAlpha = value;
-            opaqueColor.a = _opaqueAlpha;
         }
     }
 
     void Start()
     {
-        Renderer rend = GetComponentInChildren<Renderer>();
-        tempMaterial = new Material(rend.material);
-        opaqueColor = tempMaterial.color;
-        _opaqueAlpha = opaqueColor.a;
-        transparentColor = tempMaterial.color;
-        transparentColor.a = _transparentAlpha;
-        rend.material = tempMaterial;
+        materialList = new List<Material>();
+        colorList = new List<Color>();
+        renderers = GetComponentsInChildren<Renderer>();
+        transparentMaterial = Resources.Load<Material>("Transparent");
+
+        foreach (Renderer r in renderers)
+        {
+            var materials = r.materials;
+            for(int i = 0; i < materials.Length; i++)
+            {
+                colorList.Add(materials[i].color);
+                materials[i] = new Material(transparentMaterial);
+                materials[i].color = colorList[i];
+            }
+            r.materials = materials;
+            materialList.AddRange(materials);
+        }
+        
         InvokeRepeating("CheckDistance", 0f, _checkInterval);
+    }
+
+    void SetAlpha(Material mat, float value)
+    {
+        Color c = mat.color;
+        c.a = value;
+        mat.color = c;
     }
 
     void CheckDistance()
     {
+        SetAlpha(transparentMaterial, TransparentAlpha);
         if (Vector3.Distance(transform.position, PlayerCamera.position) < Vector3.Distance(Foundation.position, PlayerCamera.position))
         {
-            if(tempMaterial.color.a != _transparentAlpha)
-                StartCoroutine(LerpAlpha(opaqueColor, transparentColor, _checkInterval - 0.1f));
+            foreach (Material mat in materialList)
+            {
+                if (materialList[0].color.a == _transparentAlpha)
+                    break;
+                StartCoroutine(LerpAlpha(mat, transparentMaterial.color, _checkInterval - 0.1f));
+            }
         }
         else
         {
-            if(tempMaterial.color.a != _opaqueAlpha)
-                StartCoroutine(LerpAlpha(transparentColor, opaqueColor, _checkInterval - 0.1f));
+            for (int i = 0; i < materialList.Count; i++)
+            {
+                if (materialList[0].color.a == _opaqueAlpha)
+                    break;
+                StartCoroutine(LerpAlpha(materialList[i], colorList[i], _checkInterval - 0.1f));
+            }
         }
     }
 
-    IEnumerator LerpAlpha(Color startVal, Color endVal, float duration)
+
+    IEnumerator LerpAlpha(Material mat, Color endVal, float duration)
     {
         float time = 0;
 
+        Color startVal = mat.color;
         while (time < duration)
         {
-            tempMaterial.color = Color.Lerp(startVal, endVal, time / duration);
+            mat.color = Color.Lerp(startVal, endVal, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
 
-        tempMaterial.color = endVal;
+        mat.color = endVal;
     }
 }

@@ -726,7 +726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5374937188437126398}
   - component: {fileID: 320208014074538214}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger
   m_TagString: Trigger
   m_Icon: {fileID: 0}

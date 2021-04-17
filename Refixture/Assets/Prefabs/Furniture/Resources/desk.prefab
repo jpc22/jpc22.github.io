@@ -337,7 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3835389519132440115}
   - component: {fileID: 3833535210313314560}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger
   m_TagString: Trigger
   m_Icon: {fileID: 0}
