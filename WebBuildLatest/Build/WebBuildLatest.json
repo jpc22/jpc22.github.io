@@ -1,7 +1,7 @@
 {
 "companyName": "DefaultCompany",
 "productName": "Refixture",
-"productVersion": "0.1",
+"productVersion": "1.0.0",
 "dataUrl": "WebBuildLatest.data.unityweb",
 "wasmCodeUrl": "WebBuildLatest.wasm.code.unityweb",
 "wasmFrameworkUrl": "WebBuildLatest.wasm.framework.unityweb",
