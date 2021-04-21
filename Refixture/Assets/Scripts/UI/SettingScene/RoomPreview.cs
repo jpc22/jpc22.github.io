@@ -15,7 +15,7 @@ public class RoomPreview : MonoBehaviour
     VoidEventChannelSO _updateCh;
     GameObject _renderCamera;
     Bounds box;
-    Vector3 _defaultCameraPosition = new Vector3(25, 50, -25);
+    Vector3 _defaultCameraPosition = new Vector3(0, 500, 0);
     int _renderLayer = 8;
 
     private void Awake()
@@ -25,12 +25,6 @@ public class RoomPreview : MonoBehaviour
         _updateCh = _roomObjects.UpdateChannel;
         _previewObjects = new List<GameObject>();
         StartPreviewRender();
-    }
-
-    private void Start()
-    {
-        
-        
     }
 
     private void FixedUpdate()
@@ -43,6 +37,11 @@ public class RoomPreview : MonoBehaviour
         _widthCh.OnEventRaised += UpdateWidth;
         _lengthCh.OnEventRaised += UpdateLength;
         _updateCh.OnEventRaised += StartPreviewRender;
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(_renderCamera);
     }
 
     private void UpdateWidth(float width)
@@ -63,7 +62,7 @@ public class RoomPreview : MonoBehaviour
         if (_renderCamera != null)
             Destroy(_renderCamera);
         // create and position camera
-        _renderCamera = Instantiate(_previewRenderer, transform);
+        _renderCamera = Instantiate(_previewRenderer);
         _renderCamera.transform.position = _defaultCameraPosition;
 
         // set object to render in camera

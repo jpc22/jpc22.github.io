@@ -8,14 +8,31 @@ public class AlgorithmRunner : MonoBehaviour
     [SerializeField] private SettingsSO _settingsSO;
     [SerializeField] private FloatEventChannelSO _bestFitnessCh;
     private List<FixtureContainerSO> _matingPool;
-    private List<float> _bestFitnesses;
     private List<FixtureContainerSO> _best;
-    private int _maxBest = 15;
+    private BestTracker _bestTracker;
 
-    public List<FixtureContainerSO> Best { get => _best; set => _best = value; }
+    public List<FixtureContainerSO> Best
+    {
+        get
+        {
+            _best = _bestTracker.SolutionSet.Select(c => c.containerSO).ToList();
+            return _best;
+        }
+        set
+        {
+            _best = value;
+        }
+    }
+
+    private void Awake()
+    {
+        _bestTracker = gameObject.AddComponent<BestTracker>();
+    }
 
     public void StartNewGeneration(List<RoomGA> pop, System.Action generationDone)
     {
+        _bestTracker.TestNewBest(pop.OrderByDescending(c => c.Fitness).First());
+        _bestFitnessCh.RaiseEvent(_bestTracker.FitnessSet.First().fitness);
         _matingPool = GenerateMatingPool(pop);
         GenerateOffspring(pop);
         generationDone();
@@ -23,9 +40,13 @@ public class AlgorithmRunner : MonoBehaviour
 
     private List<FixtureContainerSO> GenerateMatingPool(List<RoomGA> pop)
     {
-        NormalizeFitness(pop);
+        //NormalizeFitness(pop);
 
-        List<FixtureContainerSO> parents = RouletteWheelSelection(pop, GenerateRandomPoints(pop.Count));
+        //List<FixtureContainerSO> parents = RouletteWheelSelection(pop, GenerateRandomPoints(pop.Count));
+        List<FixtureContainerSO> parents = TournamentSelection(pop.Count / 4, pop.Count / 8, pop);
+
+        parents.Add(Instantiate(_bestTracker.FitnessSet.First().containerSO));
+        parents.AddRange(_bestTracker.NoveltySet.Select(c => Instantiate(c.containerSO)));
         return parents;
     }
 
@@ -35,18 +56,27 @@ public class AlgorithmRunner : MonoBehaviour
         {
             if (Random.value <= _settingsSO.CrossoverRate)
             {
-                int j = i + 1;
-                if (j == pop.Count) j = 0;
-                pop[i].Crossover(_matingPool[i], _matingPool[j]);
+                int rand1 = Random.Range(0, _matingPool.Count);
+                int rand2;
+                do
+                {
+                    rand2 = Random.Range(0, _matingPool.Count);
+                } while (rand2 == rand1);
+
+                pop[i].Crossover(_matingPool[rand1], _matingPool[rand2]);
+            }
+            else
+            {
+                pop[i].Copy(_matingPool[i % _matingPool.Count]);
             }
         }
 
         for (int i = 0; i < pop.Count; i++)
         {
-            if (Random.value <= _settingsSO.MutationRate)
-            {
+            //if (Random.value <= _settingsSO.MutationRate)
+            //{
                 pop[i].Mutate(_settingsSO.MutationRate);
-            }
+            //}
         }
     }
 
@@ -56,9 +86,13 @@ public class AlgorithmRunner : MonoBehaviour
 
         var sortedRooms = pop.OrderBy(room => room.Fitness);
 
-        SetNewBest(sortedRooms.Last());
+        Debug.Log("Worst of generation Fitness: " + sortedRooms.First().Fitness);
+        Debug.Log("Best of generation fitness: " + sortedRooms.Last().Fitness);
+
+        _bestTracker.TestNewBest(sortedRooms.Last());
 
         List<FixtureContainerSO> selections = new List<FixtureContainerSO>();
+        var selectedRooms = new List<RoomGA>();
 
         foreach (float point in points)
         {
@@ -69,10 +103,15 @@ public class AlgorithmRunner : MonoBehaviour
                 if (sum >= point)
                 {
                     selections.Add(Instantiate(room.Fixtures));
+                    selectedRooms.Add(room);
                     break;
                 }
             }
         }
+
+        var sortedSelections = selectedRooms.OrderBy(room => room.Fitness);
+        Debug.Log("Worst of selections: " + sortedSelections.First().Fitness);
+        Debug.Log("Best of selections: " + sortedSelections.Last().Fitness);
 
 
         return selections;
@@ -113,26 +152,54 @@ public class AlgorithmRunner : MonoBehaviour
         }
     }
 
-    private void SetNewBest(RoomGA candidate)
-    {
-        float fitness = candidate.Fitness;
-        if (_best == null)
-        {
-            _best = new List<FixtureContainerSO>();
-            _bestFitnesses = new List<float>();
-        }
-        if (_best.Count == 0 || fitness > _bestFitnesses.First())
-        {
-            FixtureContainerSO newBest = Instantiate(candidate.Fixtures);
-            _best.Add(newBest);
-            _bestFitnesses.Add(fitness);
 
-            if (_best.Count > _maxBest)
-            {
-                _best.RemoveAt(0);
-                _bestFitnesses.RemoveAt(0);
-            }
-            _bestFitnessCh.RaiseEvent(_bestFitnesses.Max());
+    private int[] GetUniqueIndexes(int length, int min, int max)
+    {
+        var diff = max - min;
+
+        var orderedValues = Enumerable.Range(min, diff).ToList();
+        var ints = new int[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            var removeIndex = Random.Range(0, orderedValues.Count);
+            ints[i] = orderedValues[removeIndex];
+            orderedValues.RemoveAt(removeIndex);
         }
+
+        return ints;
+    }
+
+    private List<FixtureContainerSO> TournamentSelection(int tournamentSize, int poolSize, List<RoomGA> pop)
+    {
+
+        var selected = new List<FixtureContainerSO>();
+        var selectedRooms = new List<RoomGA>();
+
+
+        while (selected.Count < poolSize)
+        {
+            var randomIndexes = GetUniqueIndexes(tournamentSize, 0, pop.Count);
+            var tournamentWinner = pop.Where((c, i) => randomIndexes.Contains(i)).OrderByDescending(c => c.Fitness).First();
+
+            //Debug.Log("Tournament Winner: " + tournamentWinner.Fitness);
+
+            selected.Add(tournamentWinner.Fixtures);
+            selectedRooms.Add(tournamentWinner);
+
+            bool winnerContinues = true;
+            if (!winnerContinues)
+            {
+                pop.Remove(tournamentWinner);
+            }
+        }
+        
+        //var sortedRooms = selectedRooms.OrderByDescending(c => c.Fitness);
+        //Debug.Log("Best of tournaments: " + sortedRooms.First().Fitness);
+        //Debug.Log("Worst of tournaments: " + sortedRooms.Last().Fitness);
+
+        return selected;
     }
 }
+
+

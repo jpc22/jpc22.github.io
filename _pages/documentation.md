@@ -1,4 +1,4 @@
-﻿---
+---
 permalink: /documentation/
 title: "Documentation Overview"
 toc: true
@@ -108,14 +108,45 @@ This is the list of fixtures to be used by the genetic algorithm to arrange in t
 
 ## Edit Room Screen
 
-
+This screen allows you to edit the static room. Refer to [View Room](#view-room) and Room Settings above as it uses controls from both. In the Edit Room screen, you can add and remove fixtures in real time. Pressing Finshed takes you back to the settings screen where you can save your design.
 
 ## Algorithm Screen
 
+Numerous copies of the room are instantiated along a grid. These are each members of the population.
 
+Control Bar
+  :Population Count
+     The number of rooms in each generation
+  :Mutation Rate
+     The chance that a single fixture will undergo mutation, causing it to change position each generation.
+  :Crossover Rate
+     The chance that rooms will form a couple and cross their genetics for the next generation.
+  :Generation
+     The count of how many generations has passed.
+  :Average Fitness
+     The average fitness among the population during the last generation.
+  :Best Fitness
+     The best fitness of a room found among all generations.
+  :Reset
+     Reseeds the population with new random congfigurations.
+  :Start / Pause
+     Starts and pauses the evolution process.
 
 ## Results Screen
 
+Similar controls as [View Room](#view-room). Displays a selection of the best fit rooms from the evolution in the algorithm screen. Press next to view another room, then make edits and then save the room you like before returning to menu.
+
 # Genetic Algorithm
 
+Genetic algorithms model Darwin's theory of evolution to find solutions to hard problems in computing. Refixture assigns fitness values to rooms based on various factors, and the fittest individuals are able to reproduce and create the next generation of rooms. Reproduction can take values from two rooms and mix them via crossover to produce a new room. Another principle of evolution is mutation, and Refixture applies this randomly each generation to cause furniture to shift.
+
 ## Methodology
+
+  Parent Selection
+   
+  
+  Crossover
+
+  Mutation
+
+  Fitness

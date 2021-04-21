@@ -13,18 +13,18 @@ namespace RefixUtilities
                 throw new System.ArgumentException("The supplied transform was null");
             }
 
-            var colliders = root.GetComponentsInChildren<Collider>();
+            var colliders = root.GetComponentsInChildren<Renderer>();
             if (colliders.Length == 0)
             {
                 throw new System.ArgumentException("The supplied transform " + root?.name + " does not have any children with colliders");
             }
 
             Bounds totalBBox = colliders[0].bounds;
-            foreach (var collider in colliders)
+            for (int i = 1; i < colliders.Length; i++)
             {
-                if (!collider.gameObject.CompareTag("Trigger"))
+                if (!colliders[i].gameObject.CompareTag("Trigger"))
                 {
-                    totalBBox.Encapsulate(collider.bounds);
+                    totalBBox.Encapsulate(colliders[i].bounds);
                 }
             }
             return totalBBox;

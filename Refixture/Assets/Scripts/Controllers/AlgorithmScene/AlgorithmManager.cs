@@ -169,6 +169,11 @@ public class AlgorithmManager : MonoBehaviour
         }
     }
 
+    public void Resetpressed()
+    {
+        SceneManager.LoadScene("AlgorithmScene");
+    }
+
     private void OnDisable()
     {
         _popUpdateCh.OnEventRaised -= PopUpdated;

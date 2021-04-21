@@ -15,6 +15,7 @@ public class RoomGA : MonoBehaviour
     private List<Rigidbody> _fixtureRBs = new List<Rigidbody>();
     private int _roomIndex;
     private Vector3 _dimensions; // x = length, y = height, z = width
+    private Vector3 _noveltyVector;
 
     [SerializeField] private float _fitness;
     public float normalizedFitness;
@@ -47,6 +48,13 @@ public class RoomGA : MonoBehaviour
     }
 
     public List<GameObject> FixtureObjects { get => _fixtureObjects; set => _fixtureObjects = value; }
+    public Vector3 NoveltyVector { get => _noveltyVector; set => _noveltyVector = value; }
+
+    private void Awake()
+    {
+        int staticFixtureCount = gameObject.transform.childCount;
+
+    }
 
     public void InitializeFixtures()
     {
@@ -156,7 +164,7 @@ public class RoomGA : MonoBehaviour
 
     private void UniformCrossover(FixtureContainerSO parentA, FixtureContainerSO parentB)
     {
-        for (int i = 0; i < _fixtureScripts.Count; i++)
+        for (int i = 0; i < _fixtureObjects.Count; i++)
         {
             if (Random.value >= 0.5f)
             {
@@ -169,23 +177,37 @@ public class RoomGA : MonoBehaviour
         }
     }
 
+    public void Copy(FixtureContainerSO parent)
+    {
+        _fixtures.Copy(parent);
+    }
+
     public void Mutate(float mutateRate)
     {
         foreach (Fixture fixture in _fixtureScripts)
         {
-            if (Random.value <= mutateRate)
+            if (Random.value <= mutateRate / 2)
             {
-                if(Random.value <= mutateRate / 2)
+                if(Random.value <= mutateRate / 4)
                 {
                     fixture.SetNewRandomPos();
                 }
                 fixture.RandomPush();
             }
-            else if (Random.value <= mutateRate)
+            else if (Random.value <= mutateRate / 4)
             {
                 fixture.SetNewRandomRot();
             }
+            else if (Random.value <= mutateRate / 2)
+            {
+                SnapMutate(fixture);
+            }
         }
+    }
+
+    private void SnapMutate(Fixture fixture)
+    {
+
     }
 
     private void RecordFixtures()
@@ -197,5 +219,22 @@ public class RoomGA : MonoBehaviour
             _fixtures.SetPosAt(i, objT.localPosition.x, objT.localPosition.y, objT.localPosition.z);
             _fixtures.SetRotAt(i, objT.localEulerAngles.x, objT.localEulerAngles.y, objT.localEulerAngles.z);
         }
+
+        CalculateNoveltyVector();
+    }
+
+    private void CalculateNoveltyVector()
+    {
+        _noveltyVector = Vector3.zero;
+        foreach(GameObject fixture in _fixtureObjects)
+        {
+            _noveltyVector += fixture.transform.localPosition;
+        }
+        Vector3 rotationVector = Vector3.zero;
+        foreach (GameObject fixture in _fixtureObjects)
+        {
+            rotationVector += fixture.transform.localEulerAngles;
+        }
+        _noveltyVector.y = rotationVector.y;
     }
 }

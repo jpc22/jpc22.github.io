@@ -15,6 +15,9 @@ MonoBehaviour:
   _name: Beds
   _fixtures:
   - {fileID: 11400000, guid: d791a12e3cd7e094d86f0afe3759fe62, type: 2}
+  - {fileID: 11400000, guid: 68a81f2889c76f248a4f0ca994bd5e53, type: 2}
+  - {fileID: 11400000, guid: 79fb014790eda7e45b35c3db3e6d7897, type: 2}
+  - {fileID: 11400000, guid: 85e01640dbe8758439e8366904efb8e2, type: 2}
   _rescaleList: []
   _sizeList: []
   _posList: []

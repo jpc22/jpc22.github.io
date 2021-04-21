@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RotateDrag : MonoBehaviour
 {
@@ -22,21 +23,36 @@ public class RotateDrag : MonoBehaviour
 
     void Update()
     {
-        if (_isRotating)
+        if (!EventSystem.current.IsPointerOverGameObject() && _isRotating)
         {
-            // offset
-            _mouseOffset = (Input.mousePosition - _mouseReference);
-
             if (_settingsSO.IsSnapEnabled)
             {
-                _rotation.y = NearestDegrees(-(_mouseOffset.x * 4));
+                _sensitivity = 5f;
             }
             else
             {
-                _rotation.y = -(_mouseOffset.x) * _sensitivity;
+                _sensitivity = 0.4f;
             }
+            // offset
+            _mouseOffset = (Input.mousePosition - _mouseReference);
+
+            //if (_settingsSO.IsSnapEnabled)
+           // {
+            //    _rotation.y = NearestDegrees(-(_mouseOffset.x * 4));
+           // }
+           // else
+            //{
+                _rotation.y = -(_mouseOffset.x) * _sensitivity;
+            //}
             // rotate
             transform.Rotate(_rotation);
+
+            if(_settingsSO.IsSnapEnabled)
+            {
+                Vector3 rot = transform.localEulerAngles;
+                rot.y = NearestDegrees(rot.y);
+                transform.localEulerAngles = rot;
+            }
 
             // store mouse
             _mouseReference = Input.mousePosition;
@@ -45,18 +61,30 @@ public class RotateDrag : MonoBehaviour
 
     float NearestDegrees(float value)
     {
-        float rem = value % 15;
-        value = value - rem;
+        float increment = 15f;
+        float rem = value % increment;
+        if (rem < increment / 2)
+        {
+            value = value - rem;
+        }
+        else
+        {
+            value = value + increment - rem;
+        }
         return value;
     }
 
     void OnMouseDown()
     {
-        // rotating flag
-        _isRotating = true;
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            // rotating flag
+            _isRotating = true;
 
-        // store mouse
-        _mouseReference = Input.mousePosition;
+            // store mouse
+            _mouseReference = Input.mousePosition;
+        }
+            
     }
 
     void OnMouseUp()

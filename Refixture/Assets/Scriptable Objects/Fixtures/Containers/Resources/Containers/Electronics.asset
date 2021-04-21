@@ -16,6 +16,9 @@ MonoBehaviour:
   _fixtures:
   - {fileID: 11400000, guid: 02e442012ddfe5846b4e1227b45b65ae, type: 2}
   - {fileID: 11400000, guid: 806fb0d9dde680d47911c0c3db8cf950, type: 2}
+  - {fileID: 11400000, guid: aaf05f9387bbcfd4f9a1803d40b2f157, type: 2}
+  - {fileID: 11400000, guid: 886e8fa340bdb6045a0e0118fa49e33b, type: 2}
+  - {fileID: 11400000, guid: 1981348b70d2a4b4fbdd1f4bdf361cba, type: 2}
   _rescaleList: []
   _sizeList: []
   _posList: []

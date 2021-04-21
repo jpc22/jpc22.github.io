@@ -16,6 +16,14 @@ MonoBehaviour:
   _fixtures:
   - {fileID: 11400000, guid: 0b0af4e1c98a0b647b21a6aa74dd68d4, type: 2}
   - {fileID: 11400000, guid: 85272e46480e44d49a1f8102706cf946, type: 2}
+  - {fileID: 11400000, guid: d21beba65e91bd24084860a04d5ff6d0, type: 2}
+  - {fileID: 11400000, guid: 04ae06e486293aa4583007cb6addbd18, type: 2}
+  - {fileID: 11400000, guid: 59500e555aa2a3f48bd44498837bd005, type: 2}
+  - {fileID: 11400000, guid: 81baf8bc1c6b01c4982611ae2d4e0ded, type: 2}
+  - {fileID: 11400000, guid: 40462b98ae7561944a2fe0f4b2010ba7, type: 2}
+  - {fileID: 11400000, guid: 64204bac1df156345a4e685ab26d6455, type: 2}
+  - {fileID: 11400000, guid: b6debdb459c439c4aa15d82c99f7ac53, type: 2}
+  - {fileID: 11400000, guid: 83c6b816b95a61846a2220eae2e49393, type: 2}
   _rescaleList: []
   _sizeList: []
   _posList: []

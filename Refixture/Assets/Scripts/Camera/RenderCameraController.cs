@@ -46,7 +46,7 @@ public class RenderCameraController : MonoBehaviour
             Bounds box = RefixUtility.GetCombinedBoundingBoxOfChildren(_model.transform);
             float magnitude = box.size.magnitude;
             content.transform.localPosition = new Vector3(content.transform.localPosition.x, content.transform.localPosition.y, magnitude + 1f);
-            transform.LookAt(content.transform.position + new Vector3(0, box.extents.y, 0));
+            transform.LookAt(_model.transform.GetChild(0).position + new Vector3(0, box.extents.y, 0));
         }
     }
 

@@ -175,7 +175,7 @@ public class AlgorithmRoomManager : MonoBehaviour
 
         AvgFitness = (_roomPop.Sum(room => room.Fitness) / _roomPop.Count);
         //Debug.Log("Fitness Calculated. Avg Fit = " + AvgFitness);
-        Invoke("NewGeneration", 0.5f);
+        Invoke("NewGeneration", 1f);
     }
     public void PauseAlgorithm()
     {

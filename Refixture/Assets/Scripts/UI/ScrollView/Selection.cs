@@ -53,6 +53,11 @@ public class Selection : ScrollContent
         _heightTMP = _heightInput.GetComponent<TMP_InputField>();
     }
 
+    private void OnDestroy()
+    {
+        Destroy(_renderCamera);
+    }
+
     protected override void UpdateSettings()
     {
         base.UpdateSettings();
@@ -78,17 +83,20 @@ public class Selection : ScrollContent
 
             SetInputPreview();
         }
-    }
 
-    protected void StartPreviewRender()
+        PositionCamera();
+    }
+    protected void PositionCamera()
     {
         // get Y value of this rect to help position the camera separate from others
         RectTransform thisRect = GetComponent<RectTransform>();
         float thisY = thisRect.anchoredPosition.y;
-
-        // create and position camera
-        _renderCamera = Instantiate(_previewRenderer, transform);
         _renderCamera.transform.position = new Vector3(_renderCamera.transform.position.x, thisY, _renderCamera.transform.position.z);
+    }
+    protected void StartPreviewRender()
+    {
+        // create and position camera
+        _renderCamera = Instantiate(_previewRenderer);
 
         // set object to render in camera
         Camera cam = _renderCamera.GetComponentInChildren<Camera>();
@@ -105,10 +113,7 @@ public class Selection : ScrollContent
     }
     void UpdatePreviewRender()
     {
-        float scaleZ = _widthValue / _initialWidth;
-        float scaleX = _lengthValue / _initialLength;
-        float scaleY = _heightValue / _initialHeight;
-        _previewModel.transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
+        _previewModel.transform.localScale = new Vector3(_lengthValue / _initialLength, _heightValue / _initialHeight, _widthValue / _initialWidth);
         /*
         Transform model = _renderCamera.transform.GetChild(0);
         Transform camera = _renderCamera.transform.GetChild(1);

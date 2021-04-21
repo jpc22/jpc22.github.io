@@ -19,7 +19,7 @@ public class MenuUI : MonoBehaviour
 
     public void FeedbackButtonPressed()
     {
-        Application.OpenURL("https://www.google.com/");
+        Application.OpenURL("https://jpc22.github.io/");
     }
 
     public void AboutButtonPressed()

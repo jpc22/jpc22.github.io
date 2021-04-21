@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour
+public class Draggable : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
     private Vector3 mOffset;
     private float mZCoord;
 
-    void OnMouseDown()
+    void OnMouseDownsss()
     {
         mZCoord = Camera.main.WorldToScreenPoint(
             gameObject.transform.position).z;
@@ -28,9 +29,22 @@ public class Draggable : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
 
-    void OnMouseDrag()
+    void OnMouseDragsss()
     {
         transform.position = GetMouseAsWorldPoint() + mOffset;
     }
 
+    public void OnDrag(PointerEventData eventData)
+    {
+        mZCoord = Camera.main.WorldToScreenPoint(
+            gameObject.transform.position).z;
+
+        // Store offset = gameobject world pos - mouse world pos
+        mOffset = gameObject.transform.position - GetMouseAsWorldPoint();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        transform.position = GetMouseAsWorldPoint() + mOffset;
+    }
 }

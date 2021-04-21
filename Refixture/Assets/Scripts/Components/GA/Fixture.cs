@@ -131,6 +131,14 @@ public class Fixture : MonoBehaviour
             SetNewRandomPos();
             _timeMoving = 0;
         }
+        if (_fixtureSO.IsGroundFixture && transform.localPosition.y > 0.8f)
+        {
+            SetNewRandomPos();
+        }
+        if (transform.localPosition.y < -0.05f)
+        {
+            SetNewRandomPos();
+        }
     }
 
     private void CheckIfNearEdge()
@@ -153,6 +161,7 @@ public class Fixture : MonoBehaviour
         value += EvaluateCollisionCt();
         value += EvaluatePosition();
         value -= EvaluateClosest();
+        value += EvaluateTypes();
         if (value < 0)
             value = 0;
         _localFitness = value;
@@ -171,10 +180,32 @@ public class Fixture : MonoBehaviour
         while(_fitnessCalculated && !_isMoving && !_valueUpdated || waitTime >= maxWaitTime)
         {
             yield return new WaitForSeconds(0.1f);
-            waitTime += 0.1f;
+            waitTime += Time.deltaTime;
         }
         _fitnessCalculated = false;
         callback();
+    }
+
+    private float EvaluateTypes()
+    {
+        float value = 0;
+
+        if(_fixtureSO.IsGroundFixture)
+        {
+            if(transform.localPosition.y > 0.01)
+            {
+                value -= 100;
+            }
+        }
+        if(_fixtureSO.IsWallFixture)
+        {
+            if(!_isTouchingWall)
+            {
+                value -= 100;
+            }
+        }
+
+        return value;
     }
 
     private float EvaluateTriggerCt()
@@ -234,7 +265,7 @@ public class Fixture : MonoBehaviour
     {
         float value = 0;
 
-        value += Mathf.Abs(transform.position.magnitude);
+        value += Mathf.Abs(transform.localPosition.sqrMagnitude);
 
         return value;
     }
@@ -308,6 +339,7 @@ public class Fixture : MonoBehaviour
         IsTouchingWall = false;
         Vector3 pos = transform.localPosition;
         pos.x = Random.Range(Constraints.XMin, Constraints.XMax);
+        pos.y = 0;
         pos.z = Random.Range(Constraints.ZMin, Constraints.ZMax);
         transform.localPosition = pos;
         _thisRigidbody.velocity = Vector3.zero;
@@ -324,7 +356,7 @@ public class Fixture : MonoBehaviour
 
     public void RandomPush()
     {
-        Vector3 forceVector = new Vector3(Random.Range(-4f, 4f), 0, Random.Range(-4f, 4f));
+        Vector3 forceVector = new Vector3(Random.Range(-8f, 8f), 0, Random.Range(-8f, 8f));
         _thisRigidbody.AddForce(forceVector, ForceMode.VelocityChange);
         _isPushed = true;
     }
