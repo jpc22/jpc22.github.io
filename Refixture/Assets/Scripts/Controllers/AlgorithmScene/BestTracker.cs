@@ -92,6 +92,7 @@ public class BestTracker : MonoBehaviour
 
     private void BuildSolutionSet()
     {
+        _noveltySet = _noveltySet.OrderByDescending(c => c.fitness).ToList();
         int i = 0;
         while (true)
         {

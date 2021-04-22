@@ -2,7 +2,7 @@
 permalink: /roadmap/
 title: "Roadmap"
 ---
-Last Updated: 3/30/2021
+Last Updated: 4/22/2021
 
 The roadmap for this project specifies three key phases with bullet points indicating desired features to be worked on.
 
@@ -41,14 +41,14 @@ The final phase implements additional functionality while testing and refining.
  - [x] Large furniture variety (e.g., electronics, kitchen, and bathroom.)
  - [ ] Interface Tooltips.
  - [x] Object Highlighting.
- - [ ] Additional furniture types: decorative, lighting.
- - [ ] Export result to 3D model format.
- - [ ] Wall/ceiling fixtures.
+ - [x] Additional furniture types: decorative, lighting.
+ - [x] Export result to 3D model format (Editor Only).
+ - [x] Wall/ceiling fixtures.
  - [ ] Import and tag models/materials.
  - [ ] Automatic material/color selection.
- - [ ] Retrieve feedback from testing.
+ - [x] Retrieve feedback from testing.
  - [x] Snap to grid when positioning fixtures.
 
 ### Timeline
 
-Each phase will ideally last 1 month, but I would consider the completion of each phase an individual success if significant roadblocks occur. Documentation and testing will be done during all phases.
+Each phase will ideally last 1 month, but I would consider the completion of each phase an individual success if significant roadblocks occur.

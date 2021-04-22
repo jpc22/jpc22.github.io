@@ -143,7 +143,6 @@ Genetic algorithms model Darwin's theory of evolution to find solutions to hard 
 ## Methodology
 
   Parent Selection
-   
   
   Crossover
 

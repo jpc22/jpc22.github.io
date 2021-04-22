@@ -16,11 +16,11 @@ intro:
   - title: "About Refixture"
   - excerpt: 'We sometimes find difficulty when attempting to fit everything we want in a limited space. In some cases, rearranging can result in wasted effort through trial and error. Although keeping a list of measurements can help, Refixture allows you to use those measurements to model a virtual room that you can modify freely.'
 feature_row:
-  - image_path: assets/images/unsplash-gallery-image-1-th.jpg
+  - image_path: assets/images/ApplicationFrameHost_2021-04-22_00-46-49.png
     alt: "placeholder image 1"
     title: "Define"
     excerpt: "Visualize a scale model of your room by applying real-world measurements to a large variety of furniture."
-  - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
+  - image_path: /assets/images/Refixture_2021-04-22_00-49-34.png
     #image_caption: "Image courtesy of [Unsplash](https://unsplash.com/)"
     alt: "placeholder image 2"
     title: "Arrange"
@@ -28,7 +28,7 @@ feature_row:
     url: "#test-link"
     btn_label: "View Demonstration"
     btn_class: "btn--primary"
-  - image_path: /assets/images/unsplash-gallery-image-3-th.jpg
+  - image_path: /assets/images/Refixture_2021-04-22_00-56-45.png
     title: "Generate"
     excerpt: "Unsure about what should go where? Refixture can take a list of your furniture and attempt to come up with a solution in real time."
 feature_row2:  
@@ -51,19 +51,19 @@ feature_row4:
   - image_path: /assets/images/Refixture-Flowchart.png
     alt: "Flowchart"
     title: "How it works"
-    excerpt: 'Users define, arrange, and generate their rooms by taking the steps in the flowchart. Users create a close approximation of their rooms using the preset furniture designs included. The result may not look the same, but by applying measurements they can be scaled to match their real counterparts in size. Using the algorithm to place furniture is optional, and some fixtures in the room are static, meaning they do not move around.'
+    excerpt: 'Users follow Refixture's workflow to define, arrange, and generate rooms of their own. Users create a close approximation of their rooms using the preset furniture designs included. The result may not look the same, but by applying measurements they can be scaled to match their real counterparts in size. Refixture works intuitively, but also provides documentation on all features.'
     url: "/documentation/"
     btn_label: "Documentation"
     btn_class: "btn--primary"
 feature_row5:
-  - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
+  - image_path: /assets/images/chrome_2021-04-21_23-57-52.png
     title: "Testing and Feedback"
     excerpt: 'The project is welcome to feedback for the improvement of features and bug fixing. The testing plan for this projects consists of trying the latest test build and completing a short survey.'
     url: "/testing-plan/"
     btn_label: "Testing Plan"
     btn_class: "btn--primary"
 feature_row6:
-  - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
+  - image_path: /assets/images/GitHub_Logo.png
     title: "Distribution"
     excerpt: 'The project has been designed to be open source and non-commercial, with the help of code and assets found royalty free on the web.'
 feature_row7:
