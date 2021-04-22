@@ -16,7 +16,7 @@ intro:
   - title: "About Refixture"
   - excerpt: 'We sometimes find difficulty when attempting to fit everything we want in a limited space. In some cases, rearranging can result in wasted effort through trial and error. Although keeping a list of measurements can help, Refixture allows you to use those measurements to model a virtual room that you can modify freely.'
 feature_row:
-  - image_path: assets/images/unsplash-gallery-image-2-th.jpg
+  - image_path: assets/images/unsplash-gallery-image-1-th.jpg
     alt: "placeholder image 1"
     title: "Define"
     excerpt: "Visualize a scale model of your room by applying real-world measurements to a large variety of furniture."
@@ -28,7 +28,7 @@ feature_row:
     url: "#test-link"
     btn_label: "View Demonstration"
     btn_class: "btn--primary"
-  - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
+  - image_path: /assets/images/unsplash-gallery-image-3-th.jpg
     title: "Generate"
     excerpt: "Unsure about what should go where? Refixture can take a list of your furniture and attempt to come up with a solution in real time."
 feature_row2:  
@@ -51,7 +51,7 @@ feature_row4:
   - image_path: /assets/images/Refixture-Flowchart.png
     alt: "Flowchart"
     title: "How it works"
-    excerpt: 'Users follow Refixture's workflow to define, arrange, and generate rooms of their own. Users create a close approximation of their rooms using the preset furniture designs included. The result may not look the same, but by applying measurements they can be scaled to match their real counterparts in size. Refixture works intuitively, but also provides documentation on all features.'
+    excerpt: 'Users define, arrange, and generate their rooms by taking the steps in the flowchart. Users create a close approximation of their rooms using the preset furniture designs included. The result may not look the same, but by applying measurements they can be scaled to match their real counterparts in size. Using the algorithm to place furniture is optional, and some fixtures in the room are static, meaning they do not move around.'
     url: "/documentation/"
     btn_label: "Documentation"
     btn_class: "btn--primary"
