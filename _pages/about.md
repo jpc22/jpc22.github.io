@@ -11,7 +11,8 @@ The [GitHub](https://github.com/jpc22/jpc22.github.io) page contains nearly ever
 
 ## Contact
 
-jpcunningham@alaska.edu
+Email: jpcunningham@alaska.edu
+Discord: Halcyon#3893
 
 ## Credits
 

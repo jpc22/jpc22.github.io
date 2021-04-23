@@ -33,7 +33,7 @@ feature_row2:
   - image_path: /assets/images/site/Unity_2021-04-20_13-02-44-2.png
     alt: "placeholder image 2"
     title: "Who can benefit from Refixture?"
-    excerpt: 'The idea for this project arose due to new indoor lifestyles during the COVID-19 pandemic. Spending time working and relaxing at home encouraged bringing in more anemities at the cost of increased space management. Management can be made easier with planning, but visualizing those plans becomes easy with Refixture. Therefore, this program helps users imagine a new shelf, chair, or excercise bike. For those moving into a new space, save a few different arrangements to evaluate layout options. For those knowledgable with Unity, the project can be modified and used freely through the GitHub repository.'
+    excerpt: 'The idea for this project arose due to new indoor lifestyles during the COVID-19 pandemic. Spending time working and relaxing at home encouraged bringing in more anemities at the cost of increased space management. Managing rooms can be helped with planning, but visualizing those plans becomes easy with Refixture. Therefore, Refixture helps users imagine a new shelf, chair, or excercise bike. For those moving into a new space, save a few different arrangements to evaluate layout options. For those knowledgable with Unity, the project can be modified and used freely through the GitHub repository.'
     url: "/about/"
     btn_label: "More About"
     btn_class: "btn--primary"
@@ -49,7 +49,7 @@ feature_row4:
   - image_path: /assets/images/Refixture-Flowchart.png
     alt: "Flowchart"
     title: "How it works"
-    excerpt: 'Users define, arrange, and generate their rooms by taking the steps in the flowchart. Users create a close approximation of their rooms using the preset furniture designs included. The result may not look the same, but by applying measurements they can be scaled to match their real counterparts in size. Using the algorithm to place furniture is optional, and some fixtures in the room are static, meaning they do not move around.'
+    excerpt: 'Users follow Refixture's workflow to define, arrange, and generate rooms of their own. Users create a close approximation of their rooms using the preset furniture designs included. The result may not look the same, but by applying measurements they can be scaled to match their real counterparts in size. Refixture works intuitively, but also provides documentation on all features.'
     url: "/documentation/"
     btn_label: "Documentation"
     btn_class: "btn--primary"
@@ -63,7 +63,7 @@ feature_row5:
 feature_row6:
   - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
     title: "Distribution"
-    excerpt: 'The project has been designed to be open source and non-commercial, with the help of code and assets found royalty free on the web.'
+    excerpt: 'The project has been designed to be open source and non-commercial, with the help of code and assets found royalty free on the web. To avoid distributing other's work without their consent, some assets are not available in the repository.'
     url: "https://github.com/jpc22/jpc22.github.io"
     btn_label: "GitHub Repository"
     btn_class: "btn--primary"
