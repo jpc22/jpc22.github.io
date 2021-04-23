@@ -15,6 +15,7 @@ public class ScrollListUITest : MonoBehaviour
     [SerializeField] private SettingsSO _settingsSO;
     [SerializeField] private List<GameObject> _selectPanels;
     [SerializeField] private GameObject _saveWindow;
+    [SerializeField] private GameObject _noneSelectedWindow;
 
     private VoidEventChannelSO _settingChangedChannel;
 
@@ -89,7 +90,14 @@ public class ScrollListUITest : MonoBehaviour
         {
 
             PlayerPrefs.Save();
-            SceneManager.LoadScene("AlgorithmScene");
+            if (_settingsSO.SelectedFixtureSOList.SizeList.Count > 0)
+            {
+                SceneManager.LoadScene("AlgorithmScene");
+            }
+            else
+            {
+                _noneSelectedWindow.SetActive(true);
+            }
         }
         else
         {

@@ -99,7 +99,7 @@ public class BestTracker : MonoBehaviour
     {
         _noveltySet = _noveltySet.OrderByDescending(c => c.fitness).ToList();
         int i = 0;
-        while (true)
+        while (_fitnessSet.Count > 0)
         {
             _solutionSet.Add(_fitnessSet[i]);
             if (_solutionSet.Count == solutionMaxCount) break;
