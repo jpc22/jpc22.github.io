@@ -41,7 +41,7 @@ feature_row3:
   - image_path: /assets/images/site/Timeline.jpg
     alt: "placeholder image 2"
     title: "Project Timeline"
-    excerpt: 'This project was developed over a three month period. '
+    excerpt: 'This project was developed over a three month period. With little knowledge of Unity and web design.'
     url: "/roadmap/"
     btn_label: "Roadmap"
     btn_class: "btn--primary"
@@ -49,7 +49,7 @@ feature_row4:
   - image_path: /assets/images/Refixture-Flowchart.png
     alt: "Flowchart"
     title: "How it works"
-    excerpt: 'Users follow Refixture's workflow to define, arrange, and generate rooms of their own. Users create a close approximation of their rooms using the preset furniture designs included. The result may not look the same, but by applying measurements they can be scaled to match their real counterparts in size. Refixture works intuitively, but also provides documentation on all features.'
+    excerpt: 'Users follow the workflow to define, arrange, and generate rooms of their own. Users create a close approximation of their rooms using the preset furniture designs included. The result may not look the same, but by applying measurements they can be scaled to match their real counterparts in size. Refixture works intuitively, but also provides documentation on all features.'
     url: "/documentation/"
     btn_label: "Documentation"
     btn_class: "btn--primary"
@@ -63,7 +63,7 @@ feature_row5:
 feature_row6:
   - image_path: /assets/images/unsplash-gallery-image-2-th.jpg
     title: "Distribution"
-    excerpt: 'The project has been designed to be open source and non-commercial, with the help of code and assets found royalty free on the web. To avoid distributing other's work without their consent, some assets are not available in the repository.'
+    excerpt: 'The project has been designed to be open source and non-commercial, with the help of code and assets found royalty free on the web. To avoid distributing work of others without their consent, some assets are not available in the repository.'
     url: "https://github.com/jpc22/jpc22.github.io"
     btn_label: "GitHub Repository"
     btn_class: "btn--primary"

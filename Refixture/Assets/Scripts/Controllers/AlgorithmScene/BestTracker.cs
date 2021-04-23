@@ -76,9 +76,14 @@ public class BestTracker : MonoBehaviour
 
     private bool IsNovel(Solution candidate)
     {
-        float avg = _noveltySet.Average(c => c.noveltyMagnitude);
+        candidate.noveltyDiff = Mathf.Infinity;
 
-        candidate.noveltyDiff = Mathf.Abs(avg - candidate.noveltyMagnitude);
+        foreach (Solution novel in _noveltySet)
+        {
+            float diff = Vector3.Distance(novel.noveltyVector, candidate.noveltyVector);
+            if (diff < candidate.noveltyDiff)
+                candidate.noveltyDiff = diff;
+        }
         
         if (candidate.noveltyDiff > _noveltySet.Average(c => c.noveltyDiff))
         {

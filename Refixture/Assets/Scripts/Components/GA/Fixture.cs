@@ -20,7 +20,7 @@ public class Fixture : MonoBehaviour
     private bool _isPushed;
     private bool _notMoved;
     private float _timeMoving;
-    private float _moveTimeTolerance = 0.2f;
+    private float _moveTimeTolerance = 0.6f;
     [SerializeField] private int _collisionCount = 0;
     [SerializeField] private int _triggerCount = 0;
 
@@ -156,11 +156,10 @@ public class Fixture : MonoBehaviour
     private void CalculateLocalFitness()
     {
         float value = 0;
-        if (IsTouchingWall) value += 6;
         value += EvaluateTriggerCt();
         value += EvaluateCollisionCt();
-        value += EvaluatePosition();
-        value -= EvaluateClosest();
+        //value += EvaluatePosition();
+        value += EvaluateClosest();
         value += EvaluateTypes();
         if (value < 0)
             value = 0;
@@ -192,9 +191,16 @@ public class Fixture : MonoBehaviour
 
         if(_fixtureSO.IsGroundFixture)
         {
-            if(transform.localPosition.y > 0.01)
+            if(transform.localPosition.y > 0.3)
             {
                 value -= 100;
+            }
+        }
+        else
+        {
+            if(transform.localPosition.y > 0.3)
+            {
+                value += 20;
             }
         }
         if(_fixtureSO.IsWallFixture)
@@ -203,6 +209,10 @@ public class Fixture : MonoBehaviour
             {
                 value -= 100;
             }
+        }
+        else if (_isTouchingWall)
+        {
+            value += 10;
         }
 
         return value;
@@ -214,19 +224,19 @@ public class Fixture : MonoBehaviour
         switch(TriggerCount)
         {
             case 0:
-                value = 10;
+                value = 20;
                 break;
             case 1:
-                value = 6;
+                value = -6;
                 break;
             case 2:
-                value = 3;
+                value = -9;
                 break;
             case 3:
-                value = 1;
+                value = -20;
                 break;
             default:
-                value = 0;
+                value = -20;
                 break;
         }
 
@@ -239,13 +249,13 @@ public class Fixture : MonoBehaviour
         switch (CollisionCount)
         {
             case 0:
-                value = 4;
+                value = 8;
                 break;
             case 1:
-                value = 3;
+                value = 6;
                 break;
             case 2:
-                value = 2;
+                value = 4;
                 break;
             case 3:
                 value = 2;
@@ -272,20 +282,32 @@ public class Fixture : MonoBehaviour
 
     private float EvaluateClosest()
     {
+        float value = 0;
         var transforms = from gameObject in roomGA.FixtureObjects
                          select gameObject.transform;
-        float value = ReturnClosestDistance(transforms.ToArray());
-        value = 100 / value; // closer is higher
-        if (value > 200f)
-            value = 200f;
+        var closest = ReturnClosest(transforms.ToArray());
+        var closestScript = closest.GetComponent<Fixture>();
+        if (!_fixtureSO.IsGroundFixture)
+        {
+            if (closestScript.FixtureSO.IsOfType("Surface"))
+            {
+                value += 15;
+            }
+        }
+        
+
         return value;
     }
 
     private float ReturnClosestDistance(Transform[] transforms)
     {
-        var closest = transforms.OrderBy(t => (t.position - transform.position).sqrMagnitude)
-                                .ElementAt(1);
+        var closest = ReturnClosest(transforms);
         return (closest.position - transform.position).sqrMagnitude;
+    }
+    private Transform ReturnClosest(Transform[] transforms)
+    {
+        return transforms.OrderBy(t => (t.position - transform.position).sqrMagnitude)
+                                .ElementAt(1);
     }
 
     private void OnCollisionEnter(Collision collision)
